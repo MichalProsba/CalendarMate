@@ -44,10 +44,9 @@
 
 
 
-        <TextBlock x:Name="Day_of_month_1_1" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top">12</TextBlock>
         <Calendar x:Name="Calendar" Grid.RowSpan="5" Margin="0,54,0,67" HorizontalAlignment="Center"/>
         <Button Content="Back" Grid.Column="8" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" Width="80"/>
         <Button Content="Next" Grid.Column="10" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" Width="80"/>
-        <Button x:Name="B1" Grid.Column="0" Grid.Row="0" />
+        <TextBlock x:Name="B1" Grid.Column="0" Grid.Row="0" />
     </Grid>
 </Window>
