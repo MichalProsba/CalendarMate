@@ -44,5 +44,41 @@ namespace CalendarMate
             DateTime dt = new DateTime(arg1.Year, arg1.Month, arg1.Day);
             return (int)dt.DayOfWeek;
         }
+
+        public static DateTime NextMonth(DateTime current_date)
+        {
+            int year = current_date.Year;
+            int month = current_date.Month;
+            int day = current_date.Day;
+            if(current_date.Month == 12)
+            {
+                year += 1;
+                month = 1;
+            }
+            else
+            {
+                month += 1;
+            }
+
+            return new DateTime(year, month, day);
+        }
+
+        public static DateTime PreviousMonth(DateTime current_date)
+        {
+            int year = current_date.Year;
+            int month = current_date.Month;
+            int day = current_date.Day;
+            if (current_date.Month == 1)
+            {
+                year -= 1;
+                month = 12;
+            }
+            else
+            {
+                month -= 1;
+            }
+
+            return new DateTime(year, month, day);
+        }
     }
 }

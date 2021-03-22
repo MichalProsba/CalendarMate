@@ -23,6 +23,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="3*"/>
@@ -32,21 +33,22 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="9*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="1" Grid.Row="0" Text="Monday" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBlock Grid.Column="2" Grid.Row="0" Text="Tuesday"       VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBlock Grid.Column="3" Grid.Row="0" Text="Wednesday"        VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBlock Grid.Column="4" Grid.Row="0" Text="Thursday"     VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBlock Grid.Column="5" Grid.Row="0" Text="Friday"       VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBlock Grid.Column="6" Grid.Row="0" Text="Saturday"       VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBlock Grid.Column="7" Grid.Row="0" Text="Sunday"    VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Column="1" Grid.Row="1" Text="Monday" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Column="2" Grid.Row="1" Text="Tuesday"       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Column="3" Grid.Row="1" Text="Wednesday"        VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Column="4" Grid.Row="1" Text="Thursday"     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Column="5" Grid.Row="1" Text="Friday"       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Column="6" Grid.Row="1" Text="Saturday"       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Column="7" Grid.Row="1" Text="Sunday"    VerticalAlignment="Center" HorizontalAlignment="Center"/>
         
 
 
 
 
         <Calendar x:Name="Calendar" Grid.RowSpan="5" Margin="0,54,0,67" HorizontalAlignment="Center"/>
-        <Button Content="Back" Grid.Column="8" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" Width="80"/>
-        <Button Content="Next" Grid.Column="10" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" Width="80"/>
-        <TextBlock x:Name="B1" Grid.Column="0" Grid.Row="0" />
+        <Button x:Name="Back" Click="Back_Click" Content="Back" Grid.Column="8" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" Width="80"/>
+        <Button x:Name="Next" Click="Next_Click" Content="Next" Grid.Column="10" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" Width="80"/>
+        <Button x:Name="B1" Click="CurrentDate_Click" Grid.Column="0" Grid.Row="0" />
+        <TextBlock x:Name="Month_And_Year_TextBlock" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="7" Text="None" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Window>
