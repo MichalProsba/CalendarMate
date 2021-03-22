@@ -32,10 +32,11 @@ namespace CalendarMate
         private void GenerateDayPanel(DateTime when)
         {
             current_date = when;
-            CalendarDate MyDate = new CalendarDate();
-            MyDate.DisplayDate();
+            //CalendarDate MyDate = new CalendarDate();
+            //MyDate.DisplayDate();
 
             Month_And_Year_TextBlock.Text = when.ToString("Y", CultureInfo.CreateSpecificCulture("en-US"));
+
 
             DateTime today = when;
             //DateTime today = new DateTime(2021,4,6);
@@ -47,12 +48,13 @@ namespace CalendarMate
             else
                 column = 7;
             //int column = 1;
-            int correction = column-1;
-            int row = 2;
+            int correction = column - 1;
+            int row = 3;
             for (int i = 1; i <= number_of_days; i++)
             {
                 Button button = new Button();
                 button.Name = "Button_" + i.ToString();
+                button.Click += new RoutedEventHandler(Day_Click);
                 //button.Content = i;
                 Grid.SetColumn(button, column);
                 Grid.SetRow(button, row);
@@ -62,12 +64,12 @@ namespace CalendarMate
                 textBlock.Text = i.ToString();
                 textBlock.HorizontalAlignment = HorizontalAlignment.Left;
                 textBlock.VerticalAlignment = VerticalAlignment.Top;
-                textBlock.Margin = new Thickness(5,0,0,0);
+                textBlock.Margin = new Thickness(5, 0, 0, 0);
                 textBlock.FontSize = 20;
                 Grid.SetColumn(textBlock, column);
                 Grid.SetRow(textBlock, row);
                 /////////////////////////
-                if ((i+correction) % 7 == 0)
+                if ((i + correction) % 7 == 0)
                 {
                     row++;
                     column = 0;
@@ -76,8 +78,8 @@ namespace CalendarMate
                 mainGrid.Children.Add(button);
                 mainGrid.Children.Add(textBlock);
             }
-            
-            
+
+
             //B1.HorizontalAlignment = HorizontalAlignment.Center;
             //B1.VerticalAlignment = VerticalAlignment.Center;
         }
@@ -107,6 +109,16 @@ namespace CalendarMate
         private void CurrentDate_Click(object sender, RoutedEventArgs e)
         {
             GenerateDayPanel(DateTime.Now);
+        }
+
+        private void Day_Click(object sender, RoutedEventArgs e)
+        {
+            Window1 oneDay = new Window1(current_date);
+            oneDay.Show();
+        }
+        private void CloseMainWindow_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
     }

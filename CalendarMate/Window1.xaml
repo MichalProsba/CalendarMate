@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalendarMate"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="800">
+        Title="Window1" Height="400" Width="900">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Text="Event Name" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+        <TextBox Text="00:00" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+        <TextBox Text="00:00" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+        <TextBox Text="Location" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+        <ListBox Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3">
+            <ListBoxItem Content="12 hours earlier"/>
+            <ListBoxItem Content="6 hours earlier"/>
+            <ListBoxItem Content="3 hours earlier"/>
+            <ListBoxItem Content="2 hours earlier"/>
+            <ListBoxItem Content="1 hours earlier"/>
+        </ListBox>
+        <Button Grid.Column="4" Grid.Row="3" Content="Save"/>
     </Grid>
 </Window>
