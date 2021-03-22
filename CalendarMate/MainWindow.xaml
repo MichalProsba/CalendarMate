@@ -58,7 +58,7 @@
         <Calendar x:Name="Calendar" Grid.Row="3" Grid.RowSpan="5" Margin="0,54,0,67" HorizontalAlignment="Center"/>
         <Button Width="50" Height="60" BorderThickness="0" FontSize="30" Foreground="White" Background="MidnightBlue" x:Name="Back" Click="Back_Click" Content="&lt;" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"/>
         <Button Width="50" Height="60" BorderThickness="0" FontSize="30" Foreground="White" Background="MidnightBlue" x:Name="Next" Click="Next_Click" Content="&gt;" Grid.Column="7" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button BorderThickness="0" FontSize="30"  Foreground="White" Background="MidnightBlue" x:Name="B1" Click="CurrentDate_Click" Grid.Column="0" Grid.Row="1" />
+        <Button BorderThickness="0" FontSize="30"  Foreground="White" Background="MidnightBlue" x:Name="Clock" Click="CurrentDate_Click" Grid.Column="0" Grid.Row="1" />
         <TextBlock Foreground="White" x:Name="Month_And_Year_TextBlock" FontSize="30" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="5" Text="None" HorizontalAlignment="Center" VerticalAlignment="Center"/>
      </Grid>
 </Window>

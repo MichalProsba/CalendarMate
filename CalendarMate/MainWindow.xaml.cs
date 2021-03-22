@@ -23,21 +23,18 @@ namespace CalendarMate
         public MainWindow()
         {
             InitializeComponent();
-            //Window1 window = new Window1();
             GenerateCurrentTime();
             GenerateDayPanel(DateTime.Now);
-       
+            //Window1 window = new Window1();
+
 
         }
         private void GenerateDayPanel(DateTime when)
         {
-            current_date = when;
             //CalendarDate MyDate = new CalendarDate();
             //MyDate.DisplayDate();
-
+            current_date = when;
             Month_And_Year_TextBlock.Text = when.ToString("Y", CultureInfo.CreateSpecificCulture("en-US"));
-
-
             DateTime today = when;
             //DateTime today = new DateTime(2021,4,6);
             int number_of_days = DateTimeDayOfMonth.DaysInMonth(today);
@@ -58,7 +55,6 @@ namespace CalendarMate
                 button.Background = Brushes.DarkBlue;
                 Grid.SetColumn(button, column);
                 Grid.SetRow(button, row);
-                /////////////////////////
                 TextBlock textBlock = new TextBlock();
                 textBlock.Name = "TextBlock_" + i.ToString();
                 textBlock.Text = i.ToString();
@@ -69,7 +65,6 @@ namespace CalendarMate
                 textBlock.Foreground = Brushes.White;
                 Grid.SetColumn(textBlock, column);
                 Grid.SetRow(textBlock, row);
-                /////////////////////////
                 if ((i + correction) % 7 == 0)
                 {
                     row++;
@@ -79,10 +74,6 @@ namespace CalendarMate
                 mainGrid.Children.Add(button);
                 mainGrid.Children.Add(textBlock);
             }
-
-
-            //B1.HorizontalAlignment = HorizontalAlignment.Center;
-            //B1.VerticalAlignment = VerticalAlignment.Center;
         }
 
         private void GenerateCurrentTime()
@@ -94,7 +85,7 @@ namespace CalendarMate
         }
         private void UpdateCurrentTime(object sender, EventArgs e)
         {
-            B1.Content = DateTime.Now.ToString();
+            Clock.Content = DateTime.Now.ToString();
         }
 
         private void Next_Click(object sender, RoutedEventArgs e)
@@ -106,7 +97,7 @@ namespace CalendarMate
         {
             GenerateDayPanel(DateTimeDayOfMonth.PreviousMonth(current_date));
         }
-
+        
         private void CurrentDate_Click(object sender, RoutedEventArgs e)
         {
             GenerateDayPanel(DateTime.Now);
@@ -123,8 +114,4 @@ namespace CalendarMate
         }
 
     }
-
-
-
-
 }
