@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,9 @@ namespace CalendarMate
     /// </summary>
     public partial class Window1 : Window
     {
+        private int move;
+        private double moveX;
+        private double moveY;
         public Window1(DateTime eventDay)
         {
             InitializeComponent();
@@ -135,7 +139,20 @@ namespace CalendarMate
 
         private void CreateEvent(DateTime when)
         {
+            Event_Date.Text = when.ToString("D", CultureInfo.CreateSpecificCulture("en-US"));
+        }
 
+        private void CloseEventWindow_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void MoveEventWindow_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
         }
     }
 }

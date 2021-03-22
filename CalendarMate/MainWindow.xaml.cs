@@ -55,7 +55,7 @@ namespace CalendarMate
                 Button button = new Button();
                 button.Name = "Button_" + i.ToString();
                 button.Click += new RoutedEventHandler(Day_Click);
-                //button.Content = i;
+                button.Background = Brushes.DarkBlue;
                 Grid.SetColumn(button, column);
                 Grid.SetRow(button, row);
                 /////////////////////////
@@ -66,6 +66,7 @@ namespace CalendarMate
                 textBlock.VerticalAlignment = VerticalAlignment.Top;
                 textBlock.Margin = new Thickness(5, 0, 0, 0);
                 textBlock.FontSize = 20;
+                textBlock.Foreground = Brushes.White;
                 Grid.SetColumn(textBlock, column);
                 Grid.SetRow(textBlock, row);
                 /////////////////////////
