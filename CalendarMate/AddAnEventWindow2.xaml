@@ -1,0 +1,169 @@
+﻿<Window x:Class="CalendarMate.AddAnEventWindow2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:local="clr-namespace:CalendarMate"
+        mc:Ignorable="d"
+        Title="AddAnEventWindow2" Height="500" Width="800">
+
+
+
+    <Border Padding="20" Background="#666">
+        
+        <StackPanel Background="#666">
+
+
+
+            <!-- 1 Row -->
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+
+                </StackPanel>
+
+                <StackPanel Grid.Column="0" Margin="0 0 20 0">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:ImageAwesome Icon="Calendar" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0"/>
+                        <fa:FontAwesome Text="Event name" FontSize="30" />
+                    </StackPanel>
+                    <TextBox Text="Event name" Padding="5" FontSize="25" Background="#eee" TextChanged="TextBox_TextChanged" >
+                        <TextBox.Foreground>
+                            <SolidColorBrush Color="Gray" Opacity="0.4" />
+                        </TextBox.Foreground>
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="3"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Margin="0 0 20 0">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:ImageAwesome Icon="CalendarCheckOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
+                        <fa:FontAwesome Text="All day" FontSize="30"/>
+                    </StackPanel>
+                    <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10" Background="#eee" >
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                </StackPanel>
+            </Grid>
+
+            <!-- 2 Row -->
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:ImageAwesome Icon="ClockOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
+                        <fa:FontAwesome Text="From" FontSize="30"/>
+                    </StackPanel>
+                    <TextBox Text="00:00" Padding="5" FontSize="25" Background="#eee" >
+                        <TextBox.Foreground>
+                            <SolidColorBrush Color="Gray" Opacity="0.4" />
+                        </TextBox.Foreground>
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="3"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Margin="10 0 0 0">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:ImageAwesome Icon="ClockOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
+                        <fa:FontAwesome Text="To" FontSize="30"/>
+                    </StackPanel>
+                    <TextBox Text="00:00" Padding="5" FontSize="25" Background="#eee" >
+                        <TextBox.Foreground>
+                            <SolidColorBrush Color="Gray" Opacity="0.4" />
+                        </TextBox.Foreground>
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="3"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+
+            <!-- 3 Row -->
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:ImageAwesome Icon="MapMarker" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
+                        <fa:FontAwesome Text="Localization" FontSize="30"/>
+                    </StackPanel>
+                    <TextBox Text="Localization" Padding="5" FontSize="25" Background="#eee" >
+                        <TextBox.Foreground>
+                            <SolidColorBrush Color="Gray" Opacity="0.4" />
+                        </TextBox.Foreground>
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="3"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+
+            <!-- 4 Row -->
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:ImageAwesome Icon="BellOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
+                        <fa:FontAwesome Text="Remind" FontSize="30"/>
+                    </StackPanel>
+                    <ComboBox Padding="5" FontSize="25"  SelectedIndex="0" Background="#eee" SelectionChanged="ComboBox_SelectionChanged" BorderBrush="{x:Null}" >
+                        <ComboBox.Foreground>
+                            <SolidColorBrush Color="Gray" Opacity="0.4"/>
+                        </ComboBox.Foreground>
+
+                        <ComboBoxItem FontSize="25" Background="#eee">00:00</ComboBoxItem>
+                        <ComboBoxItem FontSize="25" Background="#eee">00:30</ComboBoxItem>
+                    </ComboBox>
+
+                </StackPanel>
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="2" Margin="0 30 10 0">
+                    <Button Content="Save" FontSize="25" Background="#eee" Foreground="#000">
+
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Border>
+</Window>
