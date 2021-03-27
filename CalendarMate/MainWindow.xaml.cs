@@ -19,61 +19,121 @@ namespace CalendarMate
 {
     public partial class MainWindow : Window
     {
-        private DateTime current_date;
+        private CalendarDate Current_calendar_data = new CalendarDate();
+
+        private List<Button> button_list_of_day = new List<Button>();
+        public List<Button> Button_list_of_day
+        {
+            get
+            {
+                return button_list_of_day;
+            }
+            set
+            {
+                button_list_of_day = value;
+            }
+        }
+
+        private List<TextBlock> textblock_list_of_day = new List<TextBlock>();
+
+        public List<TextBlock> Textblock_list_of_day
+        {
+            get
+            {
+                return textblock_list_of_day;
+            }
+            set
+            {
+                textblock_list_of_day = value;
+            }
+        }
+
         public MainWindow()
         {
+            Current_calendar_data = new CalendarDate();
             InitializeComponent();
             GenerateCurrentTime();
-            GenerateDayPanel(DateTime.Now);
-            //Window1 window = new Window1();
-
-
+            GenerateDayPanel();
         }
-        private void GenerateDayPanel(DateTime when)
+        private void GenerateDayPanel()
         {
-            //CalendarDate MyDate = new CalendarDate();
-            //MyDate.DisplayDate();
-            current_date = when;
-            Month_And_Year_TextBlock.Text = when.ToString("Y", CultureInfo.CreateSpecificCulture("en-US"));
-            DateTime today = when;
-            //DateTime today = new DateTime(2021,4,6);
-            int number_of_days = DateTimeDayOfMonth.DaysInMonth(today);
-            int day_of_week = DateTimeDayOfMonth.DayOfWeekOfGivenDate(DateTimeDayOfMonth.FirstDayOfMonth(today));
-            int column = 0;
-            if (day_of_week != 0)
-                column = day_of_week;
-            else
-                column = 7;
-            //int column = 1;
-            int correction = column - 1;
+            Month_And_Year_TextBlock.Text = Current_calendar_data.Date.ToString("Y", CultureInfo.CreateSpecificCulture("en-US"));
+            int number_of_days = Current_calendar_data.DaysInCalendarMonth();
+            int day_of_week = Current_calendar_data.FirstDayOfWeekCalendarMonth();
+
+            int number_of_day = 1;
+            int column = day_of_week;
             int row = 3;
-            for (int i = 1; i <= number_of_days; i++)
+
+            for (int i = 0; i < number_of_days; i++)
             {
-                Button button = new Button();
-                button.Name = "Button_" + i.ToString();
-                button.Click += new RoutedEventHandler(Day_Click);
-                button.Background = Brushes.DarkBlue;
-                Grid.SetColumn(button, column);
-                Grid.SetRow(button, row);
-                TextBlock textBlock = new TextBlock();
-                textBlock.Name = "TextBlock_" + i.ToString();
-                textBlock.Text = i.ToString();
-                textBlock.HorizontalAlignment = HorizontalAlignment.Left;
-                textBlock.VerticalAlignment = VerticalAlignment.Top;
-                textBlock.Margin = new Thickness(5, 0, 0, 0);
-                textBlock.FontSize = 20;
-                textBlock.Foreground = Brushes.White;
-                Grid.SetColumn(textBlock, column);
-                Grid.SetRow(textBlock, row);
-                if ((i + correction) % 7 == 0)
+                Button_list_of_day.Add(new Button());
+                Textblock_list_of_day.Add(new TextBlock());
+            }
+
+            foreach (Button i in Button_list_of_day)
+            {
+                i.Name = "Button_" + number_of_day.ToString();
+                i.Click += new RoutedEventHandler(Day_Click);
+                i.Background = Brushes.DarkBlue;
+                Grid.SetColumn(i, column);
+                Grid.SetRow(i, row);
+                if (column % 7 == 0)
                 {
                     row++;
                     column = 0;
                 }
                 column++;
-                mainGrid.Children.Add(button);
-                mainGrid.Children.Add(textBlock);
+                number_of_day++;
             }
+
+            number_of_day = 1;
+            column = day_of_week;
+            row = 3;
+            foreach (TextBlock i in Textblock_list_of_day)
+            {
+                i.Name = "TextBlock_" + (number_of_day + 1).ToString();
+                i.Text = number_of_day.ToString();
+                i.HorizontalAlignment = HorizontalAlignment.Left;
+                i.VerticalAlignment = VerticalAlignment.Top;
+                i.Margin = new Thickness(5, 0, 0, 0);
+                i.FontSize = 20;
+                i.Foreground = Brushes.White;
+                Grid.SetColumn(i, column);
+                Grid.SetRow(i, row);
+                if (column % 7 == 0)
+                {
+                    row++;
+                    column = 0;
+                }
+                column++;
+                number_of_day++;
+            }
+
+            foreach (Button i in Button_list_of_day)
+            {
+                mainGrid.Children.Add(i);
+            }
+
+            foreach (TextBlock i in Textblock_list_of_day)
+            {
+                mainGrid.Children.Add(i);
+            }
+        }
+
+        private void RemoveDayPanel()
+        {
+            foreach (Button i in Button_list_of_day)
+            {
+                mainGrid.Children.Remove(i);
+            }
+            Button_list_of_day.Clear();
+
+            foreach (TextBlock i in Textblock_list_of_day)
+            {
+                mainGrid.Children.Remove(i);
+            }
+            Textblock_list_of_day.Clear();
         }
 
         private void GenerateCurrentTime()
@@ -90,22 +150,28 @@ namespace CalendarMate
 
         private void Next_Click(object sender, RoutedEventArgs e)
         {
-            GenerateDayPanel(DateTimeDayOfMonth.NextMonth(current_date));
+            RemoveDayPanel();
+            Current_calendar_data.AddMonths(1);
+            GenerateDayPanel();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            GenerateDayPanel(DateTimeDayOfMonth.PreviousMonth(current_date));
+            RemoveDayPanel();
+            Current_calendar_data.AddMonths(-1);
+            GenerateDayPanel();
         }
         
         private void CurrentDate_Click(object sender, RoutedEventArgs e)
         {
-            GenerateDayPanel(DateTime.Now);
+            RemoveDayPanel();
+            Current_calendar_data.SetCurrentDate();
+            GenerateDayPanel();
         }
 
         private void Day_Click(object sender, RoutedEventArgs e)
         {
-            Window1 oneDay = new Window1(current_date);
+            Window1 oneDay = new Window1(Current_calendar_data.Date);
             oneDay.Show();
         }
         private void CloseMainWindow_Click(object sender, RoutedEventArgs e)

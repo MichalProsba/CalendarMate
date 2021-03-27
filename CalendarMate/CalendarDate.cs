@@ -67,6 +67,14 @@ namespace CalendarMate
         /// <summary>
         /// 
         /// </summary>
+        public void SetCurrentDate()
+        {
+            this.date = DateTime.Today;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void AddYears (int arg) 
             {
                 date = calendar.AddYears(Date, arg);
@@ -77,7 +85,7 @@ namespace CalendarMate
         /// </summary>
         public void AddMonths(int arg)
         {
-            date = calendar.AddMonths(Date, arg);
+            this.date = this.calendar.AddMonths(Date, arg);
         }
 
         /// <summary>
@@ -85,7 +93,7 @@ namespace CalendarMate
         /// </summary>
         public void AddWeeks(int arg)
         {
-            date = calendar.AddWeeks(Date, arg);
+            this.date = this.calendar.AddWeeks(Date, arg);
         }
 
         /// <summary>
@@ -93,7 +101,7 @@ namespace CalendarMate
         /// </summary>
         public void AddDays(int arg)
         {
-            date = calendar.AddDays(Date, arg);
+            this.date = this.calendar.AddDays(Date, arg);
         }
 
         /// <summary>
@@ -101,7 +109,7 @@ namespace CalendarMate
         /// </summary>
         public void AddHours(int arg)
         {
-            date = calendar.AddHours(Date, arg);
+            this.date = this.calendar.AddHours(Date, arg);
         }
 
         /// <summary>
@@ -109,7 +117,7 @@ namespace CalendarMate
         /// </summary>
         public void AddMinutes(int arg)
         {
-            date = calendar.AddMinutes(Date, arg);
+            this.date = this.calendar.AddMinutes(Date, arg);
         }
 
         /// <summary>
@@ -117,7 +125,7 @@ namespace CalendarMate
         /// </summary>
         public void AddSeconds(int arg)
         {
-            date = calendar.AddSeconds(Date, arg);
+            this.date = this.calendar.AddSeconds(Date, arg);
         }
 
         /// <summary>
@@ -125,7 +133,7 @@ namespace CalendarMate
         /// </summary>
         public void AddMilliseconds(int arg)
         {
-            date = calendar.AddMilliseconds(Date, arg);
+            this.date = this.calendar.AddMilliseconds(Date, arg);
         }
 
         /// <summary>
@@ -145,5 +153,66 @@ namespace CalendarMate
             Console.WriteLine("   Milliseconds: {0}", this.Calendar.GetMilliseconds(this.Date));
             Console.WriteLine();
         }
+
+        /// <summary>
+        /// The metod returns the date of the first day of the month
+        /// </summary>
+        /// <param arg1="value"> any date of the current month </param>
+        /// <returns> returns the date of the first day of the month </returns>
+        public DateTime FirstDayOfCalendarMonth()
+        {
+            return new DateTime(this.date.Year, this.date.Month, 1);
+        }
+
+        /// <summary>
+        /// The metod returns the date of the last day of the month
+        /// </summary>
+        /// <param arg1="value"> any date of the current month </param>
+        /// <returns> returns the date of the last day of the month </returns>
+        public DateTime LastDayOfCalendarMonth()
+        {
+            return new DateTime(this.date.Year, this.date.Month, this.date.DaysInMonth());
+        }
+
+        /// <summary>
+        /// The metod returns the number of days in a month
+        /// </summary>
+        /// <param arg1="value"> any date of the current month </param>
+        /// <returns> returns the number of days in a month </returns>
+        public int DaysInCalendarMonth()
+        {
+            return DateTime.DaysInMonth(this.date.Year, this.date.Month);
+        }
+
+        /// <summary>
+        /// The metod returns the day of week of given date
+        /// </summary>
+        /// <param arg1="value">any date</param>
+        /// <returns>returns the day of week of given date</returns>
+        public int FirstDayOfWeekCalendarMonth()
+        {
+            DateTime date = FirstDayOfCalendarMonth();
+            if ((int)date.DayOfWeek != 0)
+                return (int)date.DayOfWeek;
+            else
+                return 7;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
