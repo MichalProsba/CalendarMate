@@ -179,5 +179,18 @@ namespace CalendarMate
             this.Close();
         }
 
+        private void Calendar_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            RemoveDayPanel();
+            Current_calendar_data.AddMonths(1);
+            GenerateDayPanel();
+        }
+
+        private void Calendar_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            RemoveDayPanel();
+            Current_calendar_data.AddMonths(-1);
+            GenerateDayPanel();
+        }
     }
 }
