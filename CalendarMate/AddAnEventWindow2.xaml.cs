@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,14 +20,33 @@ namespace CalendarMate
     /// </summary>
     public partial class AddAnEventWindow2 : Window
     {
-        public AddAnEventWindow2()
+        public AddAnEventWindow2(DateTime eventDay)
         {
             InitializeComponent();
+            CreateEvent(eventDay);
+        }
+
+        private void CreateEvent(DateTime when)
+        {
+            WindowTitle.Text = when.ToString("D", CultureInfo.CreateSpecificCulture("en-US"));
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
         }
     }
 }

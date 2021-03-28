@@ -1,5 +1,7 @@
-﻿using System;
+﻿using ApiLibrary;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,15 +12,15 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using System.Globalization;
-using ApiLibrary;
 
 namespace CalendarMate
 {
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Logika interakcji dla klasy Calendar.xaml
+    /// </summary>
+    public partial class Calendar : Window
     {
         private CalendarDate Current_calendar_data = new CalendarDate();
 
@@ -49,14 +51,14 @@ namespace CalendarMate
             }
         }
 
-        public MainWindow()
+        public Calendar()
         {
-            Current_calendar_data = new CalendarDate();
-            InitializeComponent();
-            GenerateCurrentTime();
-            GenerateDayPanel();
-            ApiHelper.InitializeClient();
-            LoadCurrentWeather();
+            //Current_calendar_data = new CalendarDate();
+            //InitializeComponent();
+            //GenerateCurrentTime();
+            //GenerateDayPanel();
+            //ApiHelper.InitializeClient();
+            //LoadCurrentWeather();
         }
         private void GenerateDayPanel()
         {
@@ -154,7 +156,7 @@ namespace CalendarMate
         private async void LoadCurrentWeather()
         {
             var weather = await WeatherProcessor.LoadCurrentWeather();
-            Weather.Content = Math.Round((weather.Temp-273.15), 2).ToString() + "°C";
+            Weather.Content = Math.Round((weather.Temp - 273.15), 2).ToString() + "°C";
         }
 
         private void Next_Click(object sender, RoutedEventArgs e)
@@ -170,7 +172,7 @@ namespace CalendarMate
             Current_calendar_data.AddMonths(-1);
             GenerateDayPanel();
         }
-        
+
         private void CurrentDate_Click(object sender, RoutedEventArgs e)
         {
             RemoveDayPanel();

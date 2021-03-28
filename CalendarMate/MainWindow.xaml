@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowState="Maximized"
         WindowStyle="None"
-        Background="MidnightBlue"
+        Background="#666"
         Title="CalendarMate" ResizeMode="NoResize" Height="1100" Width="1200">
     <Grid x:Name="mainGrid">
         <Grid.ColumnDefinitions>
@@ -31,7 +31,7 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" Background="DarkBlue">
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" Background="#333">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="24*"/>
@@ -41,7 +41,7 @@
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
             <TextBlock Foreground="White" Margin="10,5" Grid.Row="0" Grid.Column="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Calendar"/>
-            <Button Foreground="White" Background="DarkBlue" Width="50" Height="30" BorderThickness="0" Click="CloseMainWindow_Click" Grid.Row="0" Grid.Column="9" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Top" Content="X"/>
+            <Button Foreground="White" Background="#333" Width="50" Height="30" BorderThickness="0" Click="CloseMainWindow_Click" Grid.Row="0" Grid.Column="9" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Top" Content="X"/>
         </Grid>
 
         <TextBlock Foreground="White"  FontSize="18" Grid.Column="1" Grid.Row="2" Text="Monday" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -51,14 +51,15 @@
         <TextBlock Foreground="White"  FontSize="18" Grid.Column="5" Grid.Row="2" Text="Friday"       VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <TextBlock Foreground="White"  FontSize="18" Grid.Column="6" Grid.Row="2" Text="Saturday"       VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <TextBlock Foreground="White"  FontSize="18" Grid.Column="7" Grid.Row="2" Text="Sunday"    VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Viewbox Grid.Row="3" Grid.RowSpan="2" Height="280" Width="280" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Viewbox Grid.Row="4" Grid.RowSpan="2" Height="280" Width="280" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Calendar x:Name="Calendar" MouseRightButtonUp="Calendar_MouseRightButtonUp" MouseLeftButtonUp="Calendar_MouseLeftButtonUp" />
         </Viewbox>
 
 
-        <Button Width="50" Height="60" BorderThickness="0" FontSize="30" Foreground="White" Background="MidnightBlue" x:Name="Back" Click="Back_Click" Content="&lt;" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button Width="50" Height="60" BorderThickness="0" FontSize="30" Foreground="White" Background="MidnightBlue" x:Name="Next" Click="Next_Click" Content="&gt;" Grid.Column="7" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button BorderThickness="0" FontSize="30"  Foreground="White" Background="MidnightBlue" x:Name="Clock" Click="CurrentDate_Click" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="2"/>
+        <Button Width="50" Height="60" BorderThickness="0" FontSize="30" Foreground="White" Background="#666" x:Name="Back" Click="Back_Click" Content="&lt;" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Width="50" Height="60" BorderThickness="0" FontSize="30" Foreground="White" Background="#666" x:Name="Next" Click="Next_Click" Content="&gt;" Grid.Column="7" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button BorderThickness="0" FontSize="30"  Foreground="White" Background="#666" x:Name="Clock" Click="CurrentDate_Click" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="2"/>
+        <Button BorderThickness="0" FontSize="30"  Foreground="White" Background="#666" x:Name="Weather" Click="Weather_Click" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock Foreground="White" x:Name="Month_And_Year_TextBlock" FontSize="30" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="5" Text="None" HorizontalAlignment="Center" VerticalAlignment="Center"/>
      </Grid>
 </Window>
