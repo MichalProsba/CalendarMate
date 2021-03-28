@@ -65,8 +65,8 @@ namespace CalendarMate
             int day_of_week = Current_calendar_data.FirstDayOfWeekCalendarMonth();
 
             int number_of_day = 1;
-            int column = day_of_week;
-            int row = 3;
+            int column = day_of_week-1;
+            int row = 0;
 
             for (int i = 0; i < number_of_days; i++)
             {
@@ -79,20 +79,21 @@ namespace CalendarMate
                 i.Name = "Button_" + number_of_day.ToString();
                 i.Click += new RoutedEventHandler(Day_Click);
                 i.Background = Brushes.DarkGray;
+                i.Height = 140;
                 Grid.SetColumn(i, column);
                 Grid.SetRow(i, row);
+                column++;
                 if (column % 7 == 0)
                 {
                     row++;
                     column = 0;
                 }
-                column++;
                 number_of_day++;
             }
 
             number_of_day = 1;
-            column = day_of_week;
-            row = 3;
+            column = day_of_week-1;
+            row = 0;
             foreach (TextBlock i in Textblock_list_of_day)
             {
                 i.Name = "TextBlock_" + (number_of_day + 1).ToString();
@@ -104,12 +105,12 @@ namespace CalendarMate
                 i.Foreground = Brushes.White;
                 Grid.SetColumn(i, column);
                 Grid.SetRow(i, row);
+                column++;
                 if (column % 7 == 0)
                 {
                     row++;
                     column = 0;
                 }
-                column++;
                 number_of_day++;
             }
 

@@ -9,57 +9,102 @@
         WindowStyle="None"
         Background="#666"
         Title="CalendarMate" ResizeMode="NoResize" Height="1100" Width="1200">
-    <Grid x:Name="mainGrid">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.6*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="3*"/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" Background="#333">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="24*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-            </Grid.RowDefinitions>
-            <TextBlock Foreground="White" Margin="10,5" Grid.Row="0" Grid.Column="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Calendar"/>
-            <Button Foreground="White" Background="#333" Width="50" Height="30" BorderThickness="0" Click="CloseMainWindow_Click" Grid.Row="0" Grid.Column="9" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Top" Content="X"/>
-        </Grid>
+    <StackPanel>
+        <StackPanel  Background="#333">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Foreground="White" Margin="2,0" Grid.Row="0" Grid.Column="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Calendar"/>
+                <Button x:Name="Close" Foreground="White" Background="#333" Width="50"  BorderThickness="0" Click="CloseMainWindow_Click" Grid.Row="0" Grid.Column="3" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Top" Content="X"/>
+            </Grid>
+        </StackPanel>
 
-        <TextBlock Foreground="White"  FontSize="18" Grid.Column="1" Grid.Row="2" Text="Monday" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBlock Foreground="White"  FontSize="18" Grid.Column="2" Grid.Row="2" Text="Tuesday"       VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBlock Foreground="White"  FontSize="18" Grid.Column="3" Grid.Row="2" Text="Wednesday"        VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBlock Foreground="White"  FontSize="18" Grid.Column="4" Grid.Row="2" Text="Thursday"     VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBlock Foreground="White"  FontSize="18" Grid.Column="5" Grid.Row="2" Text="Friday"       VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBlock Foreground="White"  FontSize="18" Grid.Column="6" Grid.Row="2" Text="Saturday"       VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBlock Foreground="White"  FontSize="18" Grid.Column="7" Grid.Row="2" Text="Sunday"    VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Viewbox Grid.Row="4" Grid.RowSpan="2" Height="280" Width="280" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Calendar x:Name="Calendar" MouseRightButtonUp="Calendar_MouseRightButtonUp" MouseLeftButtonUp="Calendar_MouseLeftButtonUp" />
-        </Viewbox>
+        <Border Padding="20">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
 
+                    <StackPanel Grid.Column="0">
+                        <Button BorderThickness="0" FontSize="30"  Foreground="White" Background="#666" x:Name="Clock" Click="CurrentDate_Click" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="2"/>
+                        <Button BorderThickness="0" FontSize="30"  Foreground="White" Background="#666" x:Name="Weather" Click="Weather_Click" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Viewbox Grid.Row="1" Grid.RowSpan="3" Height="280" Width="280" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Calendar x:Name="Calendar2" MouseRightButtonUp="Calendar_MouseRightButtonUp" MouseLeftButtonUp="Calendar_MouseLeftButtonUp" />
+                        </Viewbox>
+                    </StackPanel>
 
-        <Button Width="50" Height="60" BorderThickness="0" FontSize="30" Foreground="White" Background="#666" x:Name="Back" Click="Back_Click" Content="&lt;" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button Width="50" Height="60" BorderThickness="0" FontSize="30" Foreground="White" Background="#666" x:Name="Next" Click="Next_Click" Content="&gt;" Grid.Column="7" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button BorderThickness="0" FontSize="30"  Foreground="White" Background="#666" x:Name="Clock" Click="CurrentDate_Click" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="2"/>
-        <Button BorderThickness="0" FontSize="30"  Foreground="White" Background="#666" x:Name="Weather" Click="Weather_Click" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock Foreground="White" x:Name="Month_And_Year_TextBlock" FontSize="30" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="5" Text="None" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-     </Grid>
+                    <StackPanel Grid.Column="1">
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button Width="50" Height="60" BorderThickness="0" FontSize="30" Foreground="White" Background="#666" x:Name="Back" Click="Back_Click" Content="&lt;" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Button Width="50" Height="60" BorderThickness="0" FontSize="30" Foreground="White" Background="#666" x:Name="Next" Click="Next_Click" Content="&gt;" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Foreground="White" x:Name="Month_And_Year_TextBlock" FontSize="30" Grid.Column="1" Text="None" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Foreground="White"  FontSize="18" Grid.Column="0" Text="Monday" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Foreground="White"  FontSize="18" Grid.Column="1" Text="Tuesday"       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Foreground="White"  FontSize="18" Grid.Column="2" Text="Wednesday"        VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Foreground="White"  FontSize="18" Grid.Column="3" Text="Thursday"     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Foreground="White"  FontSize="18" Grid.Column="4" Text="Friday"       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Foreground="White"  FontSize="18" Grid.Column="5" Text="Saturday"       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Foreground="White"  FontSize="18" Grid.Column="6" Text="Sunday"    VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <Grid x:Name="mainGrid">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                            </Grid>
+                        </StackPanel>
+
+                    </StackPanel>
+
+                </Grid>
+            </StackPanel>
+        </Border>
+
+    </StackPanel>
 </Window>
