@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ApiLibrary
 {
-    class WeatherMainModel
+    public class CurrentWeatherSysModel
     {
-        public WeatherModel Main { get; set; }
+        public double Sunrise { get; set; }
+        public double Sunset { get; set; }
     }
 }

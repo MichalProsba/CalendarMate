@@ -56,7 +56,7 @@ namespace CalendarMate
             GenerateCurrentTime();
             GenerateDayPanel();
             ApiHelper.InitializeClient();
-            LoadCurrentWeather();
+            LoadCurrentCurrentWeather();
         }
         private void GenerateDayPanel()
         {
@@ -152,10 +152,16 @@ namespace CalendarMate
             Clock.Content = DateTime.Now.ToString();
         }
 
-        private async void LoadCurrentWeather()
+        private async void LoadCurrentCurrentWeather()
         {
-            var weather = await WeatherProcessor.LoadCurrentWeather();
-            Weather.Content = Math.Round((weather.Temp-273.15), 2).ToString() + "°C";
+            //////////////////////////////////////////////////////////////////////
+            var weather = await CurrentWeatherInfoProcessor.LoadCurrentWeather();
+            CurrentWeather.Content = Math.Round((weather.Main.Temp-273.15), 2).ToString() + "°C";
+            //CurrentWeather.Content = CurrentWeather.CurrentWeather[0].Description;
+            //CurrentWeather.Content = CurrentWeather.Name;
+            //////////////////////////////////////////////////////////////////////
+            //var weather = await HourlyWeatherInfoProcessor.LoadHourlyWeather();
+            //CurrentWeather.Content = Math.Round((weather.Hourly[2].Temp), 2).ToString() + "°C";
         }
 
         private void Next_Click(object sender, RoutedEventArgs e)
@@ -203,7 +209,7 @@ namespace CalendarMate
             GenerateDayPanel();
         }
 
-        private void Weather_Click(object sender, RoutedEventArgs e)
+        private void CurrentWeather_Click(object sender, RoutedEventArgs e)
         {
 
         }

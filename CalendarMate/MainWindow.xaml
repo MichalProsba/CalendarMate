@@ -35,7 +35,7 @@
 
                     <StackPanel Grid.Column="0">
                         <Button BorderThickness="0" FontSize="30"  Foreground="White" Background="#666" x:Name="Clock" Click="CurrentDate_Click" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="2"/>
-                        <Button BorderThickness="0" FontSize="30"  Foreground="White" Background="#666" x:Name="Weather" Click="Weather_Click" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Button BorderThickness="0" FontSize="30"  Foreground="White" Background="#666" x:Name="CurrentWeather" Click="CurrentWeather_Click" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <Viewbox Grid.Row="1" Grid.RowSpan="3" Height="280" Width="280" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <Calendar x:Name="Calendar2" MouseRightButtonUp="Calendar_MouseRightButtonUp" MouseLeftButtonUp="Calendar_MouseLeftButtonUp" />
                         </Viewbox>

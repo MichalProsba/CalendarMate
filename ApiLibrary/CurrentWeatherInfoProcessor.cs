@@ -7,20 +7,19 @@ using System.Threading.Tasks;
 
 namespace ApiLibrary
 {
-    public static class WeatherProcessor
+    public static class CurrentWeatherInfoProcessor
     {
         public static string city = "Opole";
-        public static string country = "pl";
-        public static async Task<WeatherModel> LoadCurrentWeather()
+        public static async Task<CurrentWeatherInfoModel> LoadCurrentWeather()
         {
-            string url = $"http://api.openweathermap.org/data/2.5/weather?q={ city },{ country }&APPID=f75180affde9785ae42c8b8dad08cbd0";
+            string url = $"http://api.openweathermap.org/data/2.5/weather?q={ city }&APPID=f75180affde9785ae42c8b8dad08cbd0";
 
             using(HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
             {
                 if(response.IsSuccessStatusCode)
                 {
-                    WeatherMainModel weather = await response.Content.ReadAsAsync<WeatherMainModel>();
-                    return weather.Main;
+                    CurrentWeatherInfoModel currentWeather = await response.Content.ReadAsAsync<CurrentWeatherInfoModel>();
+                    return currentWeather;
                 }
                 else
                 {
