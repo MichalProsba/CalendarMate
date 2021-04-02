@@ -8,6 +8,7 @@ namespace ApiLibrary
 {
     public class CurrentWeatherInfoModel
     {
+        public CurrentWeatherCoordModel Coord { get; set; }
         public List<WeatherWeatherModel> Weather { get; set; }
         public CurrentWeatherMainModel Main { get; set; }
         public CurrentWeatherWindModel Wind { get; set; }

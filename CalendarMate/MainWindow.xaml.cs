@@ -157,11 +157,12 @@ namespace CalendarMate
             //////////////////////////////////////////////////////////////////////
             var weather = await CurrentWeatherInfoProcessor.LoadCurrentWeather();
             CurrentWeather.Content = Math.Round((weather.Main.Temp-273.15), 2).ToString() + "°C";
-            //CurrentWeather.Content = CurrentWeather.CurrentWeather[0].Description;
-            //CurrentWeather.Content = CurrentWeather.Name;
             //////////////////////////////////////////////////////////////////////
-            //var weather = await HourlyWeatherInfoProcessor.LoadHourlyWeather();
+            //CurrentWeather.Content = CurrentWeather.CurrentWeather[0].Description;
+            //CurrentWeather.Content = CurrentWeather.Name;//var weather = await HourlyWeatherInfoProcessor.LoadHourlyWeather();
             //CurrentWeather.Content = Math.Round((weather.Hourly[2].Temp), 2).ToString() + "°C";
+            //var weather = await DailyWeatherInfoProcessor.LoadDailyWeather();
+            //CurrentWeather.Content = Math.Round(weather.Daily[6].Temp.Day, 2).ToString() + "°C";
         }
 
         private void Next_Click(object sender, RoutedEventArgs e)
