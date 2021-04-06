@@ -79,7 +79,8 @@ namespace CalendarMate
 
             foreach (Button i in Button_list_of_day)
             {
-                i.Name = "Button_" + number_of_day.ToString();
+
+                i.Name = "Button_" + (number_of_day + 1).ToString();
                 i.Click += new RoutedEventHandler(Day_Click);
                 i.Background = Brushes.DarkGray;
                 i.Height = 140;
@@ -191,6 +192,7 @@ namespace CalendarMate
 
         private void Day_Click(object sender, RoutedEventArgs e)
         {
+            Current_calendar_data.SetClickDate((Button_list_of_day.IndexOf(((Button)sender))+1)); 
             AddAnEventWindow2 oneDay = new AddAnEventWindow2(Current_calendar_data.Date);
             oneDay.Show();
         }

@@ -10,7 +10,7 @@ namespace CalendarMate
     class CalendarDate
     {
         private DateTime date;
-
+       
         public DateTime Date
         {
             get
@@ -70,6 +70,11 @@ namespace CalendarMate
         public void SetCurrentDate()
         {
             this.date = DateTime.Today;
+        }
+
+        public void SetClickDate(int day_of_click_month)
+        {
+            this.date = new DateTime(date.Year, date.Month, day_of_click_month, new GregorianCalendar());
         }
 
         /// <summary>

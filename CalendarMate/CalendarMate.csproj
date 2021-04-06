@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ApiLibrary\ApiLibrary.csproj" />
+    <ProjectReference Include="..\Event.EntityFramework\Event.EntityFramework.csproj" />
   </ItemGroup>
 
 </Project>
