@@ -34,6 +34,7 @@ namespace Test
                            EventLocalization = d.Localization,
                            EventDate = d.Date
                        };
+
             foreach (var item in docs)
             {
                 Console.WriteLine(item.EventName);
