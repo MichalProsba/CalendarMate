@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiLibrary
+namespace ApiLibrary 
 {
     public static class CurrentWeatherInfoProcessor
     {

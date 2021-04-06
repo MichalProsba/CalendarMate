@@ -16,6 +16,9 @@ using System.Windows.Threading;
 using System.Globalization;
 using ApiLibrary;
 
+/// <summary>
+/// 
+/// </summary>
 namespace CalendarMate
 {
     public partial class MainWindow : Window
