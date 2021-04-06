@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Event.EntityFramework.Migrations
 {
-    [DbContext(typeof(EventDbContent))]
-    [Migration("20210406133558_initial")]
+    [DbContext(typeof(EventDbContext))]
+    [Migration("20210406150353_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,7 +39,7 @@ namespace Event.EntityFramework.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Events");
+                    b.ToTable("UserEvents");
                 });
 #pragma warning restore 612, 618
         }

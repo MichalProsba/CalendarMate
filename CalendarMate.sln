@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event.Domain", "Event.Domai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event.EntityFramework", "Event.EntityFramework\Event.EntityFramework.csproj", "{4655824C-B7BC-4A52-83FD-5D80A4C600A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{14CDE512-1E25-410E-95FB-E57C4E698A77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4655824C-B7BC-4A52-83FD-5D80A4C600A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4655824C-B7BC-4A52-83FD-5D80A4C600A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4655824C-B7BC-4A52-83FD-5D80A4C600A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14CDE512-1E25-410E-95FB-E57C4E698A77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14CDE512-1E25-410E-95FB-E57C4E698A77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14CDE512-1E25-410E-95FB-E57C4E698A77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14CDE512-1E25-410E-95FB-E57C4E698A77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

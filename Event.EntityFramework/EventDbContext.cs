@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Event.EntityFramework
 {
-    public class EventDbContent : DbContext
+    public class EventDbContext : DbContext
     {
-        public DbSet<UserEvent> Events { get; set; }
+        public DbSet<UserEvent> UserEvents { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

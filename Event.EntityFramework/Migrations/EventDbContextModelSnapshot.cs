@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Event.EntityFramework.Migrations
 {
-    [DbContext(typeof(EventDbContent))]
-    partial class EventDbContentModelSnapshot : ModelSnapshot
+    [DbContext(typeof(EventDbContext))]
+    partial class EventDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -37,7 +37,7 @@ namespace Event.EntityFramework.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Events");
+                    b.ToTable("UserEvents");
                 });
 #pragma warning restore 612, 618
         }
