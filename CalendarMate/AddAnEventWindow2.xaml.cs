@@ -29,20 +29,18 @@ namespace CalendarMate
             InitializeComponent();
             EventDbContext db = new EventDbContext();
             var docs = from d in db.UserEvents
-                           //where d.Name.StartsWith("Dr. A")
+                       where d.Day == EventDate.Day
                        select new
                        {
-                           EventName = d.Name,
-                           EventLocalization = d.Localization,
-                           //EventDate = d.Date
+                           Name = d.Name,
+                           Localization = d.Localization,
+                           Year = d.Year,
+                           Month = d.Month,
+                           Day = d.Day,
+                           From = d.StartTime.ToShortTimeString(),
+                           To = d.StartTime.ToShortTimeString(),
                        };
 
-            foreach (var item in docs)
-            {
-                Console.WriteLine(item.EventName);
-                Console.WriteLine(item.EventLocalization);
-                //Console.WriteLine(item.EventDate);
-            }
             this.EventGrid.ItemsSource = docs.ToList();
 
 
@@ -78,8 +76,6 @@ namespace CalendarMate
 
         }
 
-
-
         /// <summary>
         /// Add Event
         /// </summary>
@@ -100,8 +96,23 @@ namespace CalendarMate
             };
             db1.UserEvents.Add(doctroObject);
             db1.SaveChanges();
-            EventDbContext db2 = new EventDbContext();
-            this.EventGrid.ItemsSource = db2.UserEvents.ToList();
+
+            EventDbContext db = new EventDbContext();
+            this.EventGrid.ItemsSource = db.UserEvents.ToList();
+
+            //var docs = from d in db.UserEvents
+            //           where d.Day == EventDate.Day
+            //           select new
+            //           {
+            //               Name = d.Name,
+            //               Localization = d.Localization,
+            //               Year = d.Year,
+            //               Month = d.Month,
+            //               Day = d.Day,
+            //               From = d.StartTime.ToShortTimeString(),
+            //               To = d.StartTime.ToShortTimeString(),
+            //           };
+            //this.EventGrid.ItemsSource = docs.ToList();
         }
 
         /// <summary>
@@ -155,8 +166,24 @@ namespace CalendarMate
                     db1.SaveChanges();
                 }
             }
-            EventDbContext db2 = new EventDbContext();
-            this.EventGrid.ItemsSource = db2.UserEvents.ToList();
+            EventDbContext db = new EventDbContext();
+            this.EventGrid.ItemsSource = db.UserEvents.ToList();
+
+            //EventDbContext db = new EventDbContext();
+            //var docs = from d in db.UserEvents
+            //           where d.Day == EventDate.Day
+            //           select new
+            //           {
+            //               Nr = d.Id,
+            //               Name = d.Name,
+            //               Localization = d.Localization,
+            //               Year = d.Year,
+            //               Month = d.Month,
+            //               Day = d.Day,
+            //               From = d.StartTime.ToShortTimeString(),
+            //               To = d.StartTime.ToShortTimeString(),
+            //           };
+            //this.EventGrid.ItemsSource = docs.ToList();
         }
     }
 }
