@@ -7,12 +7,56 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\01d.png" />
+    <None Remove="images\01n.png" />
+    <None Remove="images\02d.png" />
+    <None Remove="images\02n.png" />
+    <None Remove="images\03d.png" />
+    <None Remove="images\03n.png" />
+    <None Remove="images\04d.png" />
+    <None Remove="images\04n.png" />
+    <None Remove="images\09d.png" />
+    <None Remove="images\09n.png" />
+    <None Remove="images\10d.png" />
+    <None Remove="images\10n.png" />
+    <None Remove="images\11d.png" />
+    <None Remove="images\11n.png" />
+    <None Remove="images\13d.png" />
+    <None Remove="images\13n.png" />
+    <None Remove="images\50d.png" />
+    <None Remove="images\50n.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.0.2" />
     <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
+    <PackageReference Include="Syncfusion.SfChart.WPF" Version="19.1.0.55" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ApiLibrary\ApiLibrary.csproj" />
     <ProjectReference Include="..\Event.EntityFramework\Event.EntityFramework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\01d.png" />
+    <Resource Include="images\01n.png" />
+    <Resource Include="images\02d.png" />
+    <Resource Include="images\02n.png" />
+    <Resource Include="images\03d.png" />
+    <Resource Include="images\03n.png" />
+    <Resource Include="images\04d.png" />
+    <Resource Include="images\04n.png" />
+    <Resource Include="images\09d.png" />
+    <Resource Include="images\09n.png" />
+    <Resource Include="images\10d.png" />
+    <Resource Include="images\10n.png" />
+    <Resource Include="images\11d.png" />
+    <Resource Include="images\11n.png" />
+    <Resource Include="images\13d.png" />
+    <Resource Include="images\13n.png" />
+    <Resource Include="images\50d.png" />
+    <Resource Include="images\50n.png" />
   </ItemGroup>
 
 </Project>
