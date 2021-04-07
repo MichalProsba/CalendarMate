@@ -26,6 +26,7 @@ namespace CalendarMate
         private CalendarDate Current_calendar_data = new CalendarDate();
 
         private List<Button> button_list_of_day = new List<Button>();
+        private CurrentWeatherInfoModel currentWeather;
         public List<Button> Button_list_of_day
         {
             get
@@ -59,7 +60,7 @@ namespace CalendarMate
             GenerateCurrentTime();
             GenerateDayPanel();
             ApiHelper.InitializeClient();
-            LoadCurrentCurrentWeather();
+            LoadCurrentWeather();
         }
         private void GenerateDayPanel()
         {
@@ -156,17 +157,15 @@ namespace CalendarMate
             Clock.Content = DateTime.Now.ToString();
         }
 
-        private async void LoadCurrentCurrentWeather()
+        private async void LoadCurrentWeather()
         {
-            //////////////////////////////////////////////////////////////////////
-            var weather = await CurrentWeatherInfoProcessor.LoadCurrentWeather();
-            CurrentWeather.Content = Math.Round((weather.Main.Temp-273.15), 2).ToString() + "°C";
-            //////////////////////////////////////////////////////////////////////
-            //CurrentWeather.Content = CurrentWeather.CurrentWeather[0].Description;
-            //CurrentWeather.Content = CurrentWeather.Name;//var weather = await HourlyWeatherInfoProcessor.LoadHourlyWeather();
-            //CurrentWeather.Content = Math.Round((weather.Hourly[2].Temp), 2).ToString() + "°C";
-            //var weather = await DailyWeatherInfoProcessor.LoadDailyWeather();
-            //CurrentWeather.Content = Math.Round(weather.Daily[6].Temp.Day, 2).ToString() + "°C";
+            currentWeather = await CurrentWeatherInfoProcessor.LoadCurrentWeather();
+            BitmapImage weatherImage = new BitmapImage();
+            weatherImage.BeginInit();
+            weatherImage.UriSource = new Uri("images/" + currentWeather.Weather[0].Icon.ToString() + ".png", UriKind.Relative);
+            weatherImage.EndInit();
+            CurrentWeatherImage.Source = weatherImage;
+            CurrentWeather.Text = Math.Round((currentWeather.Main.Temp-273.15), 2).ToString() + "°C";
         }
 
         private void Next_Click(object sender, RoutedEventArgs e)
@@ -217,7 +216,8 @@ namespace CalendarMate
 
         private void CurrentWeather_Click(object sender, RoutedEventArgs e)
         {
-
+            WeatherWindow weatherWindow = new WeatherWindow(currentWeather);
+            weatherWindow.Show();
         }
     }
 }
