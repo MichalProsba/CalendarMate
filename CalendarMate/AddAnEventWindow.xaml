@@ -1,4 +1,4 @@
-﻿<Window x:Class="CalendarMate.AddAnEventWindow2"
+﻿<Window x:Class="CalendarMate.AddAnEventWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -11,7 +11,7 @@
         BorderBrush="Black"
         MouseDown="Window_MouseDown"
         ResizeMode="NoResize"
-        Title="AddAnEventWindow2" Height="880" Width="800">
+        Title="AddAnEventWindow" Height="490" Width="800">
 
 
     <StackPanel Background="#666">
@@ -51,7 +51,7 @@
                                 <fa:ImageAwesome Icon="Calendar" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0"/>
                                 <fa:FontAwesome Text="Event name" FontSize="30" />
                             </StackPanel>
-                            <TextBox x:Name="EventName" Text="Event name" Padding="5" FontSize="25" Background="#eee" TextChanged="TextBox_TextChanged">
+                            <TextBox x:Name="EventName" Text="Event name" Padding="5" FontSize="25" Background="#eee">
                                 <TextBox.Foreground>
                                     <SolidColorBrush Color="Gray" Opacity="0.4" />
                                 </TextBox.Foreground>
@@ -108,7 +108,7 @@
                                 <fa:ImageAwesome Icon="ClockOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
                                 <fa:FontAwesome Text="To" FontSize="30"/>
                             </StackPanel>
-                            <TextBox x:Name="EventStop" Text="00:00" Padding="5" FontSize="25" Background="#eee" >
+                            <TextBox Margin="0,0,10,0" x:Name="EventStop" Text="00:00" Padding="5" FontSize="25" Background="#eee" >
                                 <TextBox.Foreground>
                                     <SolidColorBrush Color="Gray" Opacity="0.4" />
                                 </TextBox.Foreground>
@@ -173,136 +173,21 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0" Margin="0 30 10 0">
-                            <Button Content="Delete" FontSize="25" Background="#eee" Foreground="#000" Click="ButtonDelete_Click"/>
+                        <StackPanel Grid.Column="0" Margin="0 20 10 0">
+                            <Button Content="Show list" FontSize="25" Background="#eee" Foreground="#000" Click="ButtonShow_Click"/>
                         </StackPanel>
-                        <StackPanel Grid.Column="2" Margin="0 30 10 0">
+                        <StackPanel Grid.Column="1" Margin="0 20 10 0">
+                            
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" Margin="0 20 10 0">
                             <Button Content="Add" FontSize="25" Background="#eee" Foreground="#000" Click="ButtonAdd_Click"/>
                         </StackPanel>
                     </Grid>
 
 
-                    <DataGrid x:Name="EventGrid" Height="135" RenderTransformOrigin="0.5,0.5" Width="758" SelectionChanged="EventGrid_SelectionChanged">
-                        <DataGrid.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform AngleX="-0.674"/>
-                                <RotateTransform/>
-                                <TranslateTransform X="-0.588"/>
-                            </TransformGroup>
-                        </DataGrid.RenderTransform>
-                    </DataGrid>
-
-                    <!-- 1 Row -->
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <StackPanel Grid.Column="0" Margin="0 0 20 0">
-                            <StackPanel Orientation="Horizontal">
-                                <fa:ImageAwesome Icon="Calendar" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0"/>
-                                <fa:FontAwesome Text="Event name" FontSize="30" />
-                            </StackPanel>
-                            <TextBox x:Name="EventNameShow" Text="Event name" Padding="5" FontSize="25" Background="#eee" TextChanged="TextBox_TextChanged">
-                                <TextBox.Foreground>
-                                    <SolidColorBrush Color="Gray" Opacity="0.4" />
-                                </TextBox.Foreground>
-                                <TextBox.Resources>
-                                    <Style TargetType="{x:Type Border}">
-                                        <Setter Property="CornerRadius" Value="3"/>
-                                    </Style>
-                                </TextBox.Resources>
-                            </TextBox>
-
-                        </StackPanel>
-
-                        <StackPanel Grid.Column="1" Margin="0 0 20 0">
-                            <StackPanel Orientation="Horizontal">
-                                <fa:ImageAwesome Icon="CalendarCheckOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
-                                <fa:FontAwesome Text="All day" FontSize="30"/>
-                            </StackPanel>
-                            <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10" Background="#eee" >
-                                <CheckBox.LayoutTransform>
-                                    <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
-                                </CheckBox.LayoutTransform>
-                            </CheckBox>
-                        </StackPanel>
-                    </Grid>
-
-                    <!-- 2 Row -->
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-
-                        <StackPanel Grid.Column="0" Margin="0 0 10 0">
-                            <StackPanel Orientation="Horizontal">
-                                <fa:ImageAwesome Icon="ClockOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
-                                <fa:FontAwesome Text="From" FontSize="30"/>
-                            </StackPanel>
-                            <TextBox x:Name="EventStartShow" Text="00:00" Padding="5" FontSize="25" Background="#eee" >
-                                <TextBox.Foreground>
-                                    <SolidColorBrush Color="Gray" Opacity="0.4" />
-                                </TextBox.Foreground>
-                                <TextBox.Resources>
-                                    <Style TargetType="{x:Type Border}">
-                                        <Setter Property="CornerRadius" Value="3"/>
-                                    </Style>
-                                </TextBox.Resources>
-                            </TextBox>
-                        </StackPanel>
-
-                        <StackPanel Grid.Column="1" Margin="10 0 0 0">
-                            <StackPanel Orientation="Horizontal">
-                                <fa:ImageAwesome Icon="ClockOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
-                                <fa:FontAwesome Text="To" FontSize="30"/>
-                            </StackPanel>
-                            <TextBox x:Name="EventStopShow" Text="00:00" Padding="5" FontSize="25" Background="#eee" >
-                                <TextBox.Foreground>
-                                    <SolidColorBrush Color="Gray" Opacity="0.4" />
-                                </TextBox.Foreground>
-                                <TextBox.Resources>
-                                    <Style TargetType="{x:Type Border}">
-                                        <Setter Property="CornerRadius" Value="3"/>
-                                    </Style>
-                                </TextBox.Resources>
-                            </TextBox>
-                        </StackPanel>
-                    </Grid>
-
-                    <!-- 3 Row -->
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <StackPanel Grid.Column="0" Margin="0 0 10 0">
-                            <StackPanel Orientation="Horizontal">
-                                <fa:ImageAwesome Icon="MapMarker" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
-                                <fa:FontAwesome Text="Localization" FontSize="30"/>
-                            </StackPanel>
-                            <TextBox x:Name="EventLocalizationShow" Text="Localization" Padding="5" FontSize="25" Background="#eee" >
-                                <TextBox.Foreground>
-                                    <SolidColorBrush Color="Gray" Opacity="0.4" />
-                                </TextBox.Foreground>
-                                <TextBox.Resources>
-                                    <Style TargetType="{x:Type Border}">
-                                        <Setter Property="CornerRadius" Value="3"/>
-                                    </Style>
-                                </TextBox.Resources>
-                            </TextBox>
-                        </StackPanel>
-                    </Grid>
 
 
                 </StackPanel>

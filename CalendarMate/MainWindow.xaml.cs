@@ -193,7 +193,7 @@ namespace CalendarMate
         private void Day_Click(object sender, RoutedEventArgs e)
         {
             Current_calendar_data.SetClickDate((Button_list_of_day.IndexOf(((Button)sender))+1)); 
-            AddAnEventWindow2 oneDay = new AddAnEventWindow2(Current_calendar_data.Date);
+            AddAnEventWindow oneDay = new AddAnEventWindow(Current_calendar_data.Date);
             oneDay.Show();
         }
         private void CloseMainWindow_Click(object sender, RoutedEventArgs e)
