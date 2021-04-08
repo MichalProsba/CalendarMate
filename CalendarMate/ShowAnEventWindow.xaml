@@ -40,11 +40,10 @@
 
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <StackPanel Grid.Column="0" Margin="0 0 20 0">
+                        <StackPanel Grid.Column="0" Margin="0 0 10 0">
                             <StackPanel Orientation="Horizontal">
                                 <fa:ImageAwesome Icon="Calendar" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0"/>
                                 <fa:FontAwesome Text="Event name" FontSize="30" />
@@ -60,18 +59,6 @@
                                 </TextBox.Resources>
                             </TextBox>
 
-                        </StackPanel>
-
-                        <StackPanel Grid.Column="1" Margin="0 0 20 0">
-                            <StackPanel Orientation="Horizontal">
-                                <fa:ImageAwesome Icon="CalendarCheckOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
-                                <fa:FontAwesome Text="All day" FontSize="30"/>
-                            </StackPanel>
-                            <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10" Background="#eee" >
-                                <CheckBox.LayoutTransform>
-                                    <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
-                                </CheckBox.LayoutTransform>
-                            </CheckBox>
                         </StackPanel>
                     </Grid>
 
@@ -144,7 +131,7 @@
                         </StackPanel>
                     </Grid>
 
-                    <DataGrid Margin="0,20,0,0" x:Name="EventGrid" Height="135" RenderTransformOrigin="0.5,0.5" Width="758" SelectionChanged="EventGrid_SelectionChanged" AlternatingRowBackground="#666" CanUserAddRows="False" >
+                    <DataGrid Margin="0,20,10,0" x:Name="EventGrid" Height="135" RenderTransformOrigin="0.5,0.5" Width="758" SelectionChanged="EventGrid_SelectionChanged" GotFocus="EventGrid_GotFocus" AlternatingRowBackground="#666" CanUserAddRows="False" >
                         <DataGrid.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -154,11 +141,6 @@
                             </TransformGroup>
                         </DataGrid.RenderTransform>
                     </DataGrid>
-
-
-
-
-
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -176,8 +158,6 @@
                             <Button Content="Save Change" FontSize="25" Background="#eee" Foreground="#000" Click="ButtonSaveChange_Click"/>
                         </StackPanel>
                     </Grid>
-
-
 
                 </StackPanel>
             </Border>

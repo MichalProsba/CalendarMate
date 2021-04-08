@@ -23,13 +23,17 @@ namespace CalendarMate
     public partial class ShowAnEventWindow : Window
     {
         /// <summary>
+        /// variable dataGridSelcted holds the information about that DataGrid was selected
+        /// </summary>
+        private bool dataGridSelcted = false;
+        /// <summary>
         /// variable updatingEventID holds the current id
         /// </summary>
         private int updatingEventID = 0;
         /// <summary>
         /// variable updatingEventID holds the current date
         /// </summary>
-        private DateTime EventDate;
+        private DateTime eventDate;
 
         /// <summary>
         /// Constructor
@@ -37,11 +41,12 @@ namespace CalendarMate
         /// <param name="eventDay"></param>
         public ShowAnEventWindow(DateTime eventDay)
         {
-            this.EventDate = eventDay;
+            this.eventDate = eventDay;
             InitializeComponent();
+            SetGrayForeground();
             EventDbContext db = new EventDbContext();
             var docs = from d in db.UserEvents
-                       where d.Day == EventDate.Day
+                       where d.Day == eventDate.Day && d.Month == eventDate.Month && d.Year == eventDate.Year
                        select new
                        {
                            Nr = d.Id,
@@ -55,8 +60,9 @@ namespace CalendarMate
                        };
             this.EventGrid.ItemsSource = docs.ToList();
             CreateEvent(eventDay);
+
         }
-        //
+
         /// <summary>
         /// 
         /// </summary>
@@ -80,10 +86,7 @@ namespace CalendarMate
                             select d;
                     foreach (var item in r)
                     {
-                        this.EventNameShow.Text = item.Name;
-                        this.EventLocalizationShow.Text = item.Localization;
-                        this.EventStartShow.Text = item.StartTime.ToShortTimeString();
-                        this.EventStopShow.Text = item.StopTime.ToShortTimeString();
+                        SetBlackForeground(item.Name, item.Localization, item.StartTime.ToShortTimeString(), item.StopTime.ToShortTimeString());
                     }
                 }
             }
@@ -112,6 +115,7 @@ namespace CalendarMate
 
                 if (obj != null)
                 {
+                    SetGrayForeground();
                     db1.UserEvents.Remove(obj);
                     db1.SaveChanges();
                 }
@@ -119,7 +123,7 @@ namespace CalendarMate
 
             EventDbContext db = new EventDbContext();
             var docs = from d in db.UserEvents
-                       where d.Day == EventDate.Day
+                       where d.Day == eventDate.Day && d.Month == eventDate.Month && d.Year == eventDate.Year
                        select new
                        {
                            Nr = d.Id,
@@ -151,17 +155,17 @@ namespace CalendarMate
             {
                 obj.Name = EventNameShow.Text;
                 obj.Localization = EventLocalizationShow.Text;
-                obj.Year = EventDate.Year;
-                obj.Month = EventDate.Month;
-                obj.Day = EventDate.Day;
+                obj.Year = eventDate.Year;
+                obj.Month = eventDate.Month;
+                obj.Day = eventDate.Day;
                 obj.StartTime = DateTime.Parse(EventStartShow.Text);
                 obj.StopTime = DateTime.Parse(EventStopShow.Text);
             }
             db.SaveChanges();
             EventDbContext db1 = new EventDbContext();
             var docs1 = from d in db1.UserEvents
-                       where d.Day == EventDate.Day
-                       select new
+                        where d.Day == eventDate.Day && d.Month == eventDate.Month && d.Year == eventDate.Year
+                        select new
                        {
                            Nr = d.Id,
                            Name = d.Name,
@@ -178,11 +182,6 @@ namespace CalendarMate
         private void CreateEvent(DateTime when)
         {
             WindowTitle.Text = when.ToString("D", CultureInfo.CreateSpecificCulture("en-US"));
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
@@ -202,7 +201,7 @@ namespace CalendarMate
         {
             EventDbContext db = new EventDbContext();
             var docs = from d in db.UserEvents
-                       where d.Day == EventDate.Day
+                       where d.Day == eventDate.Day && d.Month == eventDate.Month && d.Year == eventDate.Year
                        select new
                        {
                            Nr = d.Id,
@@ -215,6 +214,7 @@ namespace CalendarMate
                            To = d.StartTime.ToShortTimeString(),
                        };
             this.EventGrid.ItemsSource = docs.ToList();
+            SetGrayForeground();
         }
 
         /// <summary>
@@ -231,6 +231,66 @@ namespace CalendarMate
             int Pos2 = STR.IndexOf(LastString);
             FinalString = STR.Substring(Pos1, Pos2 - Pos1);
             return FinalString;
+        }
+
+        private void SetGrayForeground()
+        {
+            SolidColorBrush grayBrush = new SolidColorBrush(Colors.Gray);
+            grayBrush.Opacity = 0.4;
+            this.EventNameShow.Foreground = grayBrush;
+            this.EventNameShow.Text = "Event name";
+            this.EventNameShow.IsReadOnly = true;
+            this.EventLocalizationShow.Foreground = grayBrush;
+            this.EventLocalizationShow.Text = "Localization";
+            this.EventLocalizationShow.IsReadOnly = true;
+            this.EventStartShow.Foreground = grayBrush;
+            this.EventStartShow.Text = "00:00";
+            this.EventStartShow.IsReadOnly = true;
+            this.EventStopShow.Foreground = grayBrush;
+            this.EventStopShow.Text = "00:00";
+            this.EventStopShow.IsReadOnly = true;
+        }
+
+        private void SetBlackForeground(string name, string localization, string start, string stop)
+        {
+            SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
+            blackBrush.Opacity = 0.9;
+            this.EventNameShow.Foreground = blackBrush;
+            this.EventNameShow.Text = name;
+            this.EventNameShow.IsReadOnly = false;
+            this.EventLocalizationShow.Foreground = blackBrush;
+            this.EventLocalizationShow.Text = localization;
+            this.EventLocalizationShow.IsReadOnly = false;
+            this.EventStartShow.Foreground = blackBrush;
+            this.EventStartShow.Text = start;
+            this.EventStartShow.IsReadOnly = false;
+            this.EventStopShow.Foreground = blackBrush;
+            this.EventStopShow.Text = stop;
+            this.EventStopShow.IsReadOnly = false;
+        }
+
+        private void EventGrid_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (this.EventGrid.SelectedIndex >= 0)
+            {
+                if (this.EventGrid.SelectedItems.Count >= 0)
+                {
+                    var row = this.EventGrid.SelectedItems[0];
+                    string arg1 = row.ToString();
+                    string arg2 = "Nr = ";
+                    string arg3 = ",";
+                    string Idstring = Between(arg1, arg2, arg3);
+                    updatingEventID = int.Parse(Idstring);
+                    EventDbContext db = new EventDbContext();
+                    var r = from d in db.UserEvents
+                            where d.Id == updatingEventID
+                            select d;
+                    foreach (var item in r)
+                    {
+                        SetBlackForeground(item.Name, item.Localization, item.StartTime.ToShortTimeString(), item.StopTime.ToShortTimeString());
+                    }
+                }
+            }
         }
     }
 }

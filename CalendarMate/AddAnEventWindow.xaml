@@ -39,7 +39,7 @@
 
 
                     <!-- 1 Row -->
-
+                    
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="3*"/>
@@ -51,7 +51,7 @@
                                 <fa:ImageAwesome Icon="Calendar" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0"/>
                                 <fa:FontAwesome Text="Event name" FontSize="30" />
                             </StackPanel>
-                            <TextBox x:Name="EventName" Text="Event name" Padding="5" FontSize="25" Background="#eee">
+                            <TextBox x:Name="EventName" Text="Event name" Padding="5" FontSize="25" Background="#eee" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus">
                                 <TextBox.Foreground>
                                     <SolidColorBrush Color="Gray" Opacity="0.4" />
                                 </TextBox.Foreground>
@@ -69,7 +69,7 @@
                                 <fa:ImageAwesome Icon="CalendarCheckOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
                                 <fa:FontAwesome Text="All day" FontSize="30"/>
                             </StackPanel>
-                            <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10" Background="#eee" >
+                            <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10" Background="#eee" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
                                 <CheckBox.LayoutTransform>
                                     <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
                                 </CheckBox.LayoutTransform>
@@ -91,7 +91,7 @@
                                 <fa:ImageAwesome Icon="ClockOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
                                 <fa:FontAwesome Text="From" FontSize="30"/>
                             </StackPanel>
-                            <TextBox x:Name="EventStart" Text="00:00" Padding="5" FontSize="25" Background="#eee" >
+                            <TextBox x:Name="EventStart" Text="00:00" Padding="5" FontSize="25" Background="#eee" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus">
                                 <TextBox.Foreground>
                                     <SolidColorBrush Color="Gray" Opacity="0.4" />
                                 </TextBox.Foreground>
@@ -108,7 +108,7 @@
                                 <fa:ImageAwesome Icon="ClockOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
                                 <fa:FontAwesome Text="To" FontSize="30"/>
                             </StackPanel>
-                            <TextBox Margin="0,0,10,0" x:Name="EventStop" Text="00:00" Padding="5" FontSize="25" Background="#eee" >
+                            <TextBox Margin="0,0,10,0" x:Name="EventStop" Text="00:00" Padding="5" FontSize="25" Background="#eee" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus">
                                 <TextBox.Foreground>
                                     <SolidColorBrush Color="Gray" Opacity="0.4" />
                                 </TextBox.Foreground>
@@ -133,7 +133,7 @@
                                 <fa:ImageAwesome Icon="MapMarker" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
                                 <fa:FontAwesome Text="Localization" FontSize="30"/>
                             </StackPanel>
-                            <TextBox x:Name="EventLocalization" Text="Localization" Padding="5" FontSize="25" Background="#eee" >
+                            <TextBox x:Name="EventLocalization" Text="Localization" Padding="5" FontSize="25" Background="#eee" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus">
                                 <TextBox.Foreground>
                                     <SolidColorBrush Color="Gray" Opacity="0.4" />
                                 </TextBox.Foreground>
