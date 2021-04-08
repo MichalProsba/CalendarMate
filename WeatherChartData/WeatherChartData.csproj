@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Apilibrary/Apilibrary.csproj" />
+    <ProjectReference Include="../Normalization/Normalization.csproj" />
+  </ItemGroup>
+  
+
+</Project>

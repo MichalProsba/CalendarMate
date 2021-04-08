@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.SfChart.WPF" Version="19.1.0.55" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.SfChart.WPF" Version="19.1.0.55" />
+  </ItemGroup>
+
+</Project>

@@ -8,6 +8,7 @@ namespace ApiLibrary
 {
     public class DayWeatherModel
     {
+        public double Dt { get; set; }
         public double Sunrise { get; set; }
         public double Sunset { get; set; }
         public WeatherTempModel Temp { get; set; }

@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Globalization;
 using ApiLibrary;
+using Normalization;
 
 /// <summary>
 /// 
@@ -165,7 +166,7 @@ namespace CalendarMate
             weatherImage.UriSource = new Uri("images/" + currentWeather.Weather[0].Icon.ToString() + ".png", UriKind.Relative);
             weatherImage.EndInit();
             CurrentWeatherImage.Source = weatherImage;
-            CurrentWeather.Text = Math.Round((currentWeather.Main.Temp-273.15), 2).ToString() + "°C";
+            CurrentWeather.Text = NormalizationOperations.NormalizeTemperature(currentWeather.Main.Temp).ToString() + "°C";
         }
 
         private void Next_Click(object sender, RoutedEventArgs e)
