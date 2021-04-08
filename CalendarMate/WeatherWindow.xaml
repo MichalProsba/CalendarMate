@@ -84,8 +84,8 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border  Grid.Column="0" Padding="5" Background="#666">
-                                <Button  Foreground="White" Height="30" Background="#555" Content="48 hour Forecast" Grid.Column="1"/>
+                            <Border Grid.Column="0" Padding="5" Background="#666">
+                                <Button x:Name="fourtyEightHourForecast" Click="fourtyEightHourForecast_Click" Foreground="White" Height="30" Background="#555" Content="48 hour Forecast" Grid.Column="1"/>
                             </Border>
                             <Border  Grid.Column="1" Padding="5" Background="#666">
                                 <Button x:Name="sevenDayForecast" Click="sevenDayForecast_Click" Foreground="White" Height="30" Background="#555" Content="7 day Forecast" Grid.Column="2"/>

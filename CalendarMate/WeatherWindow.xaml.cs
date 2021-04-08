@@ -24,6 +24,9 @@ namespace CalendarMate
         private DailyWeatherInfoModel dailyWeather;
         private HourlyWeatherInfoModel hourlyWeather;
 
+        // false = 7 day forecast, true = 48 hour forecast
+        private bool forecastType = false;
+
         public WeatherWindow(CurrentWeatherInfoModel weather)
         {
             InitializeComponent();
@@ -169,7 +172,6 @@ namespace CalendarMate
         {
             dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather();
             WeatherChart.Series.Clear();
-            DisplayedChart.Text = "7 day forecast";
             WeatherChart.Header = "Apparent Temperature";
 
             // Adding horizontal axis to chart
@@ -260,7 +262,6 @@ namespace CalendarMate
         {
             dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather();
             WeatherChart.Series.Clear();
-            DisplayedChart.Text = "7 day forecast";
             WeatherChart.Header = "Humidity";
 
             // Adding horizontal axis to chart
@@ -316,7 +317,6 @@ namespace CalendarMate
         {
             dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather();
             WeatherChart.Series.Clear();
-            DisplayedChart.Text = "7 day forecast";
             WeatherChart.Header = "Pressure";
 
             // Adding horizontal axis to chart
@@ -372,7 +372,6 @@ namespace CalendarMate
         {
             dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather();
             WeatherChart.Series.Clear();
-            DisplayedChart.Text = "7 day forecast";
             WeatherChart.Header = "Wind Speed";
 
             // Adding horizontal axis to chart
@@ -424,6 +423,232 @@ namespace CalendarMate
             WeatherChart.Series.Add(seriesWindSpeed);
         }
 
+        private async void LoadHourlyTemperatureChart()
+        {
+            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather();
+            WeatherChart.Series.Clear();
+            DisplayedChart.Text = "48 hour forecast";
+            WeatherChart.Header = "Temperature";
+
+            // Adding horizontal axis to chart
+            CategoryAxis primaryAxis = new CategoryAxis();
+            primaryAxis.Header = "Date";
+            WeatherChart.PrimaryAxis = primaryAxis;
+
+
+            // Adding vertical axis to chart
+            NumericalAxis secondaryAxis = new NumericalAxis();
+            secondaryAxis.Header = "Temperature [°C]";
+            WeatherChart.SecondaryAxis = secondaryAxis;
+
+            // Preparing data for Chart
+            HourlyWeatherForecast hourlyData = new HourlyWeatherForecast(hourlyWeather);
+
+            // Creating AdornmentInfo
+            ChartAdornmentInfo adornmentInfo = new ChartAdornmentInfo()
+            {
+                ShowMarker = true,
+                Symbol = ChartSymbol.Diamond,
+                SymbolHeight = 5,
+                SymbolWidth = 5,
+                SymbolInterior = new SolidColorBrush(Colors.Black)
+            };
+
+            //Initialize needed Line Series
+            LineSeries seriesTemperature = new LineSeries()
+            {
+                ItemsSource = hourlyData.temperature,
+                XBindingPath = "Date",
+                YBindingPath = "Temperature",
+                Label = "Temperature",
+                LegendIcon = ChartLegendIcon.Circle,
+                AdornmentsInfo = adornmentInfo
+            };
+
+            //Adding Series to Chart
+            WeatherChart.Series.Add(seriesTemperature);
+        }
+
+        private async void LoadHourlyApparentTemperatureChart()
+        {
+            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather();
+            WeatherChart.Series.Clear();
+            WeatherChart.Header = "Aparent Temperature";
+
+            // Adding horizontal axis to chart
+            CategoryAxis primaryAxis = new CategoryAxis();
+            primaryAxis.Header = "Date";
+            WeatherChart.PrimaryAxis = primaryAxis;
+
+
+            // Adding vertical axis to chart
+            NumericalAxis secondaryAxis = new NumericalAxis();
+            secondaryAxis.Header = "Temperature [°C]";
+            WeatherChart.SecondaryAxis = secondaryAxis;
+
+            // Preparing data for Chart
+            HourlyWeatherForecast hourlyData = new HourlyWeatherForecast(hourlyWeather);
+
+            // Creating AdornmentInfo
+            ChartAdornmentInfo adornmentInfo = new ChartAdornmentInfo()
+            {
+                ShowMarker = true,
+                Symbol = ChartSymbol.Diamond,
+                SymbolHeight = 5,
+                SymbolWidth = 5,
+                SymbolInterior = new SolidColorBrush(Colors.Black)
+            };
+
+            //Initialize needed Line Series
+            LineSeries seriesApparentTemperature = new LineSeries()
+            {
+                ItemsSource = hourlyData.apparentTemperature,
+                XBindingPath = "Date",
+                YBindingPath = "Temperature",
+                Label = "Apparent Temperature",
+                LegendIcon = ChartLegendIcon.Circle,
+                AdornmentsInfo = adornmentInfo
+            };
+
+            //Adding Series to Chart
+            WeatherChart.Series.Add(seriesApparentTemperature);
+        }
+
+        private async void LoadHourlyHumidityChart()
+        {
+            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather();
+            WeatherChart.Series.Clear();
+            WeatherChart.Header = "Humidity";
+
+            // Adding horizontal axis to chart
+            CategoryAxis primaryAxis = new CategoryAxis();
+            primaryAxis.Header = "Date";
+            WeatherChart.PrimaryAxis = primaryAxis;
+
+
+            // Adding vertical axis to chart
+            NumericalAxis secondaryAxis = new NumericalAxis();
+            secondaryAxis.Header = "Humidity [%]";
+            WeatherChart.SecondaryAxis = secondaryAxis;
+
+            // Preparing data for Chart
+            HourlyWeatherForecast hourlyData = new HourlyWeatherForecast(hourlyWeather);
+
+            // Creating AdornmentInfo
+            ChartAdornmentInfo adornmentInfo = new ChartAdornmentInfo()
+            {
+                ShowMarker = true,
+                Symbol = ChartSymbol.Diamond,
+                SymbolHeight = 5,
+                SymbolWidth = 5,
+                SymbolInterior = new SolidColorBrush(Colors.Black)
+            };
+
+            //Initialize needed Line Series
+            LineSeries seriesHumidity = new LineSeries()
+            {
+                ItemsSource = hourlyData.humidity,
+                XBindingPath = "Date",
+                YBindingPath = "Humidity",
+                Label = "Humidity",
+                LegendIcon = ChartLegendIcon.Circle,
+                AdornmentsInfo = adornmentInfo
+            };
+
+            //Adding Series to Chart
+            WeatherChart.Series.Add(seriesHumidity);
+        }
+
+        private async void LoadHourlyPressureChart()
+        {
+            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather();
+            WeatherChart.Series.Clear();
+            WeatherChart.Header = "Presssure";
+
+            // Adding horizontal axis to chart
+            CategoryAxis primaryAxis = new CategoryAxis();
+            primaryAxis.Header = "Date";
+            WeatherChart.PrimaryAxis = primaryAxis;
+
+
+            // Adding vertical axis to chart
+            NumericalAxis secondaryAxis = new NumericalAxis();
+            secondaryAxis.Header = "Pressure [hPa]";
+            WeatherChart.SecondaryAxis = secondaryAxis;
+
+            // Preparing data for Chart
+            HourlyWeatherForecast hourlyData = new HourlyWeatherForecast(hourlyWeather);
+
+            // Creating AdornmentInfo
+            ChartAdornmentInfo adornmentInfo = new ChartAdornmentInfo()
+            {
+                ShowMarker = true,
+                Symbol = ChartSymbol.Diamond,
+                SymbolHeight = 5,
+                SymbolWidth = 5,
+                SymbolInterior = new SolidColorBrush(Colors.Black)
+            };
+
+            //Initialize needed Line Series
+            LineSeries seriesPressure = new LineSeries()
+            {
+                ItemsSource = hourlyData.pressure,
+                XBindingPath = "Date",
+                YBindingPath = "Pressure",
+                Label = "Pressure",
+                LegendIcon = ChartLegendIcon.Circle,
+                AdornmentsInfo = adornmentInfo
+            };
+
+            //Adding Series to Chart
+            WeatherChart.Series.Add(seriesPressure);
+        }
+
+        private async void LoadHourlyWindSpeedChart()
+        {
+            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather();
+            WeatherChart.Series.Clear();
+            WeatherChart.Header = "Wind Speed";
+
+            // Adding horizontal axis to chart
+            CategoryAxis primaryAxis = new CategoryAxis();
+            primaryAxis.Header = "Date";
+            WeatherChart.PrimaryAxis = primaryAxis;
+
+
+            // Adding vertical axis to chart
+            NumericalAxis secondaryAxis = new NumericalAxis();
+            secondaryAxis.Header = "Speed [m/s]";
+            WeatherChart.SecondaryAxis = secondaryAxis;
+
+            // Preparing data for Chart
+            HourlyWeatherForecast hourlyData = new HourlyWeatherForecast(hourlyWeather);
+
+            // Creating AdornmentInfo
+            ChartAdornmentInfo adornmentInfo = new ChartAdornmentInfo()
+            {
+                ShowMarker = true,
+                Symbol = ChartSymbol.Diamond,
+                SymbolHeight = 5,
+                SymbolWidth = 5,
+                SymbolInterior = new SolidColorBrush(Colors.Black)
+            };
+
+            //Initialize needed Line Series
+            LineSeries seriesWindSpeed = new LineSeries()
+            {
+                ItemsSource = hourlyData.windSpeed,
+                XBindingPath = "Date",
+                YBindingPath = "WindSpeed",
+                Label = "Wind Speed",
+                LegendIcon = ChartLegendIcon.Circle,
+                AdornmentsInfo = adornmentInfo
+            };
+
+            //Adding Series to Chart
+            WeatherChart.Series.Add(seriesWindSpeed);
+        }
+
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -440,31 +665,73 @@ namespace CalendarMate
         private void sevenDayForecast_Click(object sender, RoutedEventArgs e)
         {
             LoadDayilyTemperatureChart();
+            forecastType = false;
         }
 
         private void temperatureForecast_Click(object sender, RoutedEventArgs e)
         {
-            LoadDayilyTemperatureChart();
+            if (forecastType)
+            {
+                LoadHourlyTemperatureChart();
+            }
+            else
+            {
+                LoadDayilyTemperatureChart();
+            }       
         }
 
         private void apparentTemperatureForecast_Click(object sender, RoutedEventArgs e)
         {
-            LoadDayilyApparentTemperatureChart();
+            if (forecastType)
+            {
+                LoadHourlyApparentTemperatureChart();
+            }
+            else
+            {
+                LoadDayilyApparentTemperatureChart();
+            }
         }
 
         private void humidityForecast_Click(object sender, RoutedEventArgs e)
         {
-            LoadDayilyHumidityChart();
+            if (forecastType)
+            {
+                LoadHourlyHumidityChart();
+            }
+            else
+            {
+                LoadDayilyHumidityChart();
+            }
         }
 
         private void pressureForecast_Click(object sender, RoutedEventArgs e)
         {
-            LoadDayilyPressureChart();
+            if (forecastType)
+            {
+                LoadHourlyPressureChart();
+            }
+            else
+            {
+                LoadDayilyPressureChart();
+            }
         }
 
         private void windSpeedForecast_Click(object sender, RoutedEventArgs e)
         {
-            LoadDayilyWindSpeedChart();
+            if (forecastType)
+            {
+                LoadHourlyWindSpeedChart();
+            }
+            else
+            {
+                LoadDayilyWindSpeedChart();
+            }
+        }
+
+        private void fourtyEightHourForecast_Click(object sender, RoutedEventArgs e)
+        {
+            LoadHourlyTemperatureChart();
+            forecastType = true;
         }
     }
 }
