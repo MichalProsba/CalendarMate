@@ -56,7 +56,7 @@ namespace CalendarMate
                            Month = d.Month,
                            Day = d.Day,
                            From = d.StartTime.ToShortTimeString(),
-                           To = d.StartTime.ToShortTimeString(),
+                           To = d.StopTime.ToShortTimeString(),
                        };
             this.EventGrid.ItemsSource = docs.ToList();
             CreateEvent(eventDay);
@@ -133,7 +133,7 @@ namespace CalendarMate
                            Month = d.Month,
                            Day = d.Day,
                            From = d.StartTime.ToShortTimeString(),
-                           To = d.StartTime.ToShortTimeString(),
+                           To = d.StopTime.ToShortTimeString(),
                        };
             this.EventGrid.ItemsSource = docs.ToList();
         }
@@ -174,7 +174,7 @@ namespace CalendarMate
                            Month = d.Month,
                            Day = d.Day,
                            From = d.StartTime.ToShortTimeString(),
-                           To = d.StartTime.ToShortTimeString(),
+                           To = d.StopTime.ToShortTimeString(),
                        };
             this.EventGrid.ItemsSource = docs1.ToList();
         }
@@ -211,7 +211,7 @@ namespace CalendarMate
                            Month = d.Month,
                            Day = d.Day,
                            From = d.StartTime.ToShortTimeString(),
-                           To = d.StartTime.ToShortTimeString(),
+                           To = d.StopTime.ToShortTimeString(),
                        };
             this.EventGrid.ItemsSource = docs.ToList();
             SetGrayForeground();
