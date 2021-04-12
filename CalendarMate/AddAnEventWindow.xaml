@@ -177,13 +177,13 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Margin="0 20 10 0">
-                            <Button Content="Show list" FontSize="25" Background="#eee" Foreground="#000" Click="ButtonShow_Click"/>
+                            <Button BorderThickness="3" FontSize="25" Foreground="DodgerBlue" Background="#555" Content="Show list" Click="ButtonShow_Click"/>
                         </StackPanel>
                         <StackPanel Grid.Column="1" Margin="0 20 10 0">
                             
                         </StackPanel>
                         <StackPanel Grid.Column="2" Margin="0 20 10 0">
-                            <Button Content="Add" FontSize="25" Background="#eee" Foreground="#000" Click="ButtonAdd_Click"/>
+                            <Button BorderThickness="3" FontSize="25" Foreground="DodgerBlue" Background="#555" Content="Add" Click="ButtonAdd_Click"/>
                         </StackPanel>
                     </Grid>
 

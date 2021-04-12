@@ -1,0 +1,71 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace CalendarMate
+{
+    public partial class CurrentCityWindow : Window
+    {
+        public CurrentCityWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
+        }
+
+        /// <summary>
+        /// TextBox_GotFocus is an event which changes the appearance of focused textboxes 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
+            blackBrush.Opacity = 0.9;
+            TextBox tb = (TextBox)sender;
+            if (tb.Foreground.Opacity != blackBrush.Opacity)
+            {
+                if (tb.IsReadOnly != true)
+                {
+                    tb.Foreground = blackBrush;
+                    tb.Text = "";
+                }
+            }
+        }
+
+        /// <summary>
+        /// TextBox_LostFocus is an event which changes the appearance of lost focused textboxes 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            SolidColorBrush grayBrush = new SolidColorBrush(Colors.Gray);
+            grayBrush.Opacity = 0.4;
+            tb.Foreground = grayBrush;
+            tb.Text = "Localization";
+        }
+    }
+}

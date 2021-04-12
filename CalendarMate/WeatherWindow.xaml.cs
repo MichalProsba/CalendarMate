@@ -24,26 +24,40 @@ namespace CalendarMate
         private DailyWeatherInfoModel dailyWeather;
         private HourlyWeatherInfoModel hourlyWeather;
 
+        MainWindow mainWindow;
+
         // false = 7 day forecast, true = 48 hour forecast
         private bool forecastType = false;
 
-        public WeatherWindow(CurrentWeatherInfoModel weather)
+        // Axis
+        CategoryAxis primaryAxis;
+        NumericalAxis secondaryAxis;
+
+
+        public WeatherWindow(CurrentWeatherInfoModel weather, MainWindow main)
         {
             InitializeComponent();
+
             currentWeather = weather;
+            mainWindow = main;
+
             LoadCurrentWeather();
-            SetLegendStyle();
+            SetChartStyle();
             LoadDayilyTemperatureChart();
         }
 
-        private void LoadCurrentWeather()
+        private async void LoadCurrentWeather()
         {
-            CurrentWeatherName.Text = currentWeather.Name;
+            mainWindow.LoadCurrentWeather();
+            currentWeather = await CurrentWeatherInfoProcessor.LoadCurrentWeather();
             BitmapImage weatherImage = new BitmapImage();
             weatherImage.BeginInit();
             weatherImage.UriSource = new Uri("images/" + currentWeather.Weather[0].Icon.ToString() + ".png", UriKind.Relative);
             weatherImage.EndInit();
+
             CurrentWeatherImage.Source = weatherImage;
+
+            CurrentWeatherName.Text = currentWeather.Name;
 
             CurrentWeatherDescription.Text = currentWeather.Weather[0].Description.ToString();
 
@@ -59,7 +73,7 @@ namespace CalendarMate
         }
 
 
-        private void SetLegendStyle()
+        private void SetChartStyle()
         {
             // Legend Style
             WeatherChart.Legend = new ChartLegend()
@@ -75,25 +89,46 @@ namespace CalendarMate
                 BorderBrush = new SolidColorBrush(Colors.Gray),
                 CheckBoxVisibility = Visibility.Visible
             };
+
+            // Adding zooming to chart
+            ChartZoomPanBehavior zooming = new ChartZoomPanBehavior()
+            {
+                EnableMouseWheelZooming = true,
+                EnableZoomingToolBar = true,
+                ToolBarBackground = new SolidColorBrush(Colors.Black),
+                ToolBarItemHeight = 15,
+                ToolBarItemWidth = 15,
+                ToolBarItemMargin = new Thickness(10),
+                ToolBarItems = ZoomToolBarItems.Reset
+            };
+            WeatherChart.Behaviors.Add(zooming);
+
+            // Adding horizontal axis to chart
+            primaryAxis = new CategoryAxis();
+            WeatherChart.PrimaryAxis = primaryAxis;
+
+
+            // Adding vertical axis to chart
+            secondaryAxis = new NumericalAxis();
+            WeatherChart.SecondaryAxis = secondaryAxis;
         }
 
         private async void LoadDayilyTemperatureChart()
         {
+            sevenDayForecast.IsEnabled = false;
+            temperatureForecast.IsEnabled = false;
+
             dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather();
             WeatherChart.Series.Clear();
             DisplayedChart.Text = "7 day forecast";
             WeatherChart.Header = "Temperature";
 
             // Adding horizontal axis to chart
-            CategoryAxis primaryAxis = new CategoryAxis();
             primaryAxis.Header = "Date";
-            WeatherChart.PrimaryAxis = primaryAxis;
 
 
             // Adding vertical axis to chart
-            NumericalAxis secondaryAxis = new NumericalAxis();
             secondaryAxis.Header = "Temperature [°C]";
-            WeatherChart.SecondaryAxis = secondaryAxis;
 
             // Preparing data for Chart
             DailyWeatherForecast dailyData = new DailyWeatherForecast(dailyWeather);
@@ -175,15 +210,11 @@ namespace CalendarMate
             WeatherChart.Header = "Apparent Temperature";
 
             // Adding horizontal axis to chart
-            CategoryAxis primaryAxis = new CategoryAxis();
             primaryAxis.Header = "Date";
-            WeatherChart.PrimaryAxis = primaryAxis;
 
 
             // Adding vertical axis to chart
-            NumericalAxis secondaryAxis = new NumericalAxis();
             secondaryAxis.Header = "Temperature [°C]";
-            WeatherChart.SecondaryAxis = secondaryAxis;
 
             // Preparing data for Chart
             DailyWeatherForecast dailyData = new DailyWeatherForecast(dailyWeather);
@@ -265,15 +296,11 @@ namespace CalendarMate
             WeatherChart.Header = "Humidity";
 
             // Adding horizontal axis to chart
-            CategoryAxis primaryAxis = new CategoryAxis();
             primaryAxis.Header = "Date";
-            WeatherChart.PrimaryAxis = primaryAxis;
 
 
             // Adding vertical axis to chart
-            NumericalAxis secondaryAxis = new NumericalAxis();
             secondaryAxis.Header = "Humidity [%]";
-            WeatherChart.SecondaryAxis = secondaryAxis;
 
             // Preparing data for Chart
             DailyWeatherForecast dailyData = new DailyWeatherForecast(dailyWeather);
@@ -320,15 +347,11 @@ namespace CalendarMate
             WeatherChart.Header = "Pressure";
 
             // Adding horizontal axis to chart
-            CategoryAxis primaryAxis = new CategoryAxis();
             primaryAxis.Header = "Date";
-            WeatherChart.PrimaryAxis = primaryAxis;
 
 
             // Adding vertical axis to chart
-            NumericalAxis secondaryAxis = new NumericalAxis();
             secondaryAxis.Header = "Pressure [hPa]";
-            WeatherChart.SecondaryAxis = secondaryAxis;
 
             // Preparing data for Chart
             DailyWeatherForecast dailyData = new DailyWeatherForecast(dailyWeather);
@@ -375,15 +398,11 @@ namespace CalendarMate
             WeatherChart.Header = "Wind Speed";
 
             // Adding horizontal axis to chart
-            CategoryAxis primaryAxis = new CategoryAxis();
             primaryAxis.Header = "Date";
-            WeatherChart.PrimaryAxis = primaryAxis;
 
 
             // Adding vertical axis to chart
-            NumericalAxis secondaryAxis = new NumericalAxis();
             secondaryAxis.Header = "Speed [m/s]";
-            WeatherChart.SecondaryAxis = secondaryAxis;
 
             // Preparing data for Chart
             DailyWeatherForecast dailyData = new DailyWeatherForecast(dailyWeather);
@@ -431,15 +450,11 @@ namespace CalendarMate
             WeatherChart.Header = "Temperature";
 
             // Adding horizontal axis to chart
-            CategoryAxis primaryAxis = new CategoryAxis();
             primaryAxis.Header = "Date";
-            WeatherChart.PrimaryAxis = primaryAxis;
 
 
             // Adding vertical axis to chart
-            NumericalAxis secondaryAxis = new NumericalAxis();
             secondaryAxis.Header = "Temperature [°C]";
-            WeatherChart.SecondaryAxis = secondaryAxis;
 
             // Preparing data for Chart
             HourlyWeatherForecast hourlyData = new HourlyWeatherForecast(hourlyWeather);
@@ -476,15 +491,11 @@ namespace CalendarMate
             WeatherChart.Header = "Aparent Temperature";
 
             // Adding horizontal axis to chart
-            CategoryAxis primaryAxis = new CategoryAxis();
             primaryAxis.Header = "Date";
-            WeatherChart.PrimaryAxis = primaryAxis;
 
 
             // Adding vertical axis to chart
-            NumericalAxis secondaryAxis = new NumericalAxis();
             secondaryAxis.Header = "Temperature [°C]";
-            WeatherChart.SecondaryAxis = secondaryAxis;
 
             // Preparing data for Chart
             HourlyWeatherForecast hourlyData = new HourlyWeatherForecast(hourlyWeather);
@@ -521,15 +532,11 @@ namespace CalendarMate
             WeatherChart.Header = "Humidity";
 
             // Adding horizontal axis to chart
-            CategoryAxis primaryAxis = new CategoryAxis();
             primaryAxis.Header = "Date";
-            WeatherChart.PrimaryAxis = primaryAxis;
 
 
             // Adding vertical axis to chart
-            NumericalAxis secondaryAxis = new NumericalAxis();
             secondaryAxis.Header = "Humidity [%]";
-            WeatherChart.SecondaryAxis = secondaryAxis;
 
             // Preparing data for Chart
             HourlyWeatherForecast hourlyData = new HourlyWeatherForecast(hourlyWeather);
@@ -566,15 +573,11 @@ namespace CalendarMate
             WeatherChart.Header = "Presssure";
 
             // Adding horizontal axis to chart
-            CategoryAxis primaryAxis = new CategoryAxis();
             primaryAxis.Header = "Date";
-            WeatherChart.PrimaryAxis = primaryAxis;
 
 
             // Adding vertical axis to chart
-            NumericalAxis secondaryAxis = new NumericalAxis();
             secondaryAxis.Header = "Pressure [hPa]";
-            WeatherChart.SecondaryAxis = secondaryAxis;
 
             // Preparing data for Chart
             HourlyWeatherForecast hourlyData = new HourlyWeatherForecast(hourlyWeather);
@@ -611,15 +614,11 @@ namespace CalendarMate
             WeatherChart.Header = "Wind Speed";
 
             // Adding horizontal axis to chart
-            CategoryAxis primaryAxis = new CategoryAxis();
             primaryAxis.Header = "Date";
-            WeatherChart.PrimaryAxis = primaryAxis;
 
 
             // Adding vertical axis to chart
-            NumericalAxis secondaryAxis = new NumericalAxis();
             secondaryAxis.Header = "Speed [m/s]";
-            WeatherChart.SecondaryAxis = secondaryAxis;
 
             // Preparing data for Chart
             HourlyWeatherForecast hourlyData = new HourlyWeatherForecast(hourlyWeather);
@@ -664,12 +663,26 @@ namespace CalendarMate
 
         private void sevenDayForecast_Click(object sender, RoutedEventArgs e)
         {
+            sevenDayForecast.IsEnabled = false;
+            fourtyEightHourForecast.IsEnabled = true;
+
+            temperatureForecast.IsEnabled = false;
+            apparentTemperatureForecast.IsEnabled = true;
+            humidityForecast.IsEnabled = true;
+            pressureForecast.IsEnabled = true;
+            windSpeedForecast.IsEnabled = true;
+
             LoadDayilyTemperatureChart();
             forecastType = false;
         }
 
         private void temperatureForecast_Click(object sender, RoutedEventArgs e)
         {
+            temperatureForecast.IsEnabled = false;
+            apparentTemperatureForecast.IsEnabled = true;
+            humidityForecast.IsEnabled = true;
+            pressureForecast.IsEnabled = true;
+            windSpeedForecast.IsEnabled = true;
             if (forecastType)
             {
                 LoadHourlyTemperatureChart();
@@ -682,6 +695,11 @@ namespace CalendarMate
 
         private void apparentTemperatureForecast_Click(object sender, RoutedEventArgs e)
         {
+            temperatureForecast.IsEnabled = true;
+            apparentTemperatureForecast.IsEnabled = false;
+            humidityForecast.IsEnabled = true;
+            pressureForecast.IsEnabled = true;
+            windSpeedForecast.IsEnabled = true;
             if (forecastType)
             {
                 LoadHourlyApparentTemperatureChart();
@@ -694,6 +712,11 @@ namespace CalendarMate
 
         private void humidityForecast_Click(object sender, RoutedEventArgs e)
         {
+            temperatureForecast.IsEnabled = true;
+            apparentTemperatureForecast.IsEnabled = true;
+            humidityForecast.IsEnabled = false;
+            pressureForecast.IsEnabled = true;
+            windSpeedForecast.IsEnabled = true;
             if (forecastType)
             {
                 LoadHourlyHumidityChart();
@@ -706,6 +729,11 @@ namespace CalendarMate
 
         private void pressureForecast_Click(object sender, RoutedEventArgs e)
         {
+            temperatureForecast.IsEnabled = true;
+            apparentTemperatureForecast.IsEnabled = true;
+            humidityForecast.IsEnabled = true;
+            pressureForecast.IsEnabled = false;
+            windSpeedForecast.IsEnabled = true;
             if (forecastType)
             {
                 LoadHourlyPressureChart();
@@ -718,6 +746,11 @@ namespace CalendarMate
 
         private void windSpeedForecast_Click(object sender, RoutedEventArgs e)
         {
+            temperatureForecast.IsEnabled = true;
+            apparentTemperatureForecast.IsEnabled = true;
+            humidityForecast.IsEnabled = true;
+            pressureForecast.IsEnabled = true;
+            windSpeedForecast.IsEnabled = false;
             if (forecastType)
             {
                 LoadHourlyWindSpeedChart();
@@ -730,8 +763,22 @@ namespace CalendarMate
 
         private void fourtyEightHourForecast_Click(object sender, RoutedEventArgs e)
         {
+            sevenDayForecast.IsEnabled = true;
+            fourtyEightHourForecast.IsEnabled = false;
+
+            temperatureForecast.IsEnabled = false;
+            apparentTemperatureForecast.IsEnabled = true;
+            humidityForecast.IsEnabled = true;
+            pressureForecast.IsEnabled = true;
+            windSpeedForecast.IsEnabled = true;
+
             LoadHourlyTemperatureChart();
             forecastType = true;
+        }
+
+        private void refreshWeather_Click(object sender, RoutedEventArgs e)
+        {
+            LoadCurrentWeather();
         }
     }
 }

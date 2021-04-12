@@ -17,9 +17,8 @@ using System.Globalization;
 using ApiLibrary;
 using Normalization;
 
-/// <summary>
-/// 
-/// </summary>
+
+
 namespace CalendarMate
 {
     public partial class MainWindow : Window
@@ -158,7 +157,7 @@ namespace CalendarMate
             Clock.Content = DateTime.Now.ToString();
         }
 
-        private async void LoadCurrentWeather()
+        public async void LoadCurrentWeather()
         {
             currentWeather = await CurrentWeatherInfoProcessor.LoadCurrentWeather();
             BitmapImage weatherImage = new BitmapImage();
@@ -194,7 +193,7 @@ namespace CalendarMate
         {
             Current_calendar_data.SetClickDate((Button_list_of_day.IndexOf(((Button)sender))+1)); 
             AddAnEventWindow oneDay = new AddAnEventWindow(Current_calendar_data.Date);
-            oneDay.Show();
+            oneDay.ShowDialog();
         }
         private void CloseMainWindow_Click(object sender, RoutedEventArgs e)
         {
@@ -217,8 +216,19 @@ namespace CalendarMate
 
         private void CurrentWeather_Click(object sender, RoutedEventArgs e)
         {
-            WeatherWindow weatherWindow = new WeatherWindow(currentWeather);
-            weatherWindow.Show();
+            WeatherWindow weatherWindow = new WeatherWindow(currentWeather, this);
+            weatherWindow.ShowDialog();
+        }
+
+        private void currentCity_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentCityWindow currentCityWindow = new CurrentCityWindow();
+            currentCityWindow.ShowDialog();
+        }
+
+        private void refreshWeather_Click(object sender, RoutedEventArgs e)
+        {
+            LoadCurrentWeather();
         }
     }
 }

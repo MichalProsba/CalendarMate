@@ -7,9 +7,22 @@ using System.Threading.Tasks;
 
 namespace ApiLibrary 
 {
+    // The CurrentWeatherInfoProcessor class enables downloading current weather information
+    /// <summary>
+    /// The <c>CurrentWeatherInfoProcessor</c> class.
+    /// Containes variables and methods necessary to download current weather information from weather API (openweathermap.org).
+    /// </summary>
     public static class CurrentWeatherInfoProcessor
     {
+        // The city name
+        /// <value>Containes the city name value.</value>
         public static string city = "Opole";
+
+        // Download and process current weather information
+        /// <summary>
+        /// Download and process current weather information.
+        /// </summary>
+        /// <returns>Weather information inside an CurrentWeatherInfoModel class object or a exception response in an Exception class object.</returns>
         public static async Task<CurrentWeatherInfoModel> LoadCurrentWeather()
         {
             string url = $"http://api.openweathermap.org/data/2.5/weather?q={ city }&APPID=f75180affde9785ae42c8b8dad08cbd0";

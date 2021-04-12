@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:chart="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF"
         xmlns:local="clr-namespace:CalendarMate"
         mc:Ignorable="d"
@@ -39,7 +40,16 @@
                     <Border BorderThickness="2" BorderBrush="#555" Padding="5" Background="#666">
                         <StackPanel>
                             <Border  BorderThickness="2" BorderBrush="#555" Padding="5" Background="#666">
-                                <TextBlock FontWeight="Bold" Text="Current Weather Info" Foreground="White" FontSize="30" HorizontalAlignment="Center"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="26*"/>
+                                        <ColumnDefinition Width="4*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Padding="0 6 0 0" Height="60" Grid.Column="0" FontWeight="Bold" Text="Current Weather Info" Foreground="White" FontSize="30" HorizontalAlignment="Center"/>
+                                    <Button Grid.Column="1" x:Name="refreshWeather" Click="refreshWeather_Click" Height="50" BorderThickness="0" Background="#555">
+                                        <fa:ImageAwesome Icon="Refresh" Width="30" Height="30" Foreground="DodgerBlue" />
+                                    </Button>
+                                </Grid>
                             </Border>
                             <Border  BorderThickness="2" BorderBrush="#555" Padding="5" Background="#666">
                                 <TextBlock  x:Name="CurrentWeatherName" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"  Foreground="White"/>
@@ -85,10 +95,10 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Border Grid.Column="0" Padding="5" Background="#666">
-                                <Button x:Name="fourtyEightHourForecast" Click="fourtyEightHourForecast_Click" Foreground="White" Height="30" Background="#555" Content="48 hour Forecast" Grid.Column="1"/>
+                                <Button BorderThickness="3" x:Name="fourtyEightHourForecast" Click="fourtyEightHourForecast_Click" FontSize="16" Foreground="DodgerBlue" Height="30" Background="#555" Content="48 hour Forecast" Grid.Column="1"/>
                             </Border>
                             <Border  Grid.Column="1" Padding="5" Background="#666">
-                                <Button x:Name="sevenDayForecast" Click="sevenDayForecast_Click" Foreground="White" Height="30" Background="#555" Content="7 day Forecast" Grid.Column="2"/>
+                                <Button BorderThickness="3" x:Name="sevenDayForecast" Click="sevenDayForecast_Click" FontSize="16" Foreground="DodgerBlue" Height="30" Background="#555" Content="7 day Forecast" Grid.Column="2"/>
                             </Border>
                         </Grid>
                         <Grid>
@@ -99,20 +109,20 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border  Grid.Column="0" Padding="5" Background="#666">
-                                <Button x:Name="temperatureForecast" Click="temperatureForecast_Click" Foreground="White" Height="30" Background="#555" Content="Temperature" Grid.Column="1"/>
+                            <Border Grid.Column="0" Padding="5" Background="#666">
+                                <Button BorderThickness="3" x:Name="temperatureForecast" Click="temperatureForecast_Click" FontSize="16" Foreground="DodgerBlue" Height="30" Background="#555" Content="Temperature" Grid.Column="1"/>
                             </Border>
-                            <Border  Grid.Column="1" Padding="5" Background="#666">
-                                <Button x:Name="apparentTemperatureForecast" Click="apparentTemperatureForecast_Click" Foreground="White" Height="30" Background="#555" Content="Apparent temperature" Grid.Column="2"/>
+                            <Border Grid.Column="1" Padding="5" Background="#666">
+                                <Button BorderThickness="3" x:Name="apparentTemperatureForecast" Click="apparentTemperatureForecast_Click" FontSize="16" Foreground="DodgerBlue" Height="30" Background="#555" Content="Apparent temperature" Grid.Column="2"/>
                             </Border>
-                            <Border  Grid.Column="2" Padding="5" Background="#666">
-                                <Button x:Name="humidityForecast" Click="humidityForecast_Click" Foreground="White" Height="30" Background="#555" Content="Humidity" Grid.Column="2"/>
+                            <Border Grid.Column="2" Padding="5" Background="#666">
+                                <Button BorderThickness="3" x:Name="humidityForecast" Click="humidityForecast_Click" FontSize="16" Foreground="DodgerBlue" Height="30" Background="#555" Content="Humidity" Grid.Column="2"/>
                             </Border>
-                            <Border  Grid.Column="3" Padding="5" Background="#666">
-                                <Button x:Name="pressureForecast" Click="pressureForecast_Click" Foreground="White" Height="30" Background="#555" Content="Pressure" Grid.Column="2"/>
+                            <Border Grid.Column="3" Padding="5" Background="#666">
+                                <Button BorderThickness="3" x:Name="pressureForecast" Click="pressureForecast_Click" FontSize="16" Foreground="DodgerBlue" Height="30" Background="#555" Content="Pressure" Grid.Column="2"/>
                             </Border>
-                            <Border  Grid.Column="4" Padding="5" Background="#666">
-                                <Button x:Name="windSpeedForecast" Click="windSpeedForecast_Click" Foreground="White" Height="30" Background="#555" Content="Wind speed" Grid.Column="2"/>
+                            <Border Grid.Column="4" Padding="5" Background="#666">
+                                <Button BorderThickness="3" x:Name="windSpeedForecast" Click="windSpeedForecast_Click" FontSize="16" Foreground="DodgerBlue" Height="30" Background="#555" Content="Wind speed" Grid.Column="2"/>
                             </Border>
                         </Grid>
                     </StackPanel>

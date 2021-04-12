@@ -8,13 +8,34 @@ using Normalization;
 
 namespace WeatherChartData
 {
+    // The DailyApparentTemperatureForecast class containes daily apparent temperature data for chart display
+    /// <summary>
+    /// The <c>DailyApparentTemperatureForecast</c> class.
+    /// Containes daily apparent temperature data for charts.
+    /// </summary>
     public class DailyApparentTemperatureForecast
     {
+        // The morning apparent temperature list
+        /// <value>Gets or sets the morning apparent temperature list.</value>
         public List<TempForecastData> MorningApparentTemperature { get; set; }
+
+        // The day apparent temperature list
+        /// <value>Gets or sets the day apparent temperature list.</value>
         public List<TempForecastData> DayApparentTemperature { get; set; }
+
+        // The evening apparent temperature list
+        /// <value>Gets or sets the evening apparent temperature list.</value>
         public List<TempForecastData> EveningApparentTemperature { get; set; }
+
+        // The night apparent temperature list
+        /// <value>Gets or sets the night apparent temperature list.</value>
         public List<TempForecastData> NightApparentTemperature { get; set; }
 
+        // Copies apparent temperature data from ApiLibrary structures to new structures prepared for chart display
+        /// <summary>
+        /// Copies apparent temperature data from ApiLibrary structures to new structures prepared for chart display.
+        /// </summary>
+        /// <param name="dailyForecastSource">DailyWeatherInfoModel object containing apparent day temperature information.</param>
         public DailyApparentTemperatureForecast(DailyWeatherInfoModel dailyForecastSource)
         {
             MorningApparentTemperature = new List<TempForecastData>();
