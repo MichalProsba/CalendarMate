@@ -35,9 +35,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ApiLibrary\ApiLibrary.csproj" />
+    <ProjectReference Include="..\DataBaseEvent.EntityFramework\DataBaseEvent.EntityFramework.csproj" />
     <ProjectReference Include="..\WeatherChartData\WeatherChartData.csproj" />
     <ProjectReference Include="..\Normalization\Normalization.csproj" />
-    <ProjectReference Include="..\Event.EntityFramework\Event.EntityFramework.csproj" />
   </ItemGroup>
 
   <ItemGroup>

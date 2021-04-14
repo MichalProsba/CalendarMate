@@ -1,5 +1,5 @@
-﻿using Event.Domain.Models;
-using Event.EntityFramework;
+﻿using DataBaseEvent.Domain.Models;
+using DataBaseEvent.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -44,21 +44,7 @@ namespace CalendarMate
             this.eventDate = eventDay;
             InitializeComponent();
             SetGrayForeground();
-            EventDbContext db = new EventDbContext();
-            var docs = from d in db.UserEvents
-                       where d.Day == eventDate.Day && d.Month == eventDate.Month && d.Year == eventDate.Year
-                       select new
-                       {
-                           Nr = d.Id,
-                           Name = d.Name,
-                           Localization = d.Localization,
-                           Year = d.Year,
-                           Month = d.Month,
-                           Day = d.Day,
-                           From = d.StartTime.ToShortTimeString(),
-                           To = d.StopTime.ToShortTimeString(),
-                       };
-            this.EventGrid.ItemsSource = docs.ToList();
+            UpdateGrid();
             CreateEvent(eventDay);
 
         }
@@ -80,13 +66,13 @@ namespace CalendarMate
                     string arg3 = ",";
                     string Idstring = Between(arg1, arg2, arg3);
                     updatingEventID = int.Parse(Idstring);
-                    EventDbContext db = new EventDbContext();
-                    var r = from d in db.UserEvents
+                    DataBaseEventDbContext db = new DataBaseEventDbContext();
+                    var r = from d in db.DataBaseEvents1
                             where d.Id == updatingEventID
                             select d;
                     foreach (var item in r)
                     {
-                        SetBlackForeground(item.Name, item.Localization, item.StartTime.ToShortTimeString(), item.StopTime.ToShortTimeString());
+                        SetBlackForeground(item.Name, item.Localization, item.StartTime, item.StopTime);
                     }
                 }
             }
@@ -104,38 +90,23 @@ namespace CalendarMate
                 MessageBoxImage.Warning,
                 MessageBoxResult.No);
 
-            EventDbContext db1 = new EventDbContext();
-            var r = from d in db1.UserEvents
+            DataBaseEventDbContext db1 = new DataBaseEventDbContext();
+            var r = from d in db1.DataBaseEvents1
                     where d.Id == this.updatingEventID
                     select d;
 
             if (msgBoxResult == MessageBoxResult.Yes)
             {
-                UserEvent obj = r.SingleOrDefault();
+                DataBaseEvent1 obj = r.SingleOrDefault();
 
                 if (obj != null)
                 {
                     SetGrayForeground();
-                    db1.UserEvents.Remove(obj);
+                    db1.DataBaseEvents1.Remove(obj);
                     db1.SaveChanges();
                 }
             }
-
-            EventDbContext db = new EventDbContext();
-            var docs = from d in db.UserEvents
-                       where d.Day == eventDate.Day && d.Month == eventDate.Month && d.Year == eventDate.Year
-                       select new
-                       {
-                           Nr = d.Id,
-                           Name = d.Name,
-                           Localization = d.Localization,
-                           Year = d.Year,
-                           Month = d.Month,
-                           Day = d.Day,
-                           From = d.StartTime.ToShortTimeString(),
-                           To = d.StopTime.ToShortTimeString(),
-                       };
-            this.EventGrid.ItemsSource = docs.ToList();
+            UpdateGrid();
         }
 
         /// <summary>
@@ -145,38 +116,24 @@ namespace CalendarMate
         /// <param name="e"></param>
         private void ButtonSaveChange_Click(object sender, RoutedEventArgs e)
         {
-            EventDbContext db = new EventDbContext();
-            var r = from d in db.UserEvents
+            DataBaseEventDbContext db = new DataBaseEventDbContext();
+            var r = from d in db.DataBaseEvents1
                     where d.Id == updatingEventID
                     select d;
 
-            UserEvent obj = r.SingleOrDefault();
-            if(obj != null)
+            DataBaseEvent1 obj = r.SingleOrDefault();
+            if (obj != null)
             {
                 obj.Name = EventNameShow.Text;
                 obj.Localization = EventLocalizationShow.Text;
                 obj.Year = eventDate.Year;
                 obj.Month = eventDate.Month;
                 obj.Day = eventDate.Day;
-                obj.StartTime = DateTime.Parse(EventStartShow.Text);
-                obj.StopTime = DateTime.Parse(EventStopShow.Text);
+                obj.StartTime = EventStartShow.Text;
+                obj.StopTime = EventStopShow.Text;
             }
             db.SaveChanges();
-            EventDbContext db1 = new EventDbContext();
-            var docs1 = from d in db1.UserEvents
-                        where d.Day == eventDate.Day && d.Month == eventDate.Month && d.Year == eventDate.Year
-                        select new
-                       {
-                           Nr = d.Id,
-                           Name = d.Name,
-                           Localization = d.Localization,
-                           Year = d.Year,
-                           Month = d.Month,
-                           Day = d.Day,
-                           From = d.StartTime.ToShortTimeString(),
-                           To = d.StopTime.ToShortTimeString(),
-                       };
-            this.EventGrid.ItemsSource = docs1.ToList();
+            UpdateGrid();
         }
 
         private void CreateEvent(DateTime when)
@@ -199,21 +156,7 @@ namespace CalendarMate
 
         private void ButtonRefresh_Click(object sender, RoutedEventArgs e)
         {
-            EventDbContext db = new EventDbContext();
-            var docs = from d in db.UserEvents
-                       where d.Day == eventDate.Day && d.Month == eventDate.Month && d.Year == eventDate.Year
-                       select new
-                       {
-                           Nr = d.Id,
-                           Name = d.Name,
-                           Localization = d.Localization,
-                           Year = d.Year,
-                           Month = d.Month,
-                           Day = d.Day,
-                           From = d.StartTime.ToShortTimeString(),
-                           To = d.StopTime.ToShortTimeString(),
-                       };
-            this.EventGrid.ItemsSource = docs.ToList();
+            UpdateGrid();
             SetGrayForeground();
         }
 
@@ -281,16 +224,37 @@ namespace CalendarMate
                     string arg3 = ",";
                     string Idstring = Between(arg1, arg2, arg3);
                     updatingEventID = int.Parse(Idstring);
-                    EventDbContext db = new EventDbContext();
-                    var r = from d in db.UserEvents
+                    DataBaseEventDbContext db = new DataBaseEventDbContext();
+                    var r = from d in db.DataBaseEvents1
                             where d.Id == updatingEventID
                             select d;
                     foreach (var item in r)
                     {
-                        SetBlackForeground(item.Name, item.Localization, item.StartTime.ToShortTimeString(), item.StopTime.ToShortTimeString());
+                        SetBlackForeground(item.Name, item.Localization, item.StartTime, item.StopTime);
                     }
                 }
             }
         }
+
+        private void UpdateGrid()
+        {
+            DataBaseEventDbContext db = new DataBaseEventDbContext();
+            var docs = from d in db.DataBaseEvents1
+                       where d.Day == eventDate.Day && d.Month == eventDate.Month && d.Year == eventDate.Year
+                       select new
+                       {
+                           Nr = d.Id,
+                           Name = d.Name,
+                           Localization = d.Localization,
+                           Year = d.Year,
+                           Month = d.Month,
+                           Day = d.Day,
+                           From = d.StartTime,
+                           To = d.StopTime,
+                           Remind = d.RemindTime,
+                       };
+            this.EventGrid.ItemsSource = docs.ToList();
+        }
+
     }
 }

@@ -1,5 +1,7 @@
-﻿using Event.Domain.Models;
-using Event.EntityFramework;
+﻿//using Event.Domain.Models;
+//using Event.EntityFramework;
+using DataBaseEvent.Domain.Models;
+using DataBaseEvent.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -22,6 +24,7 @@ namespace CalendarMate
     /// </summary>
     public partial class AddAnEventWindow : Window
     {
+        private bool ComboSelected = false;
         /// <summary>
         /// the variable that stores information about which date was chosen
         /// </summary>
@@ -35,19 +38,6 @@ namespace CalendarMate
         {
             this.EventDate = eventDay;
             InitializeComponent();
-            EventDbContext db = new EventDbContext();
-            var docs = from d in db.UserEvents
-                       where d.Day == EventDate.Day
-                       select new
-                       {
-                           Name = d.Name,
-                           Localization = d.Localization,
-                           Year = d.Year,
-                           Month = d.Month,
-                           Day = d.Day,
-                           From = d.StartTime.ToShortTimeString(),
-                           To = d.StartTime.ToShortTimeString(),
-                       };
             CreateEvent(eventDay);
         }
 
@@ -58,20 +48,23 @@ namespace CalendarMate
         /// <param name="e"></param>
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EventDbContext db1 = new EventDbContext();
-            UserEvent doctroObject = new UserEvent()
+            TimeSpan ts = new TimeSpan(RemindCombobox.SelectedIndex, 0, 0);
+            DataBaseEventDbContext db1 = new DataBaseEventDbContext();
+            DataBaseEvent1 doctroObject = new DataBaseEvent1()
             {
                 Name = EventName.Text,
                 Localization = EventLocalization.Text,
                 Year = EventDate.Year,
                 Month = EventDate.Month,
                 Day = EventDate.Day,
-                StartTime = DateTime.Parse(EventStart.Text),
-                StopTime = DateTime.Parse(EventStop.Text),
+                StartTime = EventStart.Text,
+                StopTime = EventStop.Text,
+                RemindTime = EventDate.Date + ts,
             };
-            db1.UserEvents.Add(doctroObject);
+
+            db1.DataBaseEvents1.Add(doctroObject);
             db1.SaveChanges();
-            EventDbContext db = new EventDbContext();
+            RestartWindow();
         }
 
         /// <summary>
@@ -182,7 +175,15 @@ namespace CalendarMate
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if(ComboSelected)
+            {
+                SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
+                this.RemindCombobox.Foreground = blackBrush;
+            }
+            else
+            {
+                ComboSelected = true;
+            }
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
@@ -196,6 +197,26 @@ namespace CalendarMate
             {
                 this.DragMove();
             }
+        }
+
+        private void RestartWindow()
+        {
+            SolidColorBrush grayBrush = new SolidColorBrush(Colors.Gray);
+            grayBrush.Opacity = 0.4;
+            this.EventName.Foreground = grayBrush;
+            this.EventLocalization.Foreground = grayBrush;
+            this.EventStart.Foreground = grayBrush;
+            this.EventStop.Foreground = grayBrush;
+            this.RemindCombobox.Foreground = grayBrush;
+            this.EventName.Text = "Event name";
+            this.EventLocalization.Text = "Localization";
+            this.EventStart.Text = "00:00";
+            this.EventStop.Text = "00:00";
+            this.EventStart.IsReadOnly = false;
+            this.EventStop.IsReadOnly = false;
+            this.AllDayCheckBox.IsChecked = false;
+            ComboSelected = false;
+            this.RemindCombobox.SelectedIndex = 0;
         }
 
 

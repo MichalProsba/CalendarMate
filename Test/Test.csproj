@@ -6,8 +6,4 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Event.EntityFramework\Event.EntityFramework.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -69,7 +69,7 @@
                                 <fa:ImageAwesome Icon="CalendarCheckOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
                                 <fa:FontAwesome Text="All day" FontSize="30"/>
                             </StackPanel>
-                            <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10" Background="#eee" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+                            <CheckBox x:Name="AllDayCheckBox" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10" Background="#eee" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
                                 <CheckBox.LayoutTransform>
                                     <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
                                 </CheckBox.LayoutTransform>
@@ -158,13 +158,34 @@
                                 <fa:ImageAwesome Icon="BellOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
                                 <fa:FontAwesome Text="Remind" FontSize="30"/>
                             </StackPanel>
-                            <ComboBox Padding="5" FontSize="25"  SelectedIndex="0" Background="#eee" SelectionChanged="ComboBox_SelectionChanged" BorderBrush="{x:Null}" >
+                            <ComboBox x:Name="RemindCombobox" Padding="5" FontSize="25" SelectedIndex="0" Background="#eee" SelectionChanged="ComboBox_SelectionChanged" BorderBrush="{x:Null}" ScrollViewer.VerticalScrollBarVisibility="Visible">
                                 <ComboBox.Foreground>
                                     <SolidColorBrush Color="Gray" Opacity="0.4"/>
                                 </ComboBox.Foreground>
-
                                 <ComboBoxItem FontSize="25" Background="#eee">00:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">00:30</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">01:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">02:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">03:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">04:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">05:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">06:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">07:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">08:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">09:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">10:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">11:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">12:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">13:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">14:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">15:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">16:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">17:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">18:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">19:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">20:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">21:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">22:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">23:00</ComboBoxItem>
                             </ComboBox>
 
                         </StackPanel>
