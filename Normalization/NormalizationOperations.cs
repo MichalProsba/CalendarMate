@@ -36,7 +36,7 @@ namespace Normalization
 
         public static string NormalizeHour(double secondsToAdd)
         {
-            DateTime primaryDate = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            DateTime primaryDate = new DateTime(1970, 1, 1, 0, 0, 0);
             primaryDate = primaryDate.AddSeconds(secondsToAdd);
             return primaryDate.Date.ToString("t");
             //return secondsToAdd.ToString();
