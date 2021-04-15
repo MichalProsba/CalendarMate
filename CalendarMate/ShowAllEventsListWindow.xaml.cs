@@ -119,7 +119,7 @@ namespace CalendarMate
         private void ButtonSaveChange_Click(object sender, RoutedEventArgs e)
         {
             TimeSpan ts = new TimeSpan(RemindComboboxShow.SelectedIndex, 0, 0);
-
+            DateTime date = new DateTime(int.Parse(EventYearShow.Text), int.Parse(EventMonthShow.Text), int.Parse(EventDayShow.Text));
             DataBaseEventDbContext db = new DataBaseEventDbContext();
             var r = from d in db.DataBaseEvents1
                     where d.Id == updatingEventID
@@ -135,7 +135,7 @@ namespace CalendarMate
                 obj.Day = EventDate.Day;
                 obj.StartTime = EventStartShow.Text;
                 obj.StopTime = EventStopShow.Text;
-                obj.RemindTime = EventDate.Date + ts;
+                obj.RemindTime = date.Date + ts;
                 obj.Year = int.Parse(EventYearShow.Text);
                 obj.Month = int.Parse(EventMonthShow.Text);
                 obj.Day = int.Parse(EventDayShow.Text);
@@ -276,10 +276,13 @@ namespace CalendarMate
             this.AllDayCheckBoxShow.IsEnabled = true;
             this.EventYearShow.Foreground = blackBrush;
             this.EventYearShow.Text = year.ToString();
+            this.EventYearShow.IsReadOnly = false;
             this.EventMonthShow.Foreground = blackBrush;
             this.EventMonthShow.Text = month.ToString();
+            this.EventMonthShow.IsReadOnly = false;
             this.EventDayShow.Foreground = blackBrush;
             this.EventDayShow.Text = day.ToString();
+            this.EventDayShow.IsReadOnly = false;
         }
 
         // The metod takes an id focused DataGrid row and change color of information
@@ -403,6 +406,7 @@ namespace CalendarMate
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             TimeSpan ts = new TimeSpan(RemindComboboxAdd.SelectedIndex, 0, 0);
+            DateTime date = new DateTime(int.Parse(EventYearAdd.Text), int.Parse(EventMonthAdd.Text), int.Parse(EventDayAdd.Text));
             DataBaseEventDbContext db1 = new DataBaseEventDbContext();
             DataBaseEvent1 doctroObject = new DataBaseEvent1()
             {
@@ -413,7 +417,7 @@ namespace CalendarMate
                 Day = int.Parse(EventDayAdd.Text),
                 StartTime = EventStartAdd.Text,
                 StopTime = EventStopAdd.Text,
-                RemindTime = EventDate.Date + ts,
+                RemindTime = date + ts,
             };
             db1.DataBaseEvents1.Add(doctroObject);
             db1.SaveChanges();
@@ -570,17 +574,22 @@ namespace CalendarMate
             this.EventStartAdd.Foreground = grayBrush;
             this.EventStopAdd.Foreground = grayBrush;
             this.RemindComboboxAdd.Foreground = grayBrush;
+            this.EventYearAdd.Foreground = grayBrush;
+            this.EventMonthAdd.Foreground = grayBrush;
+            this.EventDayAdd.Foreground = grayBrush;
             this.EventNameAdd.Text = "Event name";
             this.EventLocalizationAdd.Text = "Localization";
             this.EventStartAdd.Text = "00:00";
             this.EventStopAdd.Text = "00:00";
+            this.EventYearAdd.Text = EventDate.Year.ToString();
+            this.EventMonthAdd.Text = EventDate.Month.ToString();
+            this.EventDayAdd.Text = EventDate.Day.ToString(); ;
             this.EventStartAdd.IsReadOnly = false;
             this.EventStopAdd.IsReadOnly = false;
             this.AllDayCheckBoxAdd.IsChecked = false;
             ComboSelected = false;
             this.RemindComboboxAdd.SelectedIndex = 0;
         }
-
     }
 }
 
