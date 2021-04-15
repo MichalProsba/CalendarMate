@@ -47,7 +47,7 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Padding="0 6 0 0" Height="60" Grid.Column="0" FontWeight="Bold" Text="Current Weather Info" Foreground="White" FontSize="30" HorizontalAlignment="Center"/>
                                     <Button Grid.Column="1" x:Name="refreshWeather" Click="refreshWeather_Click" Height="50" BorderThickness="0" Background="#555">
-                                        <fa:ImageAwesome Icon="Refresh" Width="30" Height="30" Foreground="DodgerBlue" />
+                                        <fa:ImageAwesome Icon="Refresh" Width="30" Height="30" Foreground="DodgerBlue" Spin="True" SpinDuration="5"/>
                                     </Button>
                                 </Grid>
                             </Border>

@@ -53,8 +53,8 @@
                                     <ColumnDefinition Width="4*"/>
                                 </Grid.ColumnDefinitions>
                                 <Border  Grid.Column="0" Padding="5" Background="#666">
-                                    <Button Padding="6" x:Name="refreshWeather" Click="refreshWeather_Click" Height="60" BorderThickness="3" Background="#555">
-                                        <fa:ImageAwesome Icon="Refresh" Width="30" Height="30" Foreground="DodgerBlue" />
+                                    <Button Padding="6" x:Name="refreshWeather" Click="refreshWeather_Click" Height="60" BorderThickness="3" Background="#555" >
+                                        <fa:ImageAwesome Icon="Refresh" Width="30" Height="30" Foreground="DodgerBlue" Spin="True" SpinDuration="5"/>
                                     </Button>
                                 </Border>
                                 <Border  Grid.Column="1" Padding="5" Background="#666">

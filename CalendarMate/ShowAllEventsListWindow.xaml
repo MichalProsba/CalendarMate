@@ -11,26 +11,26 @@
         BorderBrush="Black"
         MouseDown="Window_MouseDown"
         ResizeMode="NoResize"
-        Title="ShowAllEventsListWindow" Height="765" Width="900">
+        Title="ShowAllEventsListWindow" Height="860" Width="1450">
 
     <StackPanel>
         <StackPanel  Background="#333">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="67*"/>
-                        <ColumnDefinition Width="666*"/>
-                        <ColumnDefinition Width="67*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Foreground="White" Margin="2,0,0,0" Grid.Column="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Calendar"/>
-                    <TextBlock x:Name="WindowTitle" Foreground="White" Grid.Column="1" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <Button x:Name="Close" Foreground="White" Background="#333" Width="50"  BorderThickness="0" Click="Close_Click" Grid.Column="2" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Content="X" Margin="17,0,0,0"/>
-                </Grid>
-            </StackPanel>
-
             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="67*"/>
+                    <ColumnDefinition Width="1400*"/>
+                    <ColumnDefinition Width="67*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Foreground="White" Margin="2,0,0,0" Grid.Column="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Calendar"/>
+                <TextBlock x:Name="WindowTitle" Foreground="White" Grid.Column="1" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button x:Name="Close" Foreground="White" Background="#333" Width="50"  BorderThickness="0" Click="Close_Click" Grid.Column="2" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Content="X" Margin="17,0,0,0"/>
+            </Grid>
+        </StackPanel>
+
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -40,7 +40,17 @@
 
                     <StackPanel Background="#666">
 
+                        <!-- 0 Row -->
 
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <fa:ImageAwesome Icon="Database" Width="40" Height="40" Foreground="GreenYellow" Margin="0 0 20 0" />
+                                <fa:FontAwesome Text="Add event" FontSize="40" />
+                            </StackPanel>
+                        </Grid>
 
                         <!-- 1 Row -->
 
@@ -257,49 +267,26 @@
                             </StackPanel>
                         </Grid>
 
-
-
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-
-                            <StackPanel Grid.Column="2" Margin="0 20 10 0">
-                                <Button BorderThickness="3" FontSize="25" Foreground="DodgerBlue" Background="#555" Content="Add" Click="ButtonAdd_Click"/>
-                            </StackPanel>
-                        </Grid>
                     </StackPanel>
                 </Border>
             </StackPanel>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             <StackPanel Grid.Column="1">
                 <Border Padding="20" Background="#666">
 
                     <StackPanel Background="#666">
+                        
+                        <!-- 0 Row -->
 
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <fa:ImageAwesome Icon="Exchange" Width="40" Height="40" Foreground="GreenYellow" Margin="0 0 20 0"/>
+                                <fa:FontAwesome Text="Update Event" FontSize="40" />
+                            </StackPanel>
+                        </Grid>
                         <!-- 1 Row -->
 
                         <Grid>
@@ -503,29 +490,12 @@
                             </StackPanel>
                         </Grid>
 
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" Margin="0 20 10 0">
-                                <Button BorderThickness="3" FontSize="25" Foreground="DodgerBlue" Background="#555" Content="Delete" Click="ButtonDelete_Click"/>
-                            </StackPanel>
-                            <StackPanel Grid.Column="1" Margin="0 20 0 0">
-                                <Button BorderThickness="3" FontSize="25" Foreground="DodgerBlue" Background="#555" Content="Refresh" Click="ButtonRefresh_Click"/>
-                            </StackPanel>
-                            <StackPanel Grid.Column="2" Margin="10 20 0 0">
-                                <Button BorderThickness="3" FontSize="25" Foreground="DodgerBlue" Background="#555" Content="Save Changes" Click="ButtonSaveChange_Click"/>
-                            </StackPanel>
-                        </Grid>
-                            
                     </StackPanel>
                 </Border>
             </StackPanel>
         </Grid>
         <StackPanel Background="#666">
-                <DataGrid Margin="0,20,10,0" x:Name="EventGrid" Height="135" RenderTransformOrigin="0.5,0.5" Width="758" SelectionChanged="EventGrid_SelectionChanged" GotFocus="EventGrid_GotFocus" AlternatingRowBackground="#666" CanUserAddRows="False" >
+            <DataGrid Margin="0,20,10,0" x:Name="EventGrid" Height="135" RenderTransformOrigin="0.5,0.5" Width="1400" SelectionChanged="EventGrid_SelectionChanged" GotFocus="EventGrid_GotFocus" AlternatingRowBackground="#666" CanUserAddRows="False" >
                 <DataGrid.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -536,7 +506,47 @@
                 </DataGrid.RenderTransform>
             </DataGrid>
         </StackPanel>
+
+
+        <StackPanel Background="#666">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Grid Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="20 20 10 0">
+                        <Button BorderThickness="3" FontSize="25" Foreground="DodgerBlue" Background="#555" Content="Delete" Click="ButtonDelete_Click"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="0 20 20 20">
+                        <Button BorderThickness="3" FontSize="25" Foreground="DodgerBlue" Background="#555" Content="Add" Click="ButtonAdd_Click"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="20 20 0 0">
+                        <Button BorderThickness="3" FontSize="25" Foreground="DodgerBlue" Background="#555" Content="Refresh" Click="ButtonRefresh_Click"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="10 20 20 0">
+                        <Button BorderThickness="3" FontSize="25" Foreground="DodgerBlue" Background="#555" Content="Save Changes" Click="ButtonSaveChange_Click"/>
+                    </StackPanel>
+                </Grid>
+
+
+
+            </Grid>
+        </StackPanel>
     </StackPanel>
+
 
 
 
