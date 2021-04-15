@@ -33,7 +33,6 @@ namespace CalendarMate
         CategoryAxis primaryAxis;
         NumericalAxis secondaryAxis;
 
-
         public WeatherWindow(CurrentWeatherInfoModel weather, MainWindow main)
         {
             InitializeComponent();

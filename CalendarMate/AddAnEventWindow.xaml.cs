@@ -25,9 +25,12 @@ namespace CalendarMate
     /// </summary>
     public partial class AddAnEventWindow : Window
     {
+        /// <summary>
+        /// Contains information about switching combobox
+        /// </summary>
         private bool ComboSelected = false;
         /// <summary>
-        /// the variable that stores information about which date was chosen
+        /// Contains a date selected by the user
         /// </summary>
         private DateTime EventDate;
 

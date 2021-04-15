@@ -22,6 +22,10 @@ namespace CalendarMate
     /// </summary>
     public partial class ShowAllEventsListWindow : Window
     {
+        /// <summary>
+        /// Contains information about switching combobox
+        /// </summary>
+        private bool ComboSelected = false;
         // The id number
         /// <value> Variable updatingEventID holds the current id </value>
         private int updatingEventID = 0;
@@ -37,13 +41,11 @@ namespace CalendarMate
         /// <param name="eventDay"> Contains a date selected by the user  </param>
         public ShowAllEventsListWindow(DateTime eventDay)
         {
-            
                 this.EventDate = eventDay;
                 InitializeComponent();
                 SetGrayForeground();
                 UpdateGrid();
                 CreateEvent(eventDay);
-
         }
 
         // The metod displays a selected DataGrid section in other TextBoxs
@@ -70,7 +72,7 @@ namespace CalendarMate
                             select d;
                     foreach (var item in r)
                     {
-                        SetBlackForeground(item.Name, item.Localization, item.StartTime, item.StopTime, item.RemindTime.Hour);
+                        SetBlackForeground(item.Name, item.Localization, item.StartTime, item.StopTime, item.RemindTime.Hour, item.Year, item.Month, item.Day);
                     }
                 }
             }
@@ -116,7 +118,7 @@ namespace CalendarMate
         /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void ButtonSaveChange_Click(object sender, RoutedEventArgs e)
         {
-            TimeSpan ts = new TimeSpan(RemindCombobox.SelectedIndex, 0, 0);
+            TimeSpan ts = new TimeSpan(RemindComboboxShow.SelectedIndex, 0, 0);
 
             DataBaseEventDbContext db = new DataBaseEventDbContext();
             var r = from d in db.DataBaseEvents1
@@ -134,6 +136,9 @@ namespace CalendarMate
                 obj.StartTime = EventStartShow.Text;
                 obj.StopTime = EventStopShow.Text;
                 obj.RemindTime = EventDate.Date + ts;
+                obj.Year = int.Parse(EventYearShow.Text);
+                obj.Month = int.Parse(EventMonthShow.Text);
+                obj.Day = int.Parse(EventDayShow.Text);
             }
             db.SaveChanges();
             UpdateGrid();
@@ -223,10 +228,19 @@ namespace CalendarMate
             this.EventStopShow.Foreground = grayBrush;
             this.EventStopShow.Text = "00:00";
             this.EventStopShow.IsReadOnly = true;
-            this.RemindCombobox.Foreground = grayBrush;
-            this.RemindCombobox.SelectedIndex = 0;
-            this.AllDayCheckBox.IsChecked = false;
-            this.AllDayCheckBox.IsEnabled = false;
+            this.RemindComboboxShow.Foreground = grayBrush;
+            this.RemindComboboxShow.SelectedIndex = 0;
+            this.AllDayCheckBoxShow.IsChecked = false;
+            this.AllDayCheckBoxShow.IsEnabled = false;
+            this.EventYearShow.Foreground = grayBrush;
+            this.EventYearShow.Text = EventDate.Date.Year.ToString();
+            this.EventYearShow.IsReadOnly = true;
+            this.EventMonthShow.Foreground = grayBrush;
+            this.EventMonthShow.Text = EventDate.Date.Month.ToString();
+            this.EventMonthShow.IsReadOnly = true;
+            this.EventDayShow.Foreground = grayBrush;
+            this.EventDayShow.Text = EventDate.Date.Day.ToString();
+            this.EventDayShow.IsReadOnly = true;
         }
 
         // The metod change the appearance of the elements to be active
@@ -238,7 +252,10 @@ namespace CalendarMate
         /// <param name="start"> Contains selected time to start event </param>
         /// <param name="stop"> Contains selected end time event </param>
         /// <param name="remind_hour"> Contains selected remind hour event</param>
-        private void SetBlackForeground(string name, string localization, string start, string stop, int remind_hour)
+        /// <param name="year"> Contains selected year </param>
+        /// <param name="month"> Contains selected month </param>
+        /// <param name="day"> Contains selected day </param>
+        private void SetBlackForeground(string name, string localization, string start, string stop, int remind_hour, int year, int month, int day)
         {
             SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
             blackBrush.Opacity = 0.9;
@@ -254,9 +271,15 @@ namespace CalendarMate
             this.EventStopShow.Foreground = blackBrush;
             this.EventStopShow.Text = stop;
             this.EventStopShow.IsReadOnly = false;
-            this.RemindCombobox.Foreground = blackBrush;
-            this.RemindCombobox.SelectedIndex = remind_hour;
-            this.AllDayCheckBox.IsEnabled = true;
+            this.RemindComboboxShow.Foreground = blackBrush;
+            this.RemindComboboxShow.SelectedIndex = remind_hour;
+            this.AllDayCheckBoxShow.IsEnabled = true;
+            this.EventYearShow.Foreground = blackBrush;
+            this.EventYearShow.Text = year.ToString();
+            this.EventMonthShow.Foreground = blackBrush;
+            this.EventMonthShow.Text = month.ToString();
+            this.EventDayShow.Foreground = blackBrush;
+            this.EventDayShow.Text = day.ToString();
         }
 
         // The metod takes an id focused DataGrid row and change color of information
@@ -283,7 +306,7 @@ namespace CalendarMate
                             select d;
                     foreach (var item in r)
                     {
-                        SetBlackForeground(item.Name, item.Localization, item.StartTime, item.StopTime, item.RemindTime.Hour);
+                        SetBlackForeground(item.Name, item.Localization, item.StartTime, item.StopTime, item.RemindTime.Hour, item.Year, item.Month, item.Day);
                     }
                 }
             }
@@ -318,7 +341,7 @@ namespace CalendarMate
         /// </summary>
         /// <param name="sender"> Contains a reference to the object that triggered the event </param>
         /// <param name="e"> Contains state information and event data associated with a routed event  </param>
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        private void CheckBox_Checked_Show(object sender, RoutedEventArgs e)
         {
             SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
             blackBrush.Opacity = 0.9;
@@ -336,13 +359,228 @@ namespace CalendarMate
         /// </summary>
         /// <param name="sender"> Contains a reference to the object that triggered the event </param>
         /// <param name="e"> Contains state information and event data associated with a routed event  </param>
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        private void CheckBox_Unchecked_Show(object sender, RoutedEventArgs e)
         {
             this.EventStartShow.Text = "00:00";
             this.EventStopShow.Text = "00:00";
             this.EventStartShow.IsReadOnly = false;
             this.EventStopShow.IsReadOnly = false;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // The metod save information to the database
+        /// <summary>
+        /// The metod save information to the database
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            TimeSpan ts = new TimeSpan(RemindComboboxAdd.SelectedIndex, 0, 0);
+            DataBaseEventDbContext db1 = new DataBaseEventDbContext();
+            DataBaseEvent1 doctroObject = new DataBaseEvent1()
+            {
+                Name = EventNameAdd.Text,
+                Localization = EventLocalizationAdd.Text,
+                Year = int.Parse(EventYearAdd.Text),
+                Month = int.Parse(EventMonthAdd.Text),
+                Day = int.Parse(EventDayAdd.Text),
+                StartTime = EventStartAdd.Text,
+                StopTime = EventStopAdd.Text,
+                RemindTime = EventDate.Date + ts,
+            };
+            db1.DataBaseEvents1.Add(doctroObject);
+            db1.SaveChanges();
+            RestartWindow();
+        }
+
+        // The method change the appearance of focused textboxes 
+        /// <summary>
+        /// The method change the appearance of focused textboxes 
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
+            blackBrush.Opacity = 0.9;
+            TextBox tb = (TextBox)sender;
+            if (tb.Foreground.Opacity != blackBrush.Opacity)
+            {
+                if (tb.IsReadOnly != true)
+                {
+                    tb.Foreground = blackBrush;
+                    tb.Text = "";
+                }
+            }
+        }
+
+        // The metod changes the appearance of lost focused textboxes 
+        /// <summary>
+        /// The metod changes the appearance of lost focused textboxes 
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text == "")
+            {
+                if (tb.Name == "EventNameAdd")
+                {
+                    SolidColorBrush grayBrush = new SolidColorBrush(Colors.Gray);
+                    grayBrush.Opacity = 0.4;
+                    tb.Foreground = grayBrush;
+                    tb.Text = "Event name";
+                }
+                else if (tb.Name == "EventLocalizationAdd")
+                {
+                    SolidColorBrush grayBrush = new SolidColorBrush(Colors.Gray);
+                    grayBrush.Opacity = 0.4;
+                    tb.Foreground = grayBrush;
+                    tb.Text = "Localization";
+                }
+                else if (tb.Name == "EventStartAdd")
+                {
+                    SolidColorBrush grayBrush = new SolidColorBrush(Colors.Gray);
+                    grayBrush.Opacity = 0.4;
+                    tb.Foreground = grayBrush;
+                    tb.Text = "00:00";
+                }
+                else if (tb.Name == "EventStopAdd")
+                {
+                    SolidColorBrush grayBrush = new SolidColorBrush(Colors.Gray);
+                    grayBrush.Opacity = 0.4;
+                    tb.Foreground = grayBrush;
+                    tb.Text = "00:00";
+                }
+                else if (tb.Name == "EventYearAdd")
+                {
+                    SolidColorBrush grayBrush = new SolidColorBrush(Colors.Gray);
+                    grayBrush.Opacity = 0.4;
+                    tb.Foreground = grayBrush;
+                    tb.Text = EventDate.Date.Year.ToString();
+                }
+                else if (tb.Name == "EventMonthAdd")
+                {
+                    SolidColorBrush grayBrush = new SolidColorBrush(Colors.Gray);
+                    grayBrush.Opacity = 0.4;
+                    tb.Foreground = grayBrush;
+                    tb.Text = EventDate.Date.Month.ToString();
+                }
+                else if (tb.Name == "EventDayAdd")
+                {
+                    SolidColorBrush grayBrush = new SolidColorBrush(Colors.Gray);
+                    grayBrush.Opacity = 0.4;
+                    tb.Foreground = grayBrush;
+                    tb.Text = EventDate.Date.Day.ToString();
+                }
+            }
+        }
+
+        /// <summary>
+        /// CheckBox_Checked is an event which set default time for all day
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
+        private void CheckBox_Checked_Add(object sender, RoutedEventArgs e)
+        {
+            SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
+            blackBrush.Opacity = 0.9;
+            this.EventStartAdd.Foreground = blackBrush;
+            this.EventStopAdd.Foreground = blackBrush;
+            this.EventStartAdd.Text = "00:00";
+            this.EventStopAdd.Text = "23:59";
+            this.EventStartAdd.IsReadOnly = true;
+            this.EventStopAdd.IsReadOnly = true;
+        }
+
+        /// <summary>
+        /// CheckBox_Checked is an event which set default time for none
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
+        private void CheckBox_Unchecked_Add(object sender, RoutedEventArgs e)
+        {
+            SolidColorBrush grayBrush = new SolidColorBrush(Colors.Gray);
+            grayBrush.Opacity = 0.4;
+            this.EventStartAdd.Foreground = grayBrush;
+            this.EventStopAdd.Foreground = grayBrush;
+            this.EventStartAdd.Text = "00:00";
+            this.EventStopAdd.Text = "00:00";
+            this.EventStartAdd.IsReadOnly = false;
+            this.EventStopAdd.IsReadOnly = false;
+        }
+
+        // The method change combox appearance 
+        /// <summary>
+        /// The method change combox appearance 
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ComboSelected)
+            {
+                SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
+                this.RemindComboboxAdd.Foreground = blackBrush;
+            }
+            else
+            {
+                ComboSelected = true;
+            }
+        }
+
+        // Method restart window
+        /// <summary>
+        /// Method restart window
+        /// </summary>
+        private void RestartWindow()
+        {
+            SolidColorBrush grayBrush = new SolidColorBrush(Colors.Gray);
+            grayBrush.Opacity = 0.4;
+            this.EventNameAdd.Foreground = grayBrush;
+            this.EventLocalizationAdd.Foreground = grayBrush;
+            this.EventStartAdd.Foreground = grayBrush;
+            this.EventStopAdd.Foreground = grayBrush;
+            this.RemindComboboxAdd.Foreground = grayBrush;
+            this.EventNameAdd.Text = "Event name";
+            this.EventLocalizationAdd.Text = "Localization";
+            this.EventStartAdd.Text = "00:00";
+            this.EventStopAdd.Text = "00:00";
+            this.EventStartAdd.IsReadOnly = false;
+            this.EventStopAdd.IsReadOnly = false;
+            this.AllDayCheckBoxAdd.IsChecked = false;
+            ComboSelected = false;
+            this.RemindComboboxAdd.SelectedIndex = 0;
+        }
+
     }
 }
 

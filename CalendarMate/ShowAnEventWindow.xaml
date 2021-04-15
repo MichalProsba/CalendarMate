@@ -11,7 +11,7 @@
         BorderBrush="Black"
         MouseDown="Window_MouseDown"
         ResizeMode="NoResize"
-        Title="ShowAnEventWindow" Height="625" Width="800">
+        Title="ShowAnEventWindow" Height="645" Width="800">
 
 
     <StackPanel Background="#666">
@@ -143,7 +143,7 @@
                         </StackPanel>
                     </Grid>
 
-                    <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                    <StackPanel Grid.Column="0" Margin="0 10 10 0">
                         <StackPanel Orientation="Horizontal">
                             <fa:ImageAwesome Icon="BellOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
                             <fa:FontAwesome Text="Remind" FontSize="30"/>
