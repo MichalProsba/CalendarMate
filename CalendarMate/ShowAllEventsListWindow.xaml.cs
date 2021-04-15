@@ -17,11 +17,10 @@ using System.Windows.Shapes;
 
 namespace CalendarMate
 {
-    // The ShowAnEventWindow class containes window mechanics displaying events from data base
     /// <summary>
-    /// The <c> ShowAnEventWindow </c> class
+    /// Logika interakcji dla klasy ShowAllEventsListWindow.xaml
     /// </summary>
-    public partial class ShowAnEventWindow : Window
+    public partial class ShowAllEventsListWindow : Window
     {
         // The id number
         /// <value> Variable updatingEventID holds the current id </value>
@@ -36,13 +35,14 @@ namespace CalendarMate
         /// The ShowAnEventWindow Constructor 
         /// </summary>
         /// <param name="eventDay"> Contains a date selected by the user  </param>
-        public ShowAnEventWindow(DateTime eventDay)
+        public ShowAllEventsListWindow(DateTime eventDay)
         {
-            this.EventDate = eventDay;
-            InitializeComponent();
-            SetGrayForeground();
-            UpdateGrid();
-            CreateEvent(eventDay);
+            
+                this.EventDate = eventDay;
+                InitializeComponent();
+                SetGrayForeground();
+                UpdateGrid();
+                CreateEvent(eventDay);
 
         }
 
@@ -297,19 +297,18 @@ namespace CalendarMate
         {
             DataBaseEventDbContext db = new DataBaseEventDbContext();
             var docs = from d in db.DataBaseEvents1
-                       where d.Day == EventDate.Day && d.Month == EventDate.Month && d.Year == EventDate.Year
-                       select new
-                       {
-                           Nr = d.Id,
-                           Name = d.Name,
-                           Localization = d.Localization,
-                           Year = d.Year,
-                           Month = d.Month,
-                           Day = d.Day,
-                           From = d.StartTime,
-                           To = d.StopTime,
-                           Remind = d.RemindTime,
-                       };
+                        select new
+                        {
+                            Nr = d.Id,
+                            Name = d.Name,
+                            Localization = d.Localization,
+                            Year = d.Year,
+                            Month = d.Month,
+                            Day = d.Day,
+                            From = d.StartTime,
+                            To = d.StopTime,
+                            Remind = d.RemindTime,
+                        };
             this.EventGrid.ItemsSource = docs.ToList();
         }
 
@@ -346,3 +345,4 @@ namespace CalendarMate
         }
     }
 }
+

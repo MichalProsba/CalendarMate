@@ -24,9 +24,9 @@ namespace CalendarMate
     public partial class MainWindow : Window
     {
         private CalendarDate Current_calendar_data = new CalendarDate();
-
         private List<Button> button_list_of_day = new List<Button>();
         private CurrentWeatherInfoModel currentWeather;
+        private DateTime Current_data;
         public List<Button> Button_list_of_day
         {
             get
@@ -56,6 +56,7 @@ namespace CalendarMate
         public MainWindow()
         {
             Current_calendar_data = new CalendarDate();
+            Current_data = DateTime.Today;
             InitializeComponent();
             GenerateCurrentTime();
             GenerateDayPanel();
@@ -80,7 +81,6 @@ namespace CalendarMate
 
             foreach (Button i in Button_list_of_day)
             {
-
                 i.Name = "Button_" + (number_of_day + 1).ToString();
                 i.Click += new RoutedEventHandler(Day_Click);
                 i.Background = Brushes.DarkGray;
@@ -117,6 +117,11 @@ namespace CalendarMate
                     column = 0;
                 }
                 number_of_day++;
+            }
+
+            if (Current_data.Year == Current_calendar_data.Date.Year && Current_data.Month == Current_calendar_data.Date.Month)
+            {
+                Button_list_of_day[Current_data.Day-1].Background = Brushes.YellowGreen;
             }
 
             foreach (Button i in Button_list_of_day)
@@ -195,37 +200,43 @@ namespace CalendarMate
             AddAnEventWindow oneDay = new AddAnEventWindow(Current_calendar_data.Date);
             oneDay.ShowDialog();
         }
+        private void EventList_Click(object sender, RoutedEventArgs e)
+        {
+            ShowAllEventsListWindow eventList = new ShowAllEventsListWindow(Current_data);
+            eventList.ShowDialog();
+        }
+
+        private void EventToDoList_Click(object sender, RoutedEventArgs e)
+        {
+            ShowToDoListWindow eventList = new ShowToDoListWindow();
+            eventList.ShowDialog();
+        }
         private void CloseMainWindow_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
         private void Calendar_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
         {
             RemoveDayPanel();
             Current_calendar_data.AddMonths(1);
             GenerateDayPanel();
         }
-
         private void Calendar_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             RemoveDayPanel();
             Current_calendar_data.AddMonths(-1);
             GenerateDayPanel();
         }
-
         private void CurrentWeather_Click(object sender, RoutedEventArgs e)
         {
             WeatherWindow weatherWindow = new WeatherWindow(currentWeather, this);
             weatherWindow.ShowDialog();
         }
-
         private void currentCity_Click(object sender, RoutedEventArgs e)
         {
             CurrentCityWindow currentCityWindow = new CurrentCityWindow();
             currentCityWindow.ShowDialog();
         }
-
         private void refreshWeather_Click(object sender, RoutedEventArgs e)
         {
             LoadCurrentWeather();
