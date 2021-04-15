@@ -116,27 +116,46 @@ namespace CalendarMate
         /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void ButtonSaveChange_Click(object sender, RoutedEventArgs e)
         {
-            TimeSpan ts = new TimeSpan(RemindCombobox.SelectedIndex, 0, 0);
-
-            DataBaseEventDbContext db = new DataBaseEventDbContext();
-            var r = from d in db.DataBaseEvents1
-                    where d.Id == updatingEventID
-                    select d;
-
-            DataBaseEvent1 obj = r.SingleOrDefault();
-            if (obj != null)
+            string input1 = EventStartShow.Text;
+            string input2 = EventStopShow.Text;
+            DateTime time1;
+            DateTime time2;
+            if (DateTime.TryParse(input1, out time1) && DateTime.TryParse(input2, out time2))
             {
-                obj.Name = EventNameShow.Text;
-                obj.Localization = EventLocalizationShow.Text;
-                obj.Year = EventDate.Year;
-                obj.Month = EventDate.Month;
-                obj.Day = EventDate.Day;
-                obj.StartTime = EventStartShow.Text;
-                obj.StopTime = EventStopShow.Text;
-                obj.RemindTime = EventDate.Date + ts;
+                if (DateTime.Compare(time1, time2) < 0)
+                {
+                    TimeSpan ts = new TimeSpan(RemindCombobox.SelectedIndex, 0, 0);
+                    DataBaseEventDbContext db = new DataBaseEventDbContext();
+                    var r = from d in db.DataBaseEvents1
+                            where d.Id == updatingEventID
+                            select d;
+
+                    DataBaseEvent1 obj = r.SingleOrDefault();
+                    if (obj != null)
+                    {
+                        obj.Name = EventNameShow.Text;
+                        obj.Localization = EventLocalizationShow.Text;
+                        obj.Year = EventDate.Year;
+                        obj.Month = EventDate.Month;
+                        obj.Day = EventDate.Day;
+                        obj.StartTime = EventStartShow.Text;
+                        obj.StopTime = EventStopShow.Text;
+                        obj.RemindTime = EventDate.Date + ts;
+                    }
+                    db.SaveChanges();
+                    UpdateGrid();
+                }
+                else
+                {
+                    MessageBox.Show("Please corect you information?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    SetGrayForeground();
+                }
             }
-            db.SaveChanges();
-            UpdateGrid();
+            else
+            {
+                MessageBox.Show("Please corect you information?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                SetGrayForeground();
+            }
         }
 
         // The method changes the title of the window
