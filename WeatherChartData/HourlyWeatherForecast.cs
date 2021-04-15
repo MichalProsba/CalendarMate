@@ -52,8 +52,8 @@ namespace WeatherChartData
             foreach (var item in dailyForecastSource.Hourly)
             {
                 string requiredDate = NormalizationOperations.NormalizeDate(dailyForecastSource.Hourly[i].Dt);
-                temperature.Add(new TempForecastData(dailyForecastSource.Hourly[i].Temp, requiredDate));
-                apparentTemperature.Add(new TempForecastData(dailyForecastSource.Hourly[i].Feels_like, requiredDate));
+                temperature.Add(new TempForecastData(NormalizationOperations.NormalizeTemperature(dailyForecastSource.Hourly[i].Temp), requiredDate));
+                apparentTemperature.Add(new TempForecastData(NormalizationOperations.NormalizeTemperature(dailyForecastSource.Hourly[i].Feels_like), requiredDate));
                 humidity.Add(new HumidityForecastData(dailyForecastSource.Hourly[i].Humidity, requiredDate));
                 pressure.Add(new PressureForecastData(dailyForecastSource.Hourly[i].Pressure, requiredDate));
                 windSpeed.Add(new WindSpeedForecastData(dailyForecastSource.Hourly[i].Wind_speed, requiredDate));
