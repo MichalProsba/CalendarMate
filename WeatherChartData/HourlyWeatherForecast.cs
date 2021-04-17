@@ -60,7 +60,7 @@ namespace WeatherChartData
             foreach (var item in dailyForecastSource.Hourly)
             {
                 now = now.AddHours(i);
-                string requiredHour = now.Hour.ToString();
+                string requiredHour = now.Hour.ToString() + ":00";
                 temperature.Add(new TempForecastData(NormalizationOperations.NormalizeTemperature(dailyForecastSource.Hourly[i].Temp), requiredHour));
                 apparentTemperature.Add(new TempForecastData(NormalizationOperations.NormalizeTemperature(dailyForecastSource.Hourly[i].Feels_like), requiredHour));
                 humidity.Add(new HumidityForecastData(dailyForecastSource.Hourly[i].Humidity, requiredHour));
