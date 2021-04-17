@@ -11,7 +11,7 @@
         BorderBrush="Black"
         MouseDown="Window_MouseDown"
         ResizeMode="NoResize"
-        Title="ShowAllEventsListWindow" Height="860" Width="1450">
+        Title="ShowAllEventsListWindow" Height="980" Width="1450">
 
     <StackPanel>
         <StackPanel  Background="#333">
@@ -495,7 +495,7 @@
             </StackPanel>
         </Grid>
         <StackPanel Background="#666">
-            <DataGrid Margin="0,20,10,0" x:Name="EventGrid" Height="135" RenderTransformOrigin="0.5,0.5" Width="1400" SelectionChanged="EventGrid_SelectionChanged" GotFocus="EventGrid_GotFocus" AlternatingRowBackground="#666" CanUserAddRows="False" >
+            <DataGrid Margin="0,20,10,0" x:Name="EventGrid" Height="260" RenderTransformOrigin="0.5,0.5" Width="1400" SelectionChanged="EventGrid_SelectionChanged" GotFocus="EventGrid_GotFocus" AlternatingRowBackground="#666" CanUserAddRows="False" >
                 <DataGrid.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>

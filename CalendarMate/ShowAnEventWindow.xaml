@@ -11,7 +11,7 @@
         BorderBrush="Black"
         MouseDown="Window_MouseDown"
         ResizeMode="NoResize"
-        Title="ShowAnEventWindow" Height="645" Width="800">
+        Title="ShowAnEventWindow" Height="645" Width="1400">
 
 
     <StackPanel Background="#666">
@@ -27,7 +27,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock Foreground="White" Margin="2,0,0,0" Grid.Column="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Calendar"/>
                 <TextBlock x:Name="WindowTitle" Foreground="White" Grid.Column="1" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Button x:Name="Close" Foreground="White" Background="#333" Width="50"  BorderThickness="0" Click="Close_Click" Grid.Column="2" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Content="X" Margin="17,0,0,0"/>
+                <Button x:Name="Close" Foreground="White" Background="#333" Width="50"  BorderThickness="0" Click="Close_Click" Grid.Column="2" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Center" Content="X" Margin="17,0,0,0"/>
             </Grid>
         </StackPanel>
 
@@ -180,7 +180,7 @@
 
                     </StackPanel>
 
-                    <DataGrid Margin="0,20,10,0" x:Name="EventGrid" Height="135" RenderTransformOrigin="0.5,0.5" Width="758" SelectionChanged="EventGrid_SelectionChanged" GotFocus="EventGrid_GotFocus" AlternatingRowBackground="#666" CanUserAddRows="False" >
+                    <DataGrid Margin="0,20,10,0" x:Name="EventGrid" Height="135" RenderTransformOrigin="0.5,0.5" SelectionChanged="EventGrid_SelectionChanged" GotFocus="EventGrid_GotFocus" AlternatingRowBackground="#666" CanUserAddRows="False" >
                         <DataGrid.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -190,6 +190,7 @@
                             </TransformGroup>
                         </DataGrid.RenderTransform>
                     </DataGrid>
+                    
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -213,3 +214,5 @@
         </StackPanel>
     </StackPanel>
 </Window>
+
+    
