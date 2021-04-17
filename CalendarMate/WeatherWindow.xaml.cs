@@ -18,21 +18,57 @@ using Normalization;
 
 namespace CalendarMate
 {
+    // The WeatherWindow class containes methods and variables necessary to create and manage the Weather Window
+    /// <summary>
+    /// The <c>WeatherWindow</c> class.
+    /// Containes methods and variables necessary to create and manage the Weather Window.
+    /// </summary>
     public partial class WeatherWindow : Window
     {
+        // The current weather
+        /// <value>Gets and Sets the current weather information.</value>
         private CurrentWeatherInfoModel currentWeather;
+
+        // The daily weather
+        /// <value>Gets and Sets the daily weather information.</value>
         private DailyWeatherInfoModel dailyWeather;
+
+        // The hourly weather
+        /// <value>Gets and Sets the hourly weather information.</value>
         private HourlyWeatherInfoModel hourlyWeather;
 
+        // MainWindow object to store the reference to our main window
+        /// <summary>
+        /// MainWindow object to store the reference to our main window.
+        /// </summary>
         MainWindow mainWindow;
 
+        // A bool value that containes the current displayed forecast type
         // false = 7 day forecast, true = 48 hour forecast
+        /// <summary>
+        /// A bool value that containes the current displayed forecast type .
+        /// false = 7 day forecast, true = 48 hour forecast.
+        /// </summary>
         private bool forecastType = false;
 
-        // Axis
+        // CategoryAxis object to store the x axis information
+        /// <summary>
+        /// CategoryAxis object to store the x axis information.
+        /// </summary>
         CategoryAxis primaryAxis;
+
+        // NumericalAxis object to store the y axis information
+        /// <summary>
+        /// NumericalAxis object to store the y axis information.
+        /// </summary>
         NumericalAxis secondaryAxis;
 
+        // The WeatherWindow constructor
+        /// <summary>
+        /// The WeatherWindow constructor. 
+        /// </summary>
+        /// <param name="weather">CurrentWeatherInfoModel object containing current weather information.</param>
+        /// <param name="main">MainWindow object cotaining the reference to our main window.</param>
         public WeatherWindow(CurrentWeatherInfoModel weather, MainWindow main)
         {
             InitializeComponent();
@@ -45,6 +81,10 @@ namespace CalendarMate
             LoadDayilyTemperatureChart();
         }
 
+        // Loads the current weather
+        /// <summary>
+        /// Loads the current weather.
+        /// </summary>
         private async void LoadCurrentWeather()
         {
             mainWindow.LoadCurrentWeather();
@@ -71,7 +111,10 @@ namespace CalendarMate
             CurrentWindSpeed.Text = "Wind speed: " + currentWeather.Wind.Speed.ToString() + " m/s";
         }
 
-
+        // Sets the charts style
+        /// <summary>
+        /// Sets the charts style.
+        /// </summary>
         private void SetChartStyle()
         {
             // Legend Style
@@ -112,6 +155,10 @@ namespace CalendarMate
             WeatherChart.SecondaryAxis = secondaryAxis;
         }
 
+        // Loads the daily temperature chart
+        /// <summary>
+        /// Loads the daily temperature chart.
+        /// </summary>
         private async void LoadDayilyTemperatureChart()
         {
             sevenDayForecast.IsEnabled = false;
@@ -202,6 +249,10 @@ namespace CalendarMate
             WeatherChart.Series.Add(seriesNight);
         }
 
+        // Loads the daily apparent temperature chart
+        /// <summary>
+        /// Loads the daily apparent temperature chart.
+        /// </summary>
         private async void LoadDayilyApparentTemperatureChart()
         {
             dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather();
@@ -288,6 +339,10 @@ namespace CalendarMate
             WeatherChart.Series.Add(seriesNight);
         }
 
+        // Loads the daily humidity chart
+        /// <summary>
+        /// Loads the daily humidity chart.
+        /// </summary>
         private async void LoadDayilyHumidityChart()
         {
             dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather();
@@ -339,6 +394,10 @@ namespace CalendarMate
             WeatherChart.Series.Add(seriesHumidity);
         }
 
+        // Loads the daily pressure chart
+        /// <summary>
+        /// Loads the daily pressure chart.
+        /// </summary>
         private async void LoadDayilyPressureChart()
         {
             dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather();
@@ -390,6 +449,10 @@ namespace CalendarMate
             WeatherChart.Series.Add(seriesPressure);
         }
 
+        // Loads the daily wind speed chart
+        /// <summary>
+        /// Loads the daily wind speed chart.
+        /// </summary>
         private async void LoadDayilyWindSpeedChart()
         {
             dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather();
@@ -441,6 +504,10 @@ namespace CalendarMate
             WeatherChart.Series.Add(seriesWindSpeed);
         }
 
+        // Loads the hourly temperature chart
+        /// <summary>
+        /// Loads the hourly temperature chart.
+        /// </summary>
         private async void LoadHourlyTemperatureChart()
         {
             hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather();
@@ -483,6 +550,10 @@ namespace CalendarMate
             WeatherChart.Series.Add(seriesTemperature);
         }
 
+        // Loads the hourly apparent temperature chart
+        /// <summary>
+        /// Loads the hourly apparent temperature chart.
+        /// </summary>
         private async void LoadHourlyApparentTemperatureChart()
         {
             hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather();
@@ -524,6 +595,10 @@ namespace CalendarMate
             WeatherChart.Series.Add(seriesApparentTemperature);
         }
 
+        // Loads the hourly humidity chart
+        /// <summary>
+        /// Loads the hourly humidity chart
+        /// </summary>
         private async void LoadHourlyHumidityChart()
         {
             hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather();
@@ -565,6 +640,10 @@ namespace CalendarMate
             WeatherChart.Series.Add(seriesHumidity);
         }
 
+        // Loads the hourly pressure chart
+        /// <summary>
+        /// Loads the hourly pressure chart.
+        /// </summary>
         private async void LoadHourlyPressureChart()
         {
             hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather();
@@ -606,6 +685,10 @@ namespace CalendarMate
             WeatherChart.Series.Add(seriesPressure);
         }
 
+        // Loads the hourly wind speed chart
+        /// <summary>
+        /// Loads the hourly wind speed chart.
+        /// </summary>
         private async void LoadHourlyWindSpeedChart()
         {
             hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather();
@@ -647,11 +730,23 @@ namespace CalendarMate
             WeatherChart.Series.Add(seriesWindSpeed);
         }
 
+        // Closes the current window
+        /// <summary>
+        /// Closes the current window.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        // Alows to drag the current window
+        /// <summary>
+        /// Alows to drag the current window .
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -660,6 +755,12 @@ namespace CalendarMate
             }
         }
 
+        // Changes current chart to seven day temperature forecast chart
+        /// <summary>
+        /// Changes current chart to seven day temperature forecast chart.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void sevenDayForecast_Click(object sender, RoutedEventArgs e)
         {
             sevenDayForecast.IsEnabled = false;
@@ -675,6 +776,12 @@ namespace CalendarMate
             forecastType = false;
         }
 
+        // Changes current chart to daily or hourly (depending on the forecastType value) temperature forecast chart
+        /// <summary>
+        /// Changes current chart to daily or hourly (depending on the <c>forecastType</c> value) temperature forecast chart.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void temperatureForecast_Click(object sender, RoutedEventArgs e)
         {
             temperatureForecast.IsEnabled = false;
@@ -692,6 +799,12 @@ namespace CalendarMate
             }       
         }
 
+        // Changes current chart to daily or hourly (depending on the forecastType value) apparent temperature forecast chart
+        /// <summary>
+        /// Changes current chart to daily or hourly (depending on the <c>forecastType</c> value) apparent temperature forecast chart.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void apparentTemperatureForecast_Click(object sender, RoutedEventArgs e)
         {
             temperatureForecast.IsEnabled = true;
@@ -709,6 +822,12 @@ namespace CalendarMate
             }
         }
 
+        // Changes current chart to daily or hourly (depending on the forecastType value) humidity forecast chart
+        /// <summary>
+        /// Changes current chart to daily or hourly (depending on the <c>forecastType</c> value) humidity forecast chart.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void humidityForecast_Click(object sender, RoutedEventArgs e)
         {
             temperatureForecast.IsEnabled = true;
@@ -726,6 +845,12 @@ namespace CalendarMate
             }
         }
 
+        // Changes current chart to daily or hourly (depending on the forecastType value) pressure forecast chart
+        /// <summary>
+        /// Changes current chart to daily or hourly (depending on the <c>forecastType</c> value) pressure forecast chart.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pressureForecast_Click(object sender, RoutedEventArgs e)
         {
             temperatureForecast.IsEnabled = true;
@@ -743,6 +868,12 @@ namespace CalendarMate
             }
         }
 
+        // Changes current chart to daily or hourly (depending on the forecastType value) wind speed forecast chart
+        /// <summary>
+        /// Changes current chart to daily or hourly (depending on the <c>forecastType</c> value) wind speed forecast chart.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void windSpeedForecast_Click(object sender, RoutedEventArgs e)
         {
             temperatureForecast.IsEnabled = true;
@@ -760,6 +891,12 @@ namespace CalendarMate
             }
         }
 
+        // Changes current chart to 48 hour temperature forecast chart
+        /// <summary>
+        /// Changes current chart to 48 hour temperature forecast chart.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void fourtyEightHourForecast_Click(object sender, RoutedEventArgs e)
         {
             sevenDayForecast.IsEnabled = true;
@@ -775,6 +912,12 @@ namespace CalendarMate
             forecastType = true;
         }
 
+        // Refreshes the current weather
+        /// <summary>
+        /// Refreshes the current weather.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void refreshWeather_Click(object sender, RoutedEventArgs e)
         {
             LoadCurrentWeather();

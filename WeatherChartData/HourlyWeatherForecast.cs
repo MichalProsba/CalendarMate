@@ -15,6 +15,12 @@ namespace WeatherChartData
     /// </summary>
     public class HourlyWeatherForecast
     {
+        // DateTime object to store the current date and time
+        /// <summary>
+        /// DateTime object to store the current date and time.
+        /// </summary>
+        DateTime now;
+
         // The hourly temperature forecast
         /// <value>Gets and sets the hourly temperature forecast list value.</value>
         public List<TempForecastData> temperature { get; set; }
@@ -48,15 +54,18 @@ namespace WeatherChartData
             pressure = new List<PressureForecastData>();
             windSpeed = new List<WindSpeedForecastData>();
 
+            now = DateTime.Now;
+
             int i = 0;
             foreach (var item in dailyForecastSource.Hourly)
             {
-                string requiredDate = NormalizationOperations.NormalizeHour(dailyForecastSource.Hourly[i].Dt);
-                temperature.Add(new TempForecastData(NormalizationOperations.NormalizeTemperature(dailyForecastSource.Hourly[i].Temp), requiredDate));
-                apparentTemperature.Add(new TempForecastData(NormalizationOperations.NormalizeTemperature(dailyForecastSource.Hourly[i].Feels_like), requiredDate));
-                humidity.Add(new HumidityForecastData(dailyForecastSource.Hourly[i].Humidity, requiredDate));
-                pressure.Add(new PressureForecastData(dailyForecastSource.Hourly[i].Pressure, requiredDate));
-                windSpeed.Add(new WindSpeedForecastData(dailyForecastSource.Hourly[i].Wind_speed, requiredDate));
+                now = now.AddHours(i);
+                string requiredHour = now.Hour.ToString();
+                temperature.Add(new TempForecastData(NormalizationOperations.NormalizeTemperature(dailyForecastSource.Hourly[i].Temp), requiredHour));
+                apparentTemperature.Add(new TempForecastData(NormalizationOperations.NormalizeTemperature(dailyForecastSource.Hourly[i].Feels_like), requiredHour));
+                humidity.Add(new HumidityForecastData(dailyForecastSource.Hourly[i].Humidity, requiredHour));
+                pressure.Add(new PressureForecastData(dailyForecastSource.Hourly[i].Pressure, requiredHour));
+                windSpeed.Add(new WindSpeedForecastData(dailyForecastSource.Hourly[i].Wind_speed, requiredHour));
                 i++;
             }
         }

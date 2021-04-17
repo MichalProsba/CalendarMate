@@ -16,16 +16,32 @@ namespace CalendarMate
 {
     public partial class CurrentCityWindow : Window
     {
+        // The CurrentCityWindow constructor
+        /// <summary>
+        /// The CurrentCityWindow constructor. 
+        /// </summary>
         public CurrentCityWindow()
         {
             InitializeComponent();
         }
 
+        // Closes the current window
+        /// <summary>
+        /// Closes the current window.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        // Alows to drag the current window
+        /// <summary>
+        /// Alows to drag the current window .
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -34,6 +50,7 @@ namespace CalendarMate
             }
         }
 
+        // TextBox_GotFocus is an event which changes the appearance of focused textboxes 
         /// <summary>
         /// TextBox_GotFocus is an event which changes the appearance of focused textboxes 
         /// </summary>
@@ -54,6 +71,7 @@ namespace CalendarMate
             }
         }
 
+        // TextBox_LostFocus is an event which changes the appearance of lost focused textboxes 
         /// <summary>
         /// TextBox_LostFocus is an event which changes the appearance of lost focused textboxes 
         /// </summary>

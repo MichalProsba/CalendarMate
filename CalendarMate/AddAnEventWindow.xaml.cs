@@ -34,7 +34,7 @@ namespace CalendarMate
         /// </summary>
         private DateTime EventDate;
 
-        //The AddAnEventWindow Constructor 
+        // The AddAnEventWindow Constructor 
         /// <summary>
         /// The AddAnEventWindow Constructor 
         /// </summary>
