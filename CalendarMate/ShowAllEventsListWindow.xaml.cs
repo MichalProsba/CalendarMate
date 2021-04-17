@@ -86,16 +86,11 @@ namespace CalendarMate
         /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult msgBoxResult = MessageBox.Show("Are you sure you want Delete?", "Delete Event",
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Warning,
-                MessageBoxResult.No);
-
+            MessageBoxResult msgBoxResult = MessageBox.Show("Are you sure you want Delete?", "Delete Event", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
             DataBaseEventDbContext db1 = new DataBaseEventDbContext();
             var r = from d in db1.DataBaseEvents1
                     where d.Id == this.updatingEventID
                     select d;
-
             if (msgBoxResult == MessageBoxResult.Yes)
             {
                 DataBaseEvent1 obj = r.SingleOrDefault();
@@ -118,38 +113,58 @@ namespace CalendarMate
         /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void ButtonSaveChange_Click(object sender, RoutedEventArgs e)
         {
-            TimeSpan ts = new TimeSpan(RemindComboboxShow.SelectedIndex, 0, 0);
-            DateTime date = new DateTime(int.Parse(EventYearShow.Text), int.Parse(EventMonthShow.Text), int.Parse(EventDayShow.Text));
-            DataBaseEventDbContext db = new DataBaseEventDbContext();
-            var r = from d in db.DataBaseEvents1
-                    where d.Id == updatingEventID
-                    select d;
-
-            DataBaseEvent1 obj = r.SingleOrDefault();
-            if (obj != null)
+            string input1 = EventStartShow.Text;
+            string input2 = EventStopShow.Text;
+            DateTime time1;
+            DateTime time2;
+            if (DateTime.TryParse(input1, out time1) && DateTime.TryParse(input2, out time2))
             {
-                obj.Name = EventNameShow.Text;
-                obj.Localization = EventLocalizationShow.Text;
-                obj.Year = EventDate.Year;
-                obj.Month = EventDate.Month;
-                obj.Day = EventDate.Day;
-                obj.StartTime = EventStartShow.Text;
-                obj.StopTime = EventStopShow.Text;
-                obj.RemindTime = date.Date + ts;
-                obj.Year = int.Parse(EventYearShow.Text);
-                obj.Month = int.Parse(EventMonthShow.Text);
-                obj.Day = int.Parse(EventDayShow.Text);
+                if (DateTime.Compare(time1, time2) < 0)
+                {
+                    TimeSpan ts = new TimeSpan(RemindComboboxShow.SelectedIndex, 0, 0);
+                    DateTime date = new DateTime(int.Parse(EventYearShow.Text), int.Parse(EventMonthShow.Text), int.Parse(EventDayShow.Text));
+                    DataBaseEventDbContext db = new DataBaseEventDbContext();
+                    var r = from d in db.DataBaseEvents1
+                            where d.Id == updatingEventID
+                            select d;
+
+                    DataBaseEvent1 obj = r.SingleOrDefault();
+                    if (obj != null)
+                    {
+                        obj.Name = EventNameShow.Text;
+                        obj.Localization = EventLocalizationShow.Text;
+                        obj.Year = EventDate.Year;
+                        obj.Month = EventDate.Month;
+                        obj.Day = EventDate.Day;
+                        obj.StartTime = EventStartShow.Text;
+                        obj.StopTime = EventStopShow.Text;
+                        obj.RemindTime = date.Date + ts;
+                        obj.Year = int.Parse(EventYearShow.Text);
+                        obj.Month = int.Parse(EventMonthShow.Text);
+                        obj.Day = int.Parse(EventDayShow.Text);
+                    }
+                    db.SaveChanges();
+                    UpdateGrid();
+                }
+                else
+                {
+                    MessageBox.Show("Please corect you information?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    SetGrayForeground();
+                }
             }
-            db.SaveChanges();
-            UpdateGrid();
+            else
+            {
+                MessageBox.Show("Please corect you information?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                SetGrayForeground();
+            }
         }
 
-        // The method changes the title of the window
-        /// <summary>
-        /// The method changes the title of the window
-        /// </summary>
-        /// <param name="when"> Contains date which was selected by user </param>
-        private void CreateEvent(DateTime when)
+            // The method changes the title of the window
+            /// <summary>
+            /// The method changes the title of the window
+            /// </summary>
+            /// <param name="when"> Contains date which was selected by user </param>
+            private void CreateEvent(DateTime when)
         {
             WindowTitle.Text = when.ToString("D", CultureInfo.CreateSpecificCulture("en-US"));
         }
@@ -370,33 +385,6 @@ namespace CalendarMate
             this.EventStopShow.IsReadOnly = false;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // The metod save information to the database
         /// <summary>
         /// The metod save information to the database
@@ -405,23 +393,49 @@ namespace CalendarMate
         /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            TimeSpan ts = new TimeSpan(RemindComboboxAdd.SelectedIndex, 0, 0);
-            DateTime date = new DateTime(int.Parse(EventYearAdd.Text), int.Parse(EventMonthAdd.Text), int.Parse(EventDayAdd.Text));
-            DataBaseEventDbContext db1 = new DataBaseEventDbContext();
-            DataBaseEvent1 doctroObject = new DataBaseEvent1()
+            string input1 = EventStartShow.Text;
+            string input2 = EventStopShow.Text;
+            string input3 = EventYearAdd.Text;
+            string input4 = EventMonthAdd.Text;
+            string input5 = EventDayAdd.Text;
+            DateTime time1;
+            DateTime time2;
+            DateTime time3;
+            DateTime time4;
+            DateTime time5;
+            if (DateTime.TryParse(input1, out time1) && DateTime.TryParse(input2, out time2))
             {
-                Name = EventNameAdd.Text,
-                Localization = EventLocalizationAdd.Text,
-                Year = int.Parse(EventYearAdd.Text),
-                Month = int.Parse(EventMonthAdd.Text),
-                Day = int.Parse(EventDayAdd.Text),
-                StartTime = EventStartAdd.Text,
-                StopTime = EventStopAdd.Text,
-                RemindTime = date + ts,
-            };
-            db1.DataBaseEvents1.Add(doctroObject);
-            db1.SaveChanges();
-            RestartWindow();
+                if (DateTime.Compare(time1, time2) < 0)
+                {
+                    TimeSpan ts = new TimeSpan(RemindComboboxAdd.SelectedIndex, 0, 0);
+                    DateTime date = new DateTime(int.Parse(EventYearAdd.Text), int.Parse(EventMonthAdd.Text), int.Parse(EventDayAdd.Text)    );
+                    DataBaseEventDbContext db1 = new DataBaseEventDbContext();
+                    DataBaseEvent1 doctroObject = new DataBaseEvent1()
+                    {
+                        Name = EventNameAdd.Text,
+                        Localization = EventLocalizationAdd.Text,
+                        Year = int.Parse(EventYearAdd.Text),
+                        Month = int.Parse(EventMonthAdd.Text),
+                        Day = int.Parse(EventDayAdd.Text),
+                        StartTime = EventStartAdd.Text,
+                        StopTime = EventStopAdd.Text,
+                        RemindTime = date + ts,
+                    };
+                    db1.DataBaseEvents1.Add(doctroObject);
+                    db1.SaveChanges();
+                    RestartWindow();
+                }
+                else
+                {
+                    MessageBox.Show("Please corect you information?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    RestartWindow();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please corect you information?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                RestartWindow();
+            }
         }
 
         // The method change the appearance of focused textboxes 

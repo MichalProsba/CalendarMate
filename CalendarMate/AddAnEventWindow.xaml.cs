@@ -54,23 +54,42 @@ namespace CalendarMate
         /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            TimeSpan ts = new TimeSpan(RemindCombobox.SelectedIndex, 0, 0);
-            DataBaseEventDbContext db1 = new DataBaseEventDbContext();
-            DataBaseEvent1 doctroObject = new DataBaseEvent1()
+            string input1 = EventStart.Text;
+            string input2 = EventStop.Text;
+            DateTime time1;
+            DateTime time2;
+            if (DateTime.TryParse(input1, out time1) && DateTime.TryParse(input2, out time2))
             {
-                Name = EventName.Text,
-                Localization = EventLocalization.Text,
-                Year = EventDate.Year,
-                Month = EventDate.Month,
-                Day = EventDate.Day,
-                StartTime = EventStart.Text,
-                StopTime = EventStop.Text,
-                RemindTime = EventDate.Date + ts,
-            };
-
-            db1.DataBaseEvents1.Add(doctroObject);
-            db1.SaveChanges();
-            RestartWindow();
+                if (DateTime.Compare(time1, time2) < 0)
+                {
+                    TimeSpan ts = new TimeSpan(RemindCombobox.SelectedIndex, 0, 0);
+                    DataBaseEventDbContext db1 = new DataBaseEventDbContext();
+                    DataBaseEvent1 doctroObject = new DataBaseEvent1()
+                    {
+                        Name = EventName.Text,
+                        Localization = EventLocalization.Text,
+                        Year = EventDate.Year,
+                        Month = EventDate.Month,
+                        Day = EventDate.Day,
+                        StartTime = EventStart.Text,
+                        StopTime = EventStop.Text,
+                        RemindTime = EventDate.Date + ts,
+                    };
+                    db1.DataBaseEvents1.Add(doctroObject);
+                    db1.SaveChanges();
+                    RestartWindow();
+                }
+                else
+                {
+                    MessageBox.Show("Please corect you information?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    RestartWindow();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please corect you information?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                RestartWindow();
+            }
         }
 
         // The method show new window which event list in selected day
