@@ -149,13 +149,11 @@ namespace CalendarMate
                 else
                 {
                     MessageBox.Show("Please corect you information?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    SetGrayForeground();
                 }
             }
             else
             {
                 MessageBox.Show("Please corect you information?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                SetGrayForeground();
             }
         }
 
@@ -393,8 +391,8 @@ namespace CalendarMate
         /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            string input1 = EventStartShow.Text;
-            string input2 = EventStopShow.Text;
+            string input1 = EventStartAdd.Text;
+            string input2 = EventStopAdd.Text;
             string input3 = EventYearAdd.Text;
             string input4 = EventMonthAdd.Text;
             string input5 = EventDayAdd.Text;
@@ -428,13 +426,11 @@ namespace CalendarMate
                 else
                 {
                     MessageBox.Show("Please corect you information?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    RestartWindow();
                 }
             }
             else
             {
                 MessageBox.Show("Please corect you information?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                RestartWindow();
             }
         }
 

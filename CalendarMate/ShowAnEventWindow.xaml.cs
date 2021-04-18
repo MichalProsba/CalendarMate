@@ -148,13 +148,11 @@ namespace CalendarMate
                 else
                 {
                     MessageBox.Show("Please corect you information?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    SetGrayForeground();
                 }
             }
             else
             {
                 MessageBox.Show("Please corect you information?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                SetGrayForeground();
             }
         }
 
