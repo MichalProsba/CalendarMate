@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataBaseEvent.Domain.Models;
+using DataBaseLocalization.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -84,6 +86,31 @@ namespace CalendarMate
             grayBrush.Opacity = 0.4;
             tb.Foreground = grayBrush;
             tb.Text = "Localization";
+        }
+
+        private void ButtonSave_Click(object sender, RoutedEventArgs e)
+        {
+            DataBaseLocalizationDbContext db1 = new DataBaseLocalizationDbContext();
+            DataBaseLocalization1 doctroObject = new DataBaseLocalization1()
+            {
+                Localization = EventLocalization.Text,
+            };
+            db1.DataBaseLocalizations1.Add(doctroObject);
+            db1.SaveChanges();
+
+
+
+            //DataBaseLocalizationDbContext db = new DataBaseLocalizationDbContext();
+            //var docs = from d in db.DataBaseLocalizations1
+            //           select new
+            //           {
+            //               Localization = d.Localization
+            //           };
+            //EventLocalization.Text = Localization
+
+
+
+            //RestartWindow();
         }
     }
 }

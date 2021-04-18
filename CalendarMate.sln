@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBaseEvent.Domain", "Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBaseEvent.EntityFramework", "DataBaseEvent.EntityFramework\DataBaseEvent.EntityFramework.csproj", "{266FA368-5CCC-4D37-A907-90C392751B8A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseLocalization.EntityFramework", "DataBaseLocalization.EntityFramework\DataBaseLocalization.EntityFramework.csproj", "{4BF3E970-63DF-4735-A11B-C4726CFCA402}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseToDoList.EntityFramework", "DataBaseToDoList.EntityFramework\DataBaseToDoList.EntityFramework.csproj", "{7FA5EC68-678E-488F-AA36-1743A33A021E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{266FA368-5CCC-4D37-A907-90C392751B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{266FA368-5CCC-4D37-A907-90C392751B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{266FA368-5CCC-4D37-A907-90C392751B8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BF3E970-63DF-4735-A11B-C4726CFCA402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BF3E970-63DF-4735-A11B-C4726CFCA402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BF3E970-63DF-4735-A11B-C4726CFCA402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BF3E970-63DF-4735-A11B-C4726CFCA402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FA5EC68-678E-488F-AA36-1743A33A021E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FA5EC68-678E-488F-AA36-1743A33A021E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FA5EC68-678E-488F-AA36-1743A33A021E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FA5EC68-678E-488F-AA36-1743A33A021E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,15 +5,14 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace DataBaseEvent.EntityFramework
+namespace DataBaseToDoList.EntityFramework
 {
-    public class DataBaseEventDbContext : DbContext
+    public class DataBaseToDoList : DbContext
     {
-        public DbSet<DataBaseEvent1> DataBaseEvents1 { get; set; }
-        public DataBaseEventDbContext() : base("DataBaseAllEvent")
+        public DbSet<DataBaseToDoList1> DataBaseToDoLists1 { get; set; }
+        public DataBaseToDoList() : base("DataBaseAllToDoList")
         {
-            Database.SetInitializer<DataBaseEventDbContext>(new DropCreateDatabaseIfModelChanges<DataBaseEventDbContext>());
+            Database.SetInitializer<DataBaseToDoList>(new DropCreateDatabaseIfModelChanges<DataBaseToDoList>());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
