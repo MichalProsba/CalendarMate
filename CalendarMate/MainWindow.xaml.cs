@@ -27,7 +27,7 @@ namespace CalendarMate
     {
         private CalendarDate Current_calendar_data = new CalendarDate();
         private List<Button> button_list_of_day = new List<Button>();
-        private CurrentWeatherInfoModel currentWeather;
+        private CurrentWeatherInfoModel currentWeather = new CurrentWeatherInfoModel();
         private DateTime Current_data;
         public List<Button> Button_list_of_day
         {
@@ -64,9 +64,10 @@ namespace CalendarMate
             GenerateDayPanel();
             ApiHelper.InitializeClient();
             CityInitialization();
+            LoadCurrentCity();
             LoadCurrentWeather();
         }
-        private void GenerateDayPanel()
+        public void GenerateDayPanel()
         {
             Month_And_Year_TextBlock.Text = Current_calendar_data.Date.ToString("Y", CultureInfo.CreateSpecificCulture("en-US"));
             int number_of_days = Current_calendar_data.DaysInCalendarMonth();
@@ -124,7 +125,7 @@ namespace CalendarMate
 
             if (Current_data.Year == Current_calendar_data.Date.Year && Current_data.Month == Current_calendar_data.Date.Month)
             {
-                Button_list_of_day[Current_data.Day-1].Background = Brushes.YellowGreen;
+                Button_list_of_day[Current_data.Day-1].Background = Brushes.DodgerBlue;
             }
 
             foreach (Button i in Button_list_of_day)
@@ -138,7 +139,7 @@ namespace CalendarMate
             }
         }
 
-        private void RemoveDayPanel()
+        public void RemoveDayPanel()
         {
             foreach (Button i in Button_list_of_day)
             {
@@ -162,18 +163,32 @@ namespace CalendarMate
         }
         private void UpdateCurrentTime(object sender, EventArgs e)
         {
-            Clock.Content = DateTime.Now.ToString();
+            if (currentWeather.Cod != "404")
+            {
+                Clock.Content = (DateTime.UtcNow.AddSeconds(currentWeather.Timezone)).ToString();
+            }
+            else
+            {
+                Clock.Content = DateTime.Now.ToString();
+            }
         }
 
         public async void LoadCurrentWeather()
         {
-            currentWeather = await CurrentWeatherInfoProcessor.LoadCurrentWeather();
-            BitmapImage weatherImage = new BitmapImage();
-            weatherImage.BeginInit();
-            weatherImage.UriSource = new Uri("images/" + currentWeather.Weather[0].Icon.ToString() + ".png", UriKind.Relative);
-            weatherImage.EndInit();
-            CurrentWeatherImage.Source = weatherImage;
-            CurrentWeather.Text = NormalizationOperations.NormalizeTemperature(currentWeather.Main.Temp).ToString() + "°C";
+            currentWeather = await CurrentWeatherInfoProcessor.LoadCurrentWeather(ReturnCity());
+            if (currentWeather.Cod != "404")
+            {
+                BitmapImage weatherImage = new BitmapImage();
+                weatherImage.BeginInit();
+                weatherImage.UriSource = new Uri("images/" + currentWeather.Weather[0].Icon.ToString() + ".png", UriKind.Relative);
+                weatherImage.EndInit();
+                CurrentWeatherImage.Source = weatherImage;
+                CurrentWeather.Text = NormalizationOperations.NormalizeTemperature(currentWeather.Main.Temp).ToString() + "°C";
+            }
+            else
+            {
+                CurrentWeather.Text = "API Error";
+            }
         }
 
         private void Next_Click(object sender, RoutedEventArgs e)
@@ -232,13 +247,19 @@ namespace CalendarMate
         }
         private void CurrentWeather_Click(object sender, RoutedEventArgs e)
         {
-            WeatherWindow weatherWindow = new WeatherWindow(currentWeather, this);
-            weatherWindow.ShowDialog();
+            if (currentWeather.Cod != "404")
+            {
+                WeatherWindow weatherWindow = new WeatherWindow(currentWeather, this);
+                weatherWindow.ShowDialog();
+            }
         }
         private void currentCity_Click(object sender, RoutedEventArgs e)
         {
-            CurrentCityWindow currentCityWindow = new CurrentCityWindow();
-            currentCityWindow.ShowDialog();
+            if (currentWeather.Cod != "404")
+            {
+                CurrentCityWindow currentCityWindow = new CurrentCityWindow(this);
+                currentCityWindow.ShowDialog();
+            }
         }
         private void refreshWeather_Click(object sender, RoutedEventArgs e)
         {
@@ -267,9 +288,20 @@ namespace CalendarMate
         {
             DataBaseLocalizationDbContext db = new DataBaseLocalizationDbContext();
             var r = from d in db.DataBaseLocalizations1
+                    where d.Id == 1
                     select d;
             DataBaseLocalization1 obj = r.SingleOrDefault();
             return obj.Localization.ToString();
+        }
+
+        public void LoadCurrentCity()
+        {
+                displayedCity.Text = ReturnCity();
+        }
+
+        private void Minimalize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 }

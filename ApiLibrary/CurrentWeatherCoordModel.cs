@@ -15,10 +15,10 @@ namespace ApiLibrary
     {
         // The longitude
         /// <value>Gets and sets the Longitude value.</value>
-        public float Lon { get; set; }
+        public string Lon { get; set; }
 
         // The Latitude
         /// <value>Gets and sets the Latitude value.</value>
-        public float Lat { get; set; }
+        public string Lat { get; set; }
     }
 }

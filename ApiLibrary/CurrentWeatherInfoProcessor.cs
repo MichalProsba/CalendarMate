@@ -14,16 +14,12 @@ namespace ApiLibrary
     /// </summary>
     public static class CurrentWeatherInfoProcessor
     {
-        // The city name
-        /// <value>Containes the city name value.</value>
-        public static string city = "Opole";
-
         // Download and process current weather information
         /// <summary>
         /// Download and process current weather information.
         /// </summary>
         /// <returns>Weather information inside an CurrentWeatherInfoModel class object or a exception response in an Exception class object.</returns>
-        public static async Task<CurrentWeatherInfoModel> LoadCurrentWeather()
+        public static async Task<CurrentWeatherInfoModel> LoadCurrentWeather(string city)
         {
             string url = $"http://api.openweathermap.org/data/2.5/weather?q={ city }&APPID=f75180affde9785ae42c8b8dad08cbd0";
 
@@ -36,7 +32,9 @@ namespace ApiLibrary
                 }
                 else
                 {
-                    throw new Exception(response.ReasonPhrase);
+                    CurrentWeatherInfoModel currentWeather = new CurrentWeatherInfoModel();
+                    currentWeather.Cod = "404";
+                    return currentWeather;
                 }
             }
         }

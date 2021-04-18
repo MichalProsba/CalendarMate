@@ -16,12 +16,14 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.3*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Foreground="White" Margin="2,0" Grid.Row="0" Grid.Column="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Calendar"/>
+                <Button x:Name="Minimalize" Foreground="White" Background="#333" Width="50"  BorderThickness="0" Click="Minimalize_Click" Grid.Row="0" Grid.Column="2" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Top" FontWeight="UltraBold" Content="_"/>
                 <Button x:Name="Close" Foreground="White" Background="#333" Width="50"  BorderThickness="0" Click="CloseMainWindow_Click" Grid.Row="0" Grid.Column="3" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Top" Content="X"/>
             </Grid>
         </StackPanel>
@@ -42,15 +44,23 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Border Grid.Row="0" Padding="5" Background="#666">
+                            <Border  Grid.Column="2" Padding="5" Background="#666">
+                                <Button Padding="6" x:Name="currentCity" Click="currentCity_Click" Height="60" BorderThickness="3" Background="#555">
+                                    <StackPanel Orientation="Horizontal">
+                                        <fa:ImageAwesome Icon="Home" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0"/>
+                                        <fa:FontAwesome x:Name="displayedCity" FontSize="30" />
+                                    </StackPanel>
+                                </Button>
+                            </Border>
+                            <Border Grid.Row="1" Padding="5" Background="#666">
                                 <Button FontWeight="Bold" Height="60" BorderThickness="3" FontSize="30"  Foreground="DodgerBlue" Background="#555" x:Name="Clock" Click="CurrentDate_Click"/>
                             </Border>
-                            <Grid  Grid.Row="1">
+                            <Grid  Grid.Row="2">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="4*"/>
-                                    <ColumnDefinition Width="14*"/>
-                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="18*"/>
                                 </Grid.ColumnDefinitions>
                                 <Border  Grid.Column="0" Padding="5" Background="#666">
                                     <Button Padding="6" x:Name="refreshWeather" Click="refreshWeather_Click" Height="60" BorderThickness="3" Background="#555" >
@@ -65,18 +75,13 @@
                                         </StackPanel>
                                     </Button>
                                 </Border>
-                                <Border  Grid.Column="2" Padding="5" Background="#666">
-                                    <Button Padding="6" x:Name="currentCity" Click="currentCity_Click" Height="60" BorderThickness="3" Background="#555">
-                                        <fa:ImageAwesome Icon="Home" Width="30" Height="30" Foreground="DodgerBlue" />
-                                    </Button>
-                                </Border>
                             </Grid>
-                            <Border  Grid.Row="2" Padding="5" Background="#666">
+                            <Border  Grid.Row="3" Padding="5" Background="#666">
                                 <Viewbox Grid.Row="1" Grid.RowSpan="3" Height="280" Width="280" VerticalAlignment="Center" HorizontalAlignment="Center">
                                     <Calendar x:Name="Calendar2" MouseRightButtonUp="Calendar_MouseRightButtonUp" MouseLeftButtonUp="Calendar_MouseLeftButtonUp" />
                                 </Viewbox>
                             </Border>
-                            <Border  Grid.Row="3" Padding="5" Background="#666">
+                            <Border  Grid.Row="4" Padding="5" Background="#666">
                                 <Button Padding="6" Height="60" BorderThickness="3" Background="#555" Click="EventList_Click">
                                     <StackPanel Orientation="Horizontal">
                                         <fa:ImageAwesome Icon="Calendar" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0"/>
@@ -84,7 +89,7 @@
                                     </StackPanel>
                                 </Button>
                             </Border>
-                            <Border  Grid.Row="4" Padding="5" Background="#666">
+                            <Border  Grid.Row="5" Padding="5" Background="#666">
                                 <Button Padding="6" Height="60" BorderThickness="3" Background="#555" Click="EventToDoList_Click">
                                     <StackPanel Orientation="Horizontal">
                                         <fa:ImageAwesome Icon="ListAlt" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0"/>

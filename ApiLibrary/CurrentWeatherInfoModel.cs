@@ -43,6 +43,15 @@ namespace ApiLibrary
 
         // The Timezone
         /// <value>Gets and sets the Timezone value.</value>
-        public string Timezone { get; set; }
+        public double Timezone { get; set; }
+
+        // The Cod
+        /// <value>Gets and sets the Cod value.</value>
+        public string Cod { get; set; }
+
+        public CurrentWeatherInfoModel()
+        {
+            Cod = "404";
+        }
     }
 }

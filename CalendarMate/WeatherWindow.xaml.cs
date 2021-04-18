@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataBaseEvent.Domain.Models;
+using DataBaseLocalization.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -88,7 +90,7 @@ namespace CalendarMate
         private async void LoadCurrentWeather()
         {
             mainWindow.LoadCurrentWeather();
-            currentWeather = await CurrentWeatherInfoProcessor.LoadCurrentWeather();
+            currentWeather = await CurrentWeatherInfoProcessor.LoadCurrentWeather(ReturnCity());
             BitmapImage weatherImage = new BitmapImage();
             weatherImage.BeginInit();
             weatherImage.UriSource = new Uri("images/" + currentWeather.Weather[0].Icon.ToString() + ".png", UriKind.Relative);
@@ -164,7 +166,7 @@ namespace CalendarMate
             sevenDayForecast.IsEnabled = false;
             temperatureForecast.IsEnabled = false;
 
-            dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather();
+            dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
             WeatherChart.Series.Clear();
             DisplayedChart.Text = "7 day forecast";
             WeatherChart.Header = "Temperature";
@@ -255,7 +257,7 @@ namespace CalendarMate
         /// </summary>
         private async void LoadDayilyApparentTemperatureChart()
         {
-            dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather();
+            dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
             WeatherChart.Series.Clear();
             WeatherChart.Header = "Apparent Temperature";
 
@@ -345,7 +347,7 @@ namespace CalendarMate
         /// </summary>
         private async void LoadDayilyHumidityChart()
         {
-            dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather();
+            dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
             WeatherChart.Series.Clear();
             WeatherChart.Header = "Humidity";
 
@@ -400,7 +402,7 @@ namespace CalendarMate
         /// </summary>
         private async void LoadDayilyPressureChart()
         {
-            dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather();
+            dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
             WeatherChart.Series.Clear();
             WeatherChart.Header = "Pressure";
 
@@ -455,7 +457,7 @@ namespace CalendarMate
         /// </summary>
         private async void LoadDayilyWindSpeedChart()
         {
-            dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather();
+            dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
             WeatherChart.Series.Clear();
             WeatherChart.Header = "Wind Speed";
 
@@ -510,7 +512,7 @@ namespace CalendarMate
         /// </summary>
         private async void LoadHourlyTemperatureChart()
         {
-            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather();
+            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
             WeatherChart.Series.Clear();
             DisplayedChart.Text = "48 hour forecast";
             WeatherChart.Header = "Temperature";
@@ -556,7 +558,7 @@ namespace CalendarMate
         /// </summary>
         private async void LoadHourlyApparentTemperatureChart()
         {
-            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather();
+            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
             WeatherChart.Series.Clear();
             WeatherChart.Header = "Aparent Temperature";
 
@@ -601,7 +603,7 @@ namespace CalendarMate
         /// </summary>
         private async void LoadHourlyHumidityChart()
         {
-            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather();
+            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
             WeatherChart.Series.Clear();
             WeatherChart.Header = "Humidity";
 
@@ -646,7 +648,7 @@ namespace CalendarMate
         /// </summary>
         private async void LoadHourlyPressureChart()
         {
-            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather();
+            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
             WeatherChart.Series.Clear();
             WeatherChart.Header = "Presssure";
 
@@ -691,7 +693,7 @@ namespace CalendarMate
         /// </summary>
         private async void LoadHourlyWindSpeedChart()
         {
-            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather();
+            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
             WeatherChart.Series.Clear();
             WeatherChart.Header = "Wind Speed";
 
@@ -921,6 +923,21 @@ namespace CalendarMate
         private void refreshWeather_Click(object sender, RoutedEventArgs e)
         {
             LoadCurrentWeather();
+        }
+
+        // Returns the current city from database
+        /// <summary>
+        /// Returns the current city from database.
+        /// </summary>
+        /// <returns></returns>
+        private string ReturnCity()
+        {
+            DataBaseLocalizationDbContext db = new DataBaseLocalizationDbContext();
+            var r = from d in db.DataBaseLocalizations1
+                    where d.Id == 1
+                    select d;
+            DataBaseLocalization1 obj = r.SingleOrDefault();
+            return obj.Localization.ToString();
         }
     }
 }
