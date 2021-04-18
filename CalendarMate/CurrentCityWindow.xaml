@@ -44,9 +44,9 @@
                                 <fa:ImageAwesome Icon="MapMarker" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
                                 <fa:FontAwesome Text="Your Curent City" FontSize="30"/>
                             </StackPanel>
-                            <TextBox x:Name="EventLocalization" Text="Localization" Padding="5" FontSize="25" Background="#eee" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus">
+                            <TextBox x:Name="EventLocalization" Text="Localization" Padding="5" FontSize="25" Background="#eee">
                                 <TextBox.Foreground>
-                                    <SolidColorBrush Color="Gray" Opacity="0.4" />
+                                    <SolidColorBrush Color="Black" Opacity="0.9" />
                                 </TextBox.Foreground>
                                 <TextBox.Resources>
                                     <Style TargetType="{x:Type Border}">

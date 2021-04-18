@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataBaseEvent.Domain.Models;
+using DataBaseLocalization.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -61,6 +63,7 @@ namespace CalendarMate
             GenerateCurrentTime();
             GenerateDayPanel();
             ApiHelper.InitializeClient();
+            CityInitialization();
             LoadCurrentWeather();
         }
         private void GenerateDayPanel()
@@ -240,6 +243,33 @@ namespace CalendarMate
         private void refreshWeather_Click(object sender, RoutedEventArgs e)
         {
             LoadCurrentWeather();
+        }
+
+        private void CityInitialization()
+        {
+            DataBaseLocalizationDbContext db = new DataBaseLocalizationDbContext();
+            var r = from d in db.DataBaseLocalizations1
+                    select d;
+            DataBaseLocalization1 obj = r.SingleOrDefault();
+
+            if (obj == null)
+            {
+                DataBaseLocalization1 doctroObject = new DataBaseLocalization1()
+                {
+                    Localization = "Wrocław",
+                };
+                db.DataBaseLocalizations1.Add(doctroObject);
+                db.SaveChanges();
+            }
+        }
+
+        private string ReturnCity()
+        {
+            DataBaseLocalizationDbContext db = new DataBaseLocalizationDbContext();
+            var r = from d in db.DataBaseLocalizations1
+                    select d;
+            DataBaseLocalization1 obj = r.SingleOrDefault();
+            return obj.Localization.ToString();
         }
     }
 }

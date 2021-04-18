@@ -19,5 +19,7 @@ namespace DataBaseToDoList.EntityFramework
         {
             modelBuilder.Types().Configure(t => t.MapToStoredProcedures());
         }
+
+
     }
 }

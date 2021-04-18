@@ -25,6 +25,14 @@ namespace CalendarMate
         public CurrentCityWindow()
         {
             InitializeComponent();
+            DataBaseLocalizationDbContext db = new DataBaseLocalizationDbContext();
+            var r = from d in db.DataBaseLocalizations1
+                    select d;
+            DataBaseLocalization1 obj = r.SingleOrDefault();
+            if (obj != null)
+            {
+                EventLocalization.Text = obj.Localization.ToString();
+            }
         }
 
         // Closes the current window
@@ -52,65 +60,18 @@ namespace CalendarMate
             }
         }
 
-        // TextBox_GotFocus is an event which changes the appearance of focused textboxes 
-        /// <summary>
-        /// TextBox_GotFocus is an event which changes the appearance of focused textboxes 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
-            blackBrush.Opacity = 0.9;
-            TextBox tb = (TextBox)sender;
-            if (tb.Foreground.Opacity != blackBrush.Opacity)
-            {
-                if (tb.IsReadOnly != true)
-                {
-                    tb.Foreground = blackBrush;
-                    tb.Text = "";
-                }
-            }
-        }
-
-        // TextBox_LostFocus is an event which changes the appearance of lost focused textboxes 
-        /// <summary>
-        /// TextBox_LostFocus is an event which changes the appearance of lost focused textboxes 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox tb = (TextBox)sender;
-            SolidColorBrush grayBrush = new SolidColorBrush(Colors.Gray);
-            grayBrush.Opacity = 0.4;
-            tb.Foreground = grayBrush;
-            tb.Text = "Localization";
-        }
-
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
-            DataBaseLocalizationDbContext db1 = new DataBaseLocalizationDbContext();
-            DataBaseLocalization1 doctroObject = new DataBaseLocalization1()
+            DataBaseLocalizationDbContext db = new DataBaseLocalizationDbContext();
+            var r = from d in db.DataBaseLocalizations1
+                    where d.Id == 1
+                    select d;
+            DataBaseLocalization1 obj = r.SingleOrDefault();
+            if (obj != null)
             {
-                Localization = EventLocalization.Text,
-            };
-            db1.DataBaseLocalizations1.Add(doctroObject);
-            db1.SaveChanges();
-
-
-
-            //DataBaseLocalizationDbContext db = new DataBaseLocalizationDbContext();
-            //var docs = from d in db.DataBaseLocalizations1
-            //           select new
-            //           {
-            //               Localization = d.Localization
-            //           };
-            //EventLocalization.Text = Localization
-
-
-
-            //RestartWindow();
+                obj.Localization = EventLocalization.Text;
+            }
+            db.SaveChanges();
         }
     }
 }
