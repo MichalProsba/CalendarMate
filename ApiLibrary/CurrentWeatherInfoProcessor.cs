@@ -33,7 +33,6 @@ namespace ApiLibrary
                 else
                 {
                     CurrentWeatherInfoModel currentWeather = new CurrentWeatherInfoModel();
-                    currentWeather.Cod = "404";
                     return currentWeather;
                 }
             }

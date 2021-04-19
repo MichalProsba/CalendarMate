@@ -89,8 +89,6 @@ namespace CalendarMate
                 db.SaveChanges();
                 mainWindow.LoadCurrentCity();
                 mainWindow.LoadCurrentWeather();
-                mainWindow.RemoveDayPanel();
-                mainWindow.GenerateDayPanel();
             } 
         }
     }

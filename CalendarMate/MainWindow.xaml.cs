@@ -163,7 +163,7 @@ namespace CalendarMate
         }
         private void UpdateCurrentTime(object sender, EventArgs e)
         {
-            if (currentWeather.Cod != "404")
+            if (isCurrentWeatherGood())
             {
                 Clock.Content = (DateTime.UtcNow.AddSeconds(currentWeather.Timezone)).ToString();
             }
@@ -176,7 +176,7 @@ namespace CalendarMate
         public async void LoadCurrentWeather()
         {
             currentWeather = await CurrentWeatherInfoProcessor.LoadCurrentWeather(ReturnCity());
-            if (currentWeather.Cod != "404")
+            if (isCurrentWeatherGood())
             {
                 BitmapImage weatherImage = new BitmapImage();
                 weatherImage.BeginInit();
@@ -247,7 +247,7 @@ namespace CalendarMate
         }
         private void CurrentWeather_Click(object sender, RoutedEventArgs e)
         {
-            if (currentWeather.Cod != "404")
+            if (isCurrentWeatherGood())
             {
                 WeatherWindow weatherWindow = new WeatherWindow(currentWeather, this);
                 weatherWindow.ShowDialog();
@@ -255,7 +255,7 @@ namespace CalendarMate
         }
         private void currentCity_Click(object sender, RoutedEventArgs e)
         {
-            if (currentWeather.Cod != "404")
+            if (isCurrentWeatherGood())
             {
                 CurrentCityWindow currentCityWindow = new CurrentCityWindow(this);
                 currentCityWindow.ShowDialog();
@@ -302,6 +302,18 @@ namespace CalendarMate
         private void Minimalize_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private bool isCurrentWeatherGood()
+        {
+            if (currentWeather.Cod != "404")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
