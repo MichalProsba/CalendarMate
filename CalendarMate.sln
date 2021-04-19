@@ -15,9 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBaseEvent.Domain", "Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBaseEvent.EntityFramework", "DataBaseEvent.EntityFramework\DataBaseEvent.EntityFramework.csproj", "{266FA368-5CCC-4D37-A907-90C392751B8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseLocalization.EntityFramework", "DataBaseLocalization.EntityFramework\DataBaseLocalization.EntityFramework.csproj", "{4BF3E970-63DF-4735-A11B-C4726CFCA402}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBaseLocalization.EntityFramework", "DataBaseLocalization.EntityFramework\DataBaseLocalization.EntityFramework.csproj", "{4BF3E970-63DF-4735-A11B-C4726CFCA402}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseToDoList.EntityFramework", "DataBaseToDoList.EntityFramework\DataBaseToDoList.EntityFramework.csproj", "{7FA5EC68-678E-488F-AA36-1743A33A021E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBaseToDoList.EntityFramework", "DataBaseToDoList.EntityFramework\DataBaseToDoList.EntityFramework.csproj", "{7FA5EC68-678E-488F-AA36-1743A33A021E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{B1D649F8-A0E5-44B0-A3DA-7F371E174631}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{7FA5EC68-678E-488F-AA36-1743A33A021E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FA5EC68-678E-488F-AA36-1743A33A021E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FA5EC68-678E-488F-AA36-1743A33A021E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1D649F8-A0E5-44B0-A3DA-7F371E174631}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1D649F8-A0E5-44B0-A3DA-7F371E174631}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1D649F8-A0E5-44B0-A3DA-7F371E174631}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1D649F8-A0E5-44B0-A3DA-7F371E174631}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
