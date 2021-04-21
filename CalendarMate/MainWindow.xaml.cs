@@ -1,4 +1,5 @@
-﻿using DataBaseEvent.Domain.Models;
+﻿using DataBaseEvent.EntityFramework;
+using DataBaseEvent.Domain.Models;
 using DataBaseLocalization.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -87,6 +88,7 @@ namespace CalendarMate
             //Current_data = DateTime.Today;
             InitializeComponent();
             GenerateCurrentTime();
+            GenerateReminderTime();
             ApiHelper.InitializeClient();
             CityInitialization();
             LoadCurrentCity();
@@ -207,11 +209,42 @@ namespace CalendarMate
         {
             if (isCurrentWeatherGood())
             {
-                Clock.Content = (DateTime.UtcNow.AddSeconds(currentWeather.Timezone)).ToString();
+                Current_data = DateTime.UtcNow.AddSeconds(currentWeather.Timezone);
+                Current_calendar_data = new CalendarDate(Current_data);
+                Clock.Content = (Current_data).ToString();
             }
             else
             {
                 Clock.Content = DateTime.Now.ToString();
+            }
+        }
+
+        // Generates the current reminder time
+        /// <summary>
+        /// Generates the current reminder time 
+        /// </summary>
+        private void GenerateReminderTime()
+        {
+            DispatcherTimer actualTime = new DispatcherTimer();
+            actualTime.Tick += new EventHandler(UpdateReminderTime);
+            actualTime.Interval = new TimeSpan(0, 0, 30);
+            actualTime.Start();
+        }
+
+        // Updates the current reminder time
+        /// <summary>
+        /// Updates the current reminder time 
+        /// </summary>
+        private void UpdateReminderTime(object sender, EventArgs e)
+        {
+            DataBaseEventDbContext db = new DataBaseEventDbContext();
+            var r = from d in db.DataBaseEvents1
+                    where d.RemindTime.Year == Current_calendar_data.Date.Year && d.RemindTime.Month == Current_calendar_data.Date.Month && d.RemindTime.Day == Current_calendar_data.Date.Day && d.RemindTime.Hour == Current_calendar_data.Date.Hour && d.RemindTime.Minute == Current_calendar_data.Date.Minute
+                    select d;
+            foreach (var item in r)
+            {
+                string eventReminder = "Event name: " + item.Name.ToString() + " starts at: " + item.StartTime.ToString();
+                MessageBox.Show(eventReminder, "Reminder", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -252,10 +285,7 @@ namespace CalendarMate
             RemoveDayPanel();
             Current_calendar_data.AddMonths(1);
             GenerateDayPanel();
-            if (Current_data.Year == Current_calendar_data.Date.Year && Current_data.Month == Current_calendar_data.Date.Month)
-            {
-                Button_list_of_day[Current_data.Day - 1].Background = Brushes.DodgerBlue;
-            }
+            ShowCurrentDay();
         }
 
         // Loads the previous page in the calendar
@@ -269,10 +299,7 @@ namespace CalendarMate
             RemoveDayPanel();
             Current_calendar_data.AddMonths(-1);
             GenerateDayPanel();
-            if (Current_data.Year == Current_calendar_data.Date.Year && Current_data.Month == Current_calendar_data.Date.Month)
-            {
-                Button_list_of_day[Current_data.Day - 1].Background = Brushes.DodgerBlue;
-            }
+            ShowCurrentDay();
         }
 
         // Loads the current date page in the calendar
@@ -286,6 +313,7 @@ namespace CalendarMate
             RemoveDayPanel();
             Current_calendar_data.SetCurrentDate();
             GenerateDayPanel();
+            ShowCurrentDay();
         }
 
         // Opens a new AddAnEventWindow
@@ -451,6 +479,10 @@ namespace CalendarMate
             }
         }
 
+        // Refreshes all day buttons
+        /// <summary>
+        /// Refreshes all day buttons 
+        /// </summary>
         public void RefreshAllDayButtons()
         {
             for (int i = 0; i < Button_list_of_day.Count; i++)
@@ -459,6 +491,10 @@ namespace CalendarMate
             }
         }
 
+        // Shows current day in dodgerblue
+        /// <summary>
+        /// Shows current day in dodgerblue 
+        /// </summary>
         public void ShowCurrentDay()
         {
             if (Current_data.Year == Current_calendar_data.Date.Year && Current_data.Month == Current_calendar_data.Date.Month)
