@@ -24,7 +24,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Foreground="White" Margin="2,0,0,0" Grid.Column="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Calendar"/>
+                <TextBlock Foreground="White" Margin="2,0,0,0" Grid.Column="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Text="All events"/>
                 <TextBlock x:Name="WindowTitle" Foreground="White" Grid.Column="1" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Button x:Name="Close" Foreground="White" Background="#333" Width="50"  BorderThickness="0" Click="Close_Click" Grid.Column="2" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Content="X" Margin="17,0,0,0"/>
             </Grid>
