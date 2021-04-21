@@ -36,10 +36,6 @@ namespace CalendarMate
         /// <value>Variable Current_calendar_data holds the current displayed date.</value>
         private CalendarDate Current_calendar_data = new CalendarDate();
 
-        // The button_list_of_day
-        /// <value>Button List button_list_of_day holds the days of month.</value>
-        private List<Button> button_list_of_day = new List<Button>();
-
         // The currentWeather
         /// <value>Object currentWeather holds the current Weather.</value>
         private CurrentWeatherInfoModel currentWeather = new CurrentWeatherInfoModel();
@@ -47,6 +43,10 @@ namespace CalendarMate
         // The current date
         /// <value>Variable Current_data holds the current date.</value>
         private DateTime Current_data;
+
+        // The button_list_of_day
+        /// <value>Button List button_list_of_day holds the days of month.</value>
+        private List<Button> button_list_of_day = new List<Button>();
 
         // The Button_list_of_day
         /// <value>List Button_list_of_day holds the buttons of current list of day.</value>
@@ -62,6 +62,8 @@ namespace CalendarMate
             }
         }
 
+        // The textblock_list_of_day
+        /// <value>Button List textblock_list_of_day holds the days of month number.</value>
         private List<TextBlock> textblock_list_of_day = new List<TextBlock>();
 
         // The Textblock_list_of_day
@@ -75,6 +77,24 @@ namespace CalendarMate
             set
             {
                 textblock_list_of_day = value;
+            }
+        }
+
+        // The textblock_event_list_of_day
+        /// <value>Button List textblock_event_list_of_day holds the days of month number.</value>
+        private List<Image> image_list_of_day = new List<Image>();
+
+        // The textblock_event_list_of_day
+        /// <value>List textblock_event_list_of_day holds the textblocks of current list of day and event.</value>
+        public List<Image> Image_list_of_day
+        {
+            get
+            {
+                return image_list_of_day;
+            }
+            set
+            {
+                image_list_of_day = value;
             }
         }
 
@@ -116,6 +136,7 @@ namespace CalendarMate
             {
                 Button_list_of_day.Add(new Button());
                 Textblock_list_of_day.Add(new TextBlock());
+                Image_list_of_day.Add(new Image());
             }
 
             foreach (Button i in Button_list_of_day)
@@ -158,6 +179,35 @@ namespace CalendarMate
                 number_of_day++;
             }
 
+            number_of_day = 1;
+            column = day_of_week - 1;
+            row = 0;
+            
+            foreach (Image i in Image_list_of_day)
+            {
+                i.Name = "Image_" + (number_of_day + 1).ToString();
+                i.Visibility = Visibility.Hidden;
+                BitmapImage weatherImage= new BitmapImage();
+                weatherImage.BeginInit();
+                weatherImage.UriSource = new Uri("images/Event.png", UriKind.Relative);
+                weatherImage.EndInit();
+                i.Source = weatherImage;
+                i.Width = 50;
+                i.Height = 50;
+                i.HorizontalAlignment = HorizontalAlignment.Right;
+                i.VerticalAlignment = VerticalAlignment.Bottom;
+                i.Margin = new Thickness(0, 0, 10, 10);
+                Grid.SetColumn(i, column);
+                Grid.SetRow(i, row);
+                column++;
+                if (column % 7 == 0)
+                {
+                    row++;
+                    column = 0;
+                }
+                number_of_day++;
+            }
+
             AddEventToStackPanel();
 
             foreach (Button i in Button_list_of_day)
@@ -166,6 +216,11 @@ namespace CalendarMate
             }
 
             foreach (TextBlock i in Textblock_list_of_day)
+            {
+                mainGrid.Children.Add(i);
+            }
+
+            foreach (Image i in Image_list_of_day)
             {
                 mainGrid.Children.Add(i);
             }
@@ -188,6 +243,12 @@ namespace CalendarMate
                 mainGrid.Children.Remove(i);
             }
             Textblock_list_of_day.Clear();
+
+            foreach (Image i in Image_list_of_day)
+            {
+                mainGrid.Children.Remove(i);
+            }
+            Image_list_of_day.Clear();
         }
 
         // Generates the current time
@@ -512,7 +573,8 @@ namespace CalendarMate
 
             foreach (var item in r)
             {
-                Button_list_of_day[item.Day - 1].Background = Brushes.Green;
+
+                Image_list_of_day[item.Day - 1].Visibility= Visibility.Visible;
             }
         }
     }
