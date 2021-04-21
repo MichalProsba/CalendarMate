@@ -88,7 +88,8 @@ namespace CalendarMate
             CurrentWeatherInfoModel currentWeather = await CurrentWeatherInfoProcessor.LoadCurrentWeather(EventLocalization.Text);
             if (currentWeather.Cod == "404")
             {
-                MessageBox.Show("No such City!", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AlertWindow alertWindow = new AlertWindow("No such city! Try Again!", "Input Error");
+                alertWindow.ShowDialog();
             }
             else
             {

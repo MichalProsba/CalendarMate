@@ -20,9 +20,11 @@ namespace CalendarMate
     /// </summary>
     public partial class AlertWindow : Window
     {
-        public AlertWindow()
+        public AlertWindow(string alert, string windowName)
         {
             InitializeComponent();
+            AlertText.Text = alert;
+            AlertWindowName.Text = windowName;
         }
 
         // Closes the current window

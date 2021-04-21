@@ -77,7 +77,6 @@ namespace CalendarMate
 
             currentWeather = weather;
             mainWindow = main;
-
             LoadCurrentWeather();
             SetChartStyle();
             LoadDayilyTemperatureChart();

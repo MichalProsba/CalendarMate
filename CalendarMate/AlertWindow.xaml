@@ -11,19 +11,19 @@
         BorderBrush="Black"
         MouseDown="Window_MouseDown"
         ResizeMode="NoResize"
-        Title="ShowAnEventWindow" Height="236" Width="800">
+        Title="ShowAnEventWindow" Height="236" Width="400">
     <StackPanel Background="#666">
         <StackPanel  Background="#333">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="67*"/>
-                    <ColumnDefinition Width="666*"/>
-                    <ColumnDefinition Width="67*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="400*"/>
+                    <ColumnDefinition Width="100*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Foreground="White" Margin="2,0,0,0" Grid.Column="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Localization"/>
+                <TextBlock x:Name="AlertWindowName" Foreground="White" Margin="2,0,0,0" Grid.Column="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 <TextBlock x:Name="WindowTitle" Foreground="White" Grid.Column="1" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Button x:Name="Close" Foreground="White" Background="#333" Width="50"  BorderThickness="0" Click="Close_Click" Grid.Column="2" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Content="X" Margin="17,0,0,0"/>
             </Grid>
@@ -37,17 +37,15 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <StackPanel Grid.Column="0" Margin="0 10 10 0">
+                        <StackPanel Grid.Column="0">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Border Grid.Column="0">
-                                    <StackPanel Orientation="Horizontal">
-                                        <fa:ImageAwesome Icon="Exclamation" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
-                                        <fa:FontAwesome Text="Your Curent City" FontSize="30"/>
-                                    </StackPanel>
-                                </Border>
+                                <StackPanel Grid.Column="0">
+                                    <fa:FontAwesome x:Name="AlertText" HorizontalAlignment="Center" FontSize="30"/>
+                                    <fa:ImageAwesome Icon="Exclamation" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 20 0 0" />
+                                </StackPanel>
                             </Grid>
                         </StackPanel>
                     </Grid>
@@ -59,7 +57,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <StackPanel Grid.Column="2" Margin="10 20 0 0">
+                            <StackPanel Grid.Column="1" Margin="10 20 0 0">
                                 <Button BorderThickness="3" FontSize="25" Foreground="DodgerBlue" Background="#555" Content="Ok" x:Name="ButtonOk" Click="Close_Click"/>
                             </StackPanel>
                         </Grid>
