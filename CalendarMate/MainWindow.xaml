@@ -78,7 +78,7 @@
                             </Grid>
                             <Border  Grid.Row="3" Padding="5" Background="#666">
                                 <Viewbox Grid.Row="1" Grid.RowSpan="3" Height="280" Width="280" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                    <Calendar x:Name="Calendar2" MouseRightButtonUp="Calendar_MouseRightButtonUp" MouseLeftButtonUp="Calendar_MouseLeftButtonUp" />
+                                    <Calendar x:Name="Calendar2"/>
                                 </Viewbox>
                             </Border>
                             <Border  Grid.Row="4" Padding="5" Background="#666">

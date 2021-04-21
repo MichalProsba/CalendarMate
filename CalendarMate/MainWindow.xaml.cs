@@ -18,6 +18,7 @@ using System.Windows.Threading;
 using System.Globalization;
 using ApiLibrary;
 using Normalization;
+using System.Threading;
 
 
 
@@ -82,15 +83,18 @@ namespace CalendarMate
         /// </summary>
         public MainWindow()
         {
-            Current_calendar_data = new CalendarDate();
-            Current_data = DateTime.Today;
+            //Current_calendar_data = new CalendarDate();
+            //Current_data = DateTime.Today;
             InitializeComponent();
             GenerateCurrentTime();
-            GenerateDayPanel();
             ApiHelper.InitializeClient();
             CityInitialization();
             LoadCurrentCity();
             LoadCurrentWeather();
+            //Thread.Sleep(10000);
+            Current_data = DateTime.UtcNow.AddSeconds(currentWeather.Timezone);
+            Current_calendar_data = new CalendarDate(DateTime.UtcNow.AddSeconds(currentWeather.Timezone));
+            GenerateDayPanel();
         }
 
         // Generates the day panel
@@ -151,11 +155,6 @@ namespace CalendarMate
                     column = 0;
                 }
                 number_of_day++;
-            }
-
-            if (Current_data.Year == Current_calendar_data.Date.Year && Current_data.Month == Current_calendar_data.Date.Month)
-            {
-                Button_list_of_day[Current_data.Day-1].Background = Brushes.DodgerBlue;
             }
 
             foreach (Button i in Button_list_of_day)
@@ -231,6 +230,10 @@ namespace CalendarMate
                 weatherImage.EndInit();
                 CurrentWeatherImage.Source = weatherImage;
                 CurrentWeather.Text = NormalizationOperations.NormalizeTemperature(currentWeather.Main.Temp).ToString() + "°C";
+                Current_data = DateTime.UtcNow.AddSeconds(currentWeather.Timezone);
+                Current_calendar_data = new CalendarDate(DateTime.UtcNow.AddSeconds(currentWeather.Timezone));
+                RefreshAllDayButtons();
+                ShowCurrentDay();
             }
             else
             {
@@ -249,6 +252,10 @@ namespace CalendarMate
             RemoveDayPanel();
             Current_calendar_data.AddMonths(1);
             GenerateDayPanel();
+            if (Current_data.Year == Current_calendar_data.Date.Year && Current_data.Month == Current_calendar_data.Date.Month)
+            {
+                Button_list_of_day[Current_data.Day - 1].Background = Brushes.DodgerBlue;
+            }
         }
 
         // Loads the previous page in the calendar
@@ -262,6 +269,10 @@ namespace CalendarMate
             RemoveDayPanel();
             Current_calendar_data.AddMonths(-1);
             GenerateDayPanel();
+            if (Current_data.Year == Current_calendar_data.Date.Year && Current_data.Month == Current_calendar_data.Date.Month)
+            {
+                Button_list_of_day[Current_data.Day - 1].Background = Brushes.DodgerBlue;
+            }
         }
 
         // Loads the current date page in the calendar
@@ -409,7 +420,7 @@ namespace CalendarMate
         /// </summary>
         public void LoadCurrentCity()
         {
-                displayedCity.Text = ReturnCity();
+            displayedCity.Text = ReturnCity();
         }
 
         // Minimalizes the main window
@@ -437,6 +448,22 @@ namespace CalendarMate
             else
             {
                 return false;
+            }
+        }
+
+        public void RefreshAllDayButtons()
+        {
+            for (int i = 0; i < Button_list_of_day.Count; i++)
+            {
+                Button_list_of_day[i].Background = Brushes.DarkGray;
+            }
+        }
+
+        public void ShowCurrentDay()
+        {
+            if (Current_data.Year == Current_calendar_data.Date.Year && Current_data.Month == Current_calendar_data.Date.Month)
+            {
+                Button_list_of_day[Current_data.Day - 1].Background = Brushes.DodgerBlue;
             }
         }
     }
