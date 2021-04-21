@@ -21,7 +21,7 @@ namespace CalendarMate
 {
     // The AddAnEventWindow class containes window mechanics add events to database
     /// <summary>
-    /// The <c> ShowAnEventWindow </c> class
+    /// The <c> AddAnEventWindow </c> class
     /// </summary>
     public partial class AddAnEventWindow : Window
     {

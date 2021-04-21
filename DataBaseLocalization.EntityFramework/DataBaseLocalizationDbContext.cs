@@ -14,12 +14,24 @@ namespace DataBaseLocalization.EntityFramework
     /// </summary>
     public class DataBaseLocalizationDbContext : DbContext
     {
+        // The DataBaseLocalizations1
+        /// <value>Gets and sets the DataBaseLocalizations1 value.</value>
         public DbSet<DataBaseLocalization1> DataBaseLocalizations1 { get; set; }
+
+        // Initializes the data base
+        /// <summary>
+        /// Initializes the data base. 
+        /// </summary>
         public DataBaseLocalizationDbContext() : base("DataBaseLocalization")
         {
             Database.SetInitializer<DataBaseLocalizationDbContext>(new DropCreateDatabaseIfModelChanges<DataBaseLocalizationDbContext>());
         }
 
+        // Configures the data base
+        /// <summary>
+        /// Configures the data base
+        /// </summary>
+        /// <param name="modelBuilder">DbModelBuilder object containes the database configuration.</param>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Types().Configure(t => t.MapToStoredProcedures());

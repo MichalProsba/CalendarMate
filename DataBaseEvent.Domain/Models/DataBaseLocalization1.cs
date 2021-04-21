@@ -12,7 +12,12 @@ namespace DataBaseEvent.Domain.Models
     /// </summary>
     public class DataBaseLocalization1
     {
+        // The Id
+        /// <value>Gets and sets the Id value.</value>
         public int Id { get; set; }
+
+        // The Localization
+        /// <value>Gets and sets the Localization value.</value>
         public string Localization { get; set; }
     }
 }
