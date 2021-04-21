@@ -310,7 +310,7 @@ namespace CalendarMate
         /// <summary>
         /// Method to update the DataGrid
         /// </summary>
-        private void UpdateGrid()
+        public void UpdateGrid()
         {
             DataBaseEventDbContext db = new DataBaseEventDbContext();
             var docs = from d in db.DataBaseEvents1
