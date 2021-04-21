@@ -158,7 +158,7 @@
                                 <fa:ImageAwesome Icon="BellOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
                                 <fa:FontAwesome Text="Remind" FontSize="30"/>
                             </StackPanel>
-                            <ComboBox x:Name="RemindCombobox" Padding="5" FontSize="25" SelectedIndex="0" Background="#eee" SelectionChanged="ComboBox_SelectionChanged" BorderBrush="{x:Null}" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                            <ComboBox x:Name="RemindCombobox" Padding="5" FontSize="25" SelectedIndex="0" Background="#eee" SelectionChanged="ComboBox_SelectionChanged" BorderBrush="{x:Null}" ScrollViewer.VerticalScrollBarVisibility="Visible" GotFocus="RemindCombobox_GotFocus">
                                 <ComboBox.Foreground>
                                     <SolidColorBrush Color="Gray" Opacity="0.4"/>
                                 </ComboBox.Foreground>
