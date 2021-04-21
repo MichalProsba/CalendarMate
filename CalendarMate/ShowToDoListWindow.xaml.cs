@@ -81,7 +81,7 @@ namespace CalendarMate
         /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            DecisionWindow decisionWindow = new DecisionWindow("Are you sure you want to delete this event?", "Delete Event");
+            DecisionWindow decisionWindow = new DecisionWindow("Are you sure you want to delete this task?", "Delete Event");
             bool msgBoxResult = decisionWindow.ShowDialog(true);
             DataBaseToDoListDbContext db1 = new DataBaseToDoListDbContext();
             var r = from d in db1.DataBaseToDoLists1

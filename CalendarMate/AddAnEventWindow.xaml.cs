@@ -48,8 +48,8 @@ namespace CalendarMate
         public AddAnEventWindow(DateTime eventDay, MainWindow main)
         {
             this.EventDate = eventDay;
-            oneList = new ShowAnEventWindow(EventDate.Date, main);
             mainWindow = main;
+            oneList = new ShowAnEventWindow(EventDate.Date, mainWindow);
             InitializeComponent();
             CreateEvent(eventDay);
             RestartWindow();
@@ -116,6 +116,7 @@ namespace CalendarMate
         /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void ButtonShow_Click(object sender, RoutedEventArgs e)
         {
+            oneList = new ShowAnEventWindow(EventDate.Date, mainWindow);
             oneList.Show();
         }
 
