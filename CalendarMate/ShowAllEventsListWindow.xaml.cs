@@ -23,10 +23,6 @@ namespace CalendarMate
     /// </summary>
     public partial class ShowAllEventsListWindow : Window
     {
-        // The Combo selected
-        /// <value> Variable ComboSelected contains information about switching combobox.</value>
-        private bool ComboSelected = false;
-
         // The id number
         /// <value>Variable updatingEventID holds the current id.</value>
         private int updatingEventID = 0;
@@ -575,15 +571,20 @@ namespace CalendarMate
         /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ComboSelected)
-            {
-                SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
-                this.RemindComboboxAdd.Foreground = blackBrush;
-            }
-            else
-            {
-                ComboSelected = true;
-            }
+            SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
+            this.RemindComboboxAdd.Foreground = blackBrush;
+        }
+
+        // The method change combox appearance 
+        /// <summary>
+        /// The method change combox appearance 
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
+        private void RemindComboboxAdd_GotFocus(object sender, RoutedEventArgs e)
+        {
+            SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
+            this.RemindComboboxAdd.Foreground = blackBrush;
         }
 
         // Method restart window
@@ -612,8 +613,8 @@ namespace CalendarMate
             this.EventStartAdd.IsReadOnly = false;
             this.EventStopAdd.IsReadOnly = false;
             this.AllDayCheckBoxAdd.IsChecked = false;
-            ComboSelected = false;
             this.RemindComboboxAdd.SelectedIndex = 0;
+            this.RemindComboboxAdd.Foreground = grayBrush;
         }
     }
 }

@@ -26,10 +26,6 @@ namespace CalendarMate
     public partial class AddAnEventWindow : Window
     {
         /// <summary>
-        /// Contains information about switching combobox
-        /// </summary>
-        private bool ComboSelected = false;
-        /// <summary>
         /// Contains a date selected by the user
         /// </summary>
         private DateTime EventDate;
@@ -224,15 +220,20 @@ namespace CalendarMate
         /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(ComboSelected)
-            {
-                SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
-                this.RemindCombobox.Foreground = blackBrush;
-            }
-            else
-            {
-                ComboSelected = true;
-            }
+            SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
+            this.RemindCombobox.Foreground = blackBrush;
+        }
+
+        // The method change combox appearance 
+        /// <summary>
+        /// The method change combox appearance 
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
+        private void RemindCombobox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
+            this.RemindCombobox.Foreground = blackBrush;
         }
 
         // The metod close the window after click on button
@@ -280,8 +281,8 @@ namespace CalendarMate
             this.EventStart.IsReadOnly = false;
             this.EventStop.IsReadOnly = false;
             this.AllDayCheckBox.IsChecked = false;
-            ComboSelected = false;
             this.RemindCombobox.SelectedIndex = 0;
+            this.RemindCombobox.Foreground = grayBrush;
         }
     }
 }
