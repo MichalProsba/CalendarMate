@@ -73,7 +73,7 @@ namespace CalendarMate
                             select d;
                     foreach (var item in r)
                     {
-                        SetBlackForeground(item.Name, item.Localization, item.StartTime, item.StopTime, item.RemindTime.Hour, item.Year, item.Month, item.Day);
+                        SetBlackForeground(item.Name, item.Localization, item.StartTime, item.StopTime, item.RemindTime, item.Year, item.Month, item.Day);
                     }
                 }
             }
@@ -117,16 +117,16 @@ namespace CalendarMate
             string input1 = EventStartShow.Text;
             string input2 = EventStopShow.Text;
             string inputdate = EventYearShow.Text + "/" + EventMonthShow.Text + "/" + EventDayShow.Text;
-            DateTime time1;
-            DateTime time2;
+            TimeSpan time1;
+            TimeSpan time2;
             DateTime time3;
 
-            if (DateTime.TryParse(input1, out time1) && DateTime.TryParse(input2, out time2) && DateTime.TryParse(inputdate, out time3))
+            if (TimeSpan.TryParse(input1, out time1) && TimeSpan.TryParse(input2, out time2) && DateTime.TryParse(inputdate, out time3))
             {
-                if (DateTime.Compare(time1, time2) < 0)
+                if (TimeSpan.Compare(time1, time2) < 0)
                 {
                     TimeSpan ts = new TimeSpan(RemindComboboxShow.SelectedIndex, 0, 0);
-                    DateTime date = new DateTime(int.Parse(EventYearShow.Text), int.Parse(EventMonthShow.Text), int.Parse(EventDayShow.Text));
+                    DateTime from_date = new DateTime(int.Parse(EventYearShow.Text), int.Parse(EventMonthShow.Text), int.Parse(EventDayShow.Text));
                     DataBaseEventDbContext db = new DataBaseEventDbContext();
                     var r = from d in db.DataBaseEvents1
                             where d.Id == updatingEventID
@@ -142,7 +142,7 @@ namespace CalendarMate
                         obj.Day = EventDate.Day;
                         obj.StartTime = EventStartShow.Text;
                         obj.StopTime = EventStopShow.Text;
-                        obj.RemindTime = date.Date + ts;
+                        obj.RemindTime = from_date - ts;
                         obj.Year = int.Parse(EventYearShow.Text);
                         obj.Month = int.Parse(EventMonthShow.Text);
                         obj.Day = int.Parse(EventDayShow.Text);
@@ -272,8 +272,20 @@ namespace CalendarMate
         /// <param name="year"> Contains selected year </param>
         /// <param name="month"> Contains selected month </param>
         /// <param name="day"> Contains selected day </param>
-        private void SetBlackForeground(string name, string localization, string start, string stop, int remind_hour, int year, int month, int day)
+        private void SetBlackForeground(string name, string localization, string start, string stop, DateTime remind, int year, int month, int day)
         {
+            TimeSpan time;
+            TimeSpan.TryParse(start, out time);
+            DateTime date = new DateTime(EventDate.Year, EventDate.Month, EventDate.Day) + time;
+            int hour = 0;
+            if (date.Hour - remind.Hour >= 0)
+            {
+                hour = date.Hour - remind.Hour;
+            }
+            else
+            {
+                hour = date.Hour - remind.Hour + 24;
+            }
             SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
             blackBrush.Opacity = 0.9;
             this.EventNameShow.Foreground = blackBrush;
@@ -289,7 +301,7 @@ namespace CalendarMate
             this.EventStopShow.Text = stop;
             this.EventStopShow.IsReadOnly = false;
             this.RemindComboboxShow.Foreground = blackBrush;
-            this.RemindComboboxShow.SelectedIndex = remind_hour;
+            this.RemindComboboxShow.SelectedIndex = hour;
             this.AllDayCheckBoxShow.IsEnabled = true;
             this.EventYearShow.Foreground = blackBrush;
             this.EventYearShow.Text = year.ToString();
@@ -326,7 +338,7 @@ namespace CalendarMate
                             select d;
                     foreach (var item in r)
                     {
-                        SetBlackForeground(item.Name, item.Localization, item.StartTime, item.StopTime, item.RemindTime.Hour, item.Year, item.Month, item.Day);
+                        SetBlackForeground(item.Name, item.Localization, item.StartTime, item.StopTime, item.RemindTime, item.Year, item.Month, item.Day);
                     }
                 }
             }
@@ -397,17 +409,17 @@ namespace CalendarMate
         {
             SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
             blackBrush.Opacity = 0.9;
-            DateTime time1;
-            DateTime time2;
+            TimeSpan time1;
+            TimeSpan time2;
             DateTime time3;
 
-            if (DateTime.TryParse(EventStartAdd.Text, out time1) && DateTime.TryParse(EventStopAdd.Text, out time2) && DateTime.TryParse(EventYearAdd.Text + "/" + EventMonthAdd.Text + "/" + EventDayAdd.Text, out time3))
+            if (TimeSpan.TryParse(EventStartAdd.Text, out time1) && TimeSpan.TryParse(EventStopAdd.Text, out time2) && DateTime.TryParse(EventYearAdd.Text + "/" + EventMonthAdd.Text + "/" + EventDayAdd.Text, out time3))
             {
 
-                if (DateTime.Compare(time1, time2) < 0 && this.EventNameAdd.Foreground.Opacity == blackBrush.Opacity && this.EventLocalizationAdd.Foreground.Opacity == blackBrush.Opacity && this.EventStartAdd.Foreground.Opacity == blackBrush.Opacity && this.EventStopAdd.Foreground.Opacity == blackBrush.Opacity)
+                if (TimeSpan.Compare(time1, time2) < 0 && this.EventNameAdd.Foreground.Opacity == blackBrush.Opacity && this.EventLocalizationAdd.Foreground.Opacity == blackBrush.Opacity && this.EventStartAdd.Foreground.Opacity == blackBrush.Opacity && this.EventStopAdd.Foreground.Opacity == blackBrush.Opacity)
                 {
                     TimeSpan ts = new TimeSpan(RemindComboboxAdd.SelectedIndex, 0, 0);
-                    DateTime date = new DateTime(int.Parse(EventYearAdd.Text), int.Parse(EventMonthAdd.Text), int.Parse(EventDayAdd.Text));
+                    DateTime from_date = new DateTime(int.Parse(EventYearAdd.Text), int.Parse(EventMonthAdd.Text), int.Parse(EventDayAdd.Text)) + time1;
                     DataBaseEventDbContext db1 = new DataBaseEventDbContext();
                     DataBaseEvent1 doctroObject = new DataBaseEvent1()
                     {
@@ -418,7 +430,7 @@ namespace CalendarMate
                         Day = int.Parse(EventDayAdd.Text),
                         StartTime = EventStartAdd.Text,
                         StopTime = EventStopAdd.Text,
-                        RemindTime = date + ts,
+                        RemindTime = from_date - ts,
                     };
                     db1.DataBaseEvents1.Add(doctroObject);
                     db1.SaveChanges();

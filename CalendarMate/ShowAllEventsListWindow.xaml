@@ -176,30 +176,30 @@
                                     <ComboBox.Foreground>
                                         <SolidColorBrush Color="Gray" Opacity="0.4"/>
                                     </ComboBox.Foreground>
-                                    <ComboBoxItem FontSize="25" Background="#eee">00:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">01:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">02:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">03:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">04:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">05:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">06:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">07:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">08:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">09:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">10:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">11:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">12:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">13:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">14:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">15:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">16:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">17:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">18:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">19:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">20:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">21:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">22:00</ComboBoxItem>
-                                    <ComboBoxItem FontSize="25" Background="#eee">23:00</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">0 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">1 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">2 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">3 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">4 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">5 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">6 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">7 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">8 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">9 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">10 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">11 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">12 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">13 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">14 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">15 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">16 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">17 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">18 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">19 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">20 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">21 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">22 hour</ComboBoxItem>
+                                    <ComboBoxItem FontSize="25" Background="#eee">23 hour</ComboBoxItem>
                                 </ComboBox>
 
                             </StackPanel>
@@ -403,30 +403,30 @@
                                 <ComboBox.Foreground>
                                     <SolidColorBrush Color="Gray" Opacity="0.4"/>
                                 </ComboBox.Foreground>
-                                <ComboBoxItem FontSize="25" Background="#eee">00:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">01:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">02:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">03:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">04:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">05:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">06:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">07:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">08:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">09:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">10:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">11:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">12:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">13:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">14:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">15:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">16:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">17:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">18:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">19:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">20:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">21:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">22:00</ComboBoxItem>
-                                <ComboBoxItem FontSize="25" Background="#eee">23:00</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">0 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">1 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">2 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">3 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">4 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">5 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">6 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">7 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">8 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">9 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">10 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">11 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">12 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">13 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">14 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">15 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">16 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">17 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">18 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">19 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">20 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">21 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">22 hour</ComboBoxItem>
+                                <ComboBoxItem FontSize="25" Background="#eee">23 hour</ComboBoxItem>
                             </ComboBox>
 
                         </StackPanel>

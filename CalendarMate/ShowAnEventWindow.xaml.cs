@@ -43,7 +43,6 @@ namespace CalendarMate
             SetGrayForeground();
             UpdateGrid();
             CreateEvent(eventDay);
-
         }
 
         // The metod displays a selected DataGrid section in other TextBoxs
@@ -70,7 +69,7 @@ namespace CalendarMate
                             select d;
                     foreach (var item in r)
                     {
-                        SetBlackForeground(item.Name, item.Localization, item.StartTime, item.StopTime, item.RemindTime.Hour);
+                        SetBlackForeground(item.Name, item.Localization, item.StartTime, item.StopTime, item.RemindTime);
                     }
                 }
             }
@@ -118,13 +117,14 @@ namespace CalendarMate
         {
             string input1 = EventStartShow.Text;
             string input2 = EventStopShow.Text;
-            DateTime time1;
-            DateTime time2;
-            if (DateTime.TryParse(input1, out time1) && DateTime.TryParse(input2, out time2))
+            TimeSpan time1;
+            TimeSpan time2;
+            if (TimeSpan.TryParse(input1, out time1) && TimeSpan.TryParse(input2, out time2))
             {
-                if (DateTime.Compare(time1, time2) < 0)
+                if (TimeSpan.Compare(time1, time2) < 0)
                 {
                     TimeSpan ts = new TimeSpan(RemindCombobox.SelectedIndex, 0, 0);
+                    DateTime from_date = new DateTime(EventDate.Year, EventDate.Month, EventDate.Day) + time1;
                     DataBaseEventDbContext db = new DataBaseEventDbContext();
                     var r = from d in db.DataBaseEvents1
                             where d.Id == updatingEventID
@@ -140,7 +140,7 @@ namespace CalendarMate
                         obj.Day = EventDate.Day;
                         obj.StartTime = EventStartShow.Text;
                         obj.StopTime = EventStopShow.Text;
-                        obj.RemindTime = EventDate.Date + ts;
+                        obj.RemindTime = from_date - ts;
                     }
                     db.SaveChanges();
                     UpdateGrid();
@@ -242,6 +242,7 @@ namespace CalendarMate
             this.EventStopShow.IsReadOnly = true;
             this.RemindCombobox.Foreground = grayBrush;
             this.RemindCombobox.SelectedIndex = 0;
+            this.RemindCombobox.IsEnabled = false;
             this.AllDayCheckBox.IsChecked = false;
             this.AllDayCheckBox.IsEnabled = false;
         }
@@ -254,9 +255,21 @@ namespace CalendarMate
         /// <param name="localization"> Contains selected event localization </param>
         /// <param name="start"> Contains selected time to start event </param>
         /// <param name="stop"> Contains selected end time event </param>
-        /// <param name="remind_hour"> Contains selected remind hour event</param>
-        private void SetBlackForeground(string name, string localization, string start, string stop, int remind_hour)
+        /// <param name="remind"> Contains selected remind date event</param>
+        private void SetBlackForeground(string name, string localization, string start, string stop, DateTime remind)
         {
+            TimeSpan time;
+            TimeSpan.TryParse(start, out time);
+            DateTime date = new DateTime(EventDate.Year, EventDate.Month, EventDate.Day) + time;
+            int hour = 0;
+            if (date.Hour - remind.Hour >= 0)
+            {
+                hour = date.Hour - remind.Hour;
+            }
+            else
+            {
+                hour = date.Hour - remind.Hour + 24;
+            }
             SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
             blackBrush.Opacity = 0.9;
             this.EventNameShow.Foreground = blackBrush;
@@ -272,7 +285,8 @@ namespace CalendarMate
             this.EventStopShow.Text = stop;
             this.EventStopShow.IsReadOnly = false;
             this.RemindCombobox.Foreground = blackBrush;
-            this.RemindCombobox.SelectedIndex = remind_hour;
+            this.RemindCombobox.SelectedIndex = hour;
+            this.RemindCombobox.IsEnabled = true;
             this.AllDayCheckBox.IsEnabled = true;
         }
 
@@ -300,7 +314,7 @@ namespace CalendarMate
                             select d;
                     foreach (var item in r)
                     {
-                        SetBlackForeground(item.Name, item.Localization, item.StartTime, item.StopTime, item.RemindTime.Hour);
+                        SetBlackForeground(item.Name, item.Localization, item.StartTime, item.StopTime, item.RemindTime);
                     }
                 }
             }

@@ -62,13 +62,14 @@ namespace CalendarMate
             blackBrush.Opacity = 0.9;
             string input1 = EventStart.Text;
             string input2 = EventStop.Text;
-            DateTime time1;
-            DateTime time2;
-            if (DateTime.TryParse(input1, out time1) && DateTime.TryParse(input2, out time2))
+            TimeSpan time1;
+            TimeSpan time2;
+            if (TimeSpan.TryParse(input1, out time1) && TimeSpan.TryParse(input2, out time2))
             {
-                if (DateTime.Compare(time1, time2) < 0 && this.EventName.Foreground.Opacity == blackBrush.Opacity && this.EventStart.Foreground.Opacity == blackBrush.Opacity && this.EventStop.Foreground.Opacity == blackBrush.Opacity && this.EventLocalization.Foreground.Opacity == blackBrush.Opacity)
+                if (TimeSpan.Compare(time1, time2) < 0 && this.EventName.Foreground.Opacity == blackBrush.Opacity && this.EventStart.Foreground.Opacity == blackBrush.Opacity && this.EventStop.Foreground.Opacity == blackBrush.Opacity && this.EventLocalization.Foreground.Opacity == blackBrush.Opacity)
                 {
                     TimeSpan ts = new TimeSpan(RemindCombobox.SelectedIndex, 0, 0);
+                    DateTime from_date = new DateTime(EventDate.Year, EventDate.Month, EventDate.Day) + time1;
                     DataBaseEventDbContext db1 = new DataBaseEventDbContext();
                     DataBaseEvent1 doctroObject = new DataBaseEvent1()
                     {
@@ -79,7 +80,7 @@ namespace CalendarMate
                         Day = EventDate.Day,
                         StartTime = EventStart.Text,
                         StopTime = EventStop.Text,
-                        RemindTime = EventDate.Date + ts,
+                        RemindTime = from_date - ts,
                     };
                     db1.DataBaseEvents1.Add(doctroObject);
                     db1.SaveChanges();
