@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataBaseEvent.Domain.Models
 {
+    // The DataBaseLocalization1 containes structure of the localization table
+    /// <summary>
+    /// The <c> DataBaseLocalization1 </c> class
+    /// </summary>
     public class DataBaseLocalization1
     {
         public int Id { get; set; }

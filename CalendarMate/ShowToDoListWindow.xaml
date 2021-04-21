@@ -11,7 +11,7 @@
         BorderBrush="Black"
         MouseDown="Window_MouseDown"
         ResizeMode="NoResize"
-        Title="ShowAnEventWindow" Height="508" Width="800">
+        Title="ShowAnEventWindow" Height="540" Width="810">
 
 
     <StackPanel Background="#666">
@@ -48,7 +48,7 @@
                                 <fa:ImageAwesome Icon="StickyNote" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0"/>
                                 <fa:FontAwesome Text="Task" FontSize="30" />
                             </StackPanel>
-                            <TextBox x:Name="EventNameShow" Text="Task" Padding="5" FontSize="25" Background="#eee">
+                            <TextBox x:Name="ToDoListNameShow" Text="Task" Padding="5" FontSize="25" Background="#eee" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus">
                                 <TextBox.Foreground>
                                     <SolidColorBrush Color="Gray" Opacity="0.4" />
                                 </TextBox.Foreground>
@@ -70,30 +70,50 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="2" Margin="0 20 10 0">
+                        <StackPanel Grid.Column="2" Margin="0 20 10 20">
                             <Button x:Name="Add" Click="Add_Click" BorderThickness="3" FontSize="25" Foreground="DodgerBlue" Background="#555" Content="Add"/>
                         </StackPanel>
                     </Grid>
 
-                    <StackPanel Margin="0 0 10 0">
-                        <StackPanel Orientation="Horizontal">
-                            <fa:ImageAwesome Icon="StickyNoteOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
-                            <fa:FontAwesome Text="Edit task" FontSize="30"/>
+                    <!-- 1 Row -->
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                            <StackPanel Orientation="Horizontal">
+                                <fa:ImageAwesome Icon="StickyNoteOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
+                                <fa:FontAwesome Text="Edit task" FontSize="30"/>
+                            </StackPanel>
+                            <TextBox x:Name="ToDoListEditShow" Text="Task" Padding="5" FontSize="25" Background="#eee" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus">
+                                <TextBox.Foreground>
+                                    <SolidColorBrush Color="Gray" Opacity="0.4" />
+                                </TextBox.Foreground>
+                                <TextBox.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="3"/>
+                                    </Style>
+                                </TextBox.Resources>
+                            </TextBox>
+
                         </StackPanel>
-                        <TextBox x:Name="EventLocalization" Text="Task" Padding="5" FontSize="25" Background="#eee" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus">
-                            <TextBox.Foreground>
-                                <SolidColorBrush Color="Gray" Opacity="0.4" />
-                            </TextBox.Foreground>
-                            <TextBox.Resources>
-                                <Style TargetType="{x:Type Border}">
-                                    <Setter Property="CornerRadius" Value="3"/>
-                                </Style>
-                            </TextBox.Resources>
-                        </TextBox>
-                    </StackPanel>
+                        <StackPanel Grid.Column="1" Margin="0 0 20 0">
+                            <StackPanel Orientation="Horizontal">
+                                <fa:ImageAwesome Icon="CalendarCheckOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0" />
+                                <fa:FontAwesome Text="Edit Done" FontSize="30"/>
+                            </StackPanel>
+                            <CheckBox x:Name="DoneCheckBox" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 10 10 10" Background="#eee" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
+                        </StackPanel>
+                    </Grid>
 
-
-                    <DataGrid Margin="0,20,10,0" x:Name="EventGrid" Height="135" RenderTransformOrigin="0.5,0.5" Width="758" SelectionChanged="EventGrid_SelectionChanged" GotFocus="EventGrid_GotFocus" AlternatingRowBackground="#666" CanUserAddRows="False" >
+                    <DataGrid Margin="0,20,10,0" x:Name="EventGrid" Height="135" RenderTransformOrigin="0.5,0.5" Width="758" SelectionChanged="EventGrid_SelectionChanged" GotFocus="EventGrid_GotFocus" AlternatingRowBackground="#666" CanUserAddRows="True" IsReadOnly="False">
                         <DataGrid.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>

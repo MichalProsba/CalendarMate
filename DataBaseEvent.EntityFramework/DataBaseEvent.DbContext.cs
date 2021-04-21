@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace DataBaseEvent.EntityFramework
 {
+    // The DataBaseEventDbContext containes mechanics create a database contain event table
+    /// <summary>
+    /// The <c> DataBaseEventDbContext </c> class
+    /// </summary>
     public class DataBaseEventDbContext : DbContext
     {
         public DbSet<DataBaseEvent1> DataBaseEvents1 { get; set; }

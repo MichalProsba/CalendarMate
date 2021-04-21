@@ -115,9 +115,12 @@ namespace CalendarMate
         {
             string input1 = EventStartShow.Text;
             string input2 = EventStopShow.Text;
+            string inputdate = EventYearShow.Text + "/" + EventMonthShow.Text + "/" + EventDayShow.Text;
             DateTime time1;
             DateTime time2;
-            if (DateTime.TryParse(input1, out time1) && DateTime.TryParse(input2, out time2))
+            DateTime time3;
+
+            if (DateTime.TryParse(input1, out time1) && DateTime.TryParse(input2, out time2) && DateTime.TryParse(inputdate, out time3))
             {
                 if (DateTime.Compare(time1, time2) < 0)
                 {
@@ -393,20 +396,17 @@ namespace CalendarMate
         {
             string input1 = EventStartAdd.Text;
             string input2 = EventStopAdd.Text;
-            string input3 = EventYearAdd.Text;
-            string input4 = EventMonthAdd.Text;
-            string input5 = EventDayAdd.Text;
+            string inputdate = EventYearAdd.Text + "/" + EventMonthAdd.Text + "/" + EventDayAdd.Text;
             DateTime time1;
             DateTime time2;
             DateTime time3;
-            DateTime time4;
-            DateTime time5;
-            if (DateTime.TryParse(input1, out time1) && DateTime.TryParse(input2, out time2))
+   
+            if (DateTime.TryParse(input1, out time1) && DateTime.TryParse(input2, out time2) && DateTime.TryParse(inputdate, out time3))
             {
                 if (DateTime.Compare(time1, time2) < 0)
                 {
                     TimeSpan ts = new TimeSpan(RemindComboboxAdd.SelectedIndex, 0, 0);
-                    DateTime date = new DateTime(int.Parse(EventYearAdd.Text), int.Parse(EventMonthAdd.Text), int.Parse(EventDayAdd.Text)    );
+                    DateTime date = new DateTime(int.Parse(EventYearAdd.Text), int.Parse(EventMonthAdd.Text), int.Parse(EventDayAdd.Text));
                     DataBaseEventDbContext db1 = new DataBaseEventDbContext();
                     DataBaseEvent1 doctroObject = new DataBaseEvent1()
                     {

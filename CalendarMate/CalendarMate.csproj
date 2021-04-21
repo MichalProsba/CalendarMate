@@ -36,6 +36,7 @@
     <ProjectReference Include="..\ApiLibrary\ApiLibrary.csproj" />
     <ProjectReference Include="..\DataBaseEvent.EntityFramework\DataBaseEvent.EntityFramework.csproj" />
     <ProjectReference Include="..\DataBaseLocalization.EntityFramework\DataBaseLocalization.EntityFramework.csproj" />
+    <ProjectReference Include="..\DataBaseToDoList.EntityFramework\DataBaseToDoList.EntityFramework.csproj" />
     <ProjectReference Include="..\WeatherChartData\WeatherChartData.csproj" />
     <ProjectReference Include="..\Normalization\Normalization.csproj" />
   </ItemGroup>

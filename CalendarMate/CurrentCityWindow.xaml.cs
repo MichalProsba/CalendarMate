@@ -17,6 +17,10 @@ using ApiLibrary;
 
 namespace CalendarMate
 {
+    // The CurrentCityWindow containes window mechanics displaying from data base and adding events to data base
+    /// <summary>
+    /// The <c> CurrentCityWindow </c> class
+    /// </summary>
     public partial class CurrentCityWindow : Window
     {
         // MainWindow object to store the reference to our main window
@@ -68,6 +72,12 @@ namespace CalendarMate
             }
         }
 
+        // The metod save change information to the database
+        /// <summary>
+        /// The metod save change information to the database
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private async void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             DataBaseLocalizationDbContext db = new DataBaseLocalizationDbContext();

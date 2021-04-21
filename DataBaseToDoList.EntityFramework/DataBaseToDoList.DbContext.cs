@@ -7,12 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 namespace DataBaseToDoList.EntityFramework
 {
-    public class DataBaseToDoList : DbContext
+    public class DataBaseToDoListDbContext : DbContext
     {
         public DbSet<DataBaseToDoList1> DataBaseToDoLists1 { get; set; }
-        public DataBaseToDoList() : base("DataBaseAllToDoList")
+        public DataBaseToDoListDbContext() : base("DataBaseAllToDoList")
         {
-            Database.SetInitializer<DataBaseToDoList>(new DropCreateDatabaseIfModelChanges<DataBaseToDoList>());
+            Database.SetInitializer<DataBaseToDoListDbContext>(new DropCreateDatabaseIfModelChanges<DataBaseToDoListDbContext>());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

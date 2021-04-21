@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataBaseEvent.Domain.Models
 {
+    // The DataBaseEvent1 containes structure of the event table
+    /// <summary>
+    /// The <c> DataBaseEvent1 </c> class
+    /// </summary>
     public class DataBaseEvent1
     {
         public int Id { get; set; }
