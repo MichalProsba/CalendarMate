@@ -159,6 +159,16 @@ namespace CalendarMate
                 number_of_day++;
             }
 
+            DataBaseEventDbContext db = new DataBaseEventDbContext();
+            var r = from d in db.DataBaseEvents1
+                    where d.Year == Current_calendar_data.Date.Year && d.Month == Current_calendar_data.Date.Month
+                    select d;
+
+            foreach (var item in r)
+            {
+                Button_list_of_day[Current_calendar_data.Date.Day - 1].Background = Brushes.Green;
+            }
+
             foreach (Button i in Button_list_of_day)
             {
                 mainGrid.Children.Add(i);
