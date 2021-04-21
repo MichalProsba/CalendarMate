@@ -158,6 +158,8 @@ namespace CalendarMate
                 number_of_day++;
             }
 
+            AddEventToStackPanel();
+
             foreach (Button i in Button_list_of_day)
             {
                 mainGrid.Children.Add(i);
@@ -264,6 +266,7 @@ namespace CalendarMate
                 Current_data = DateTime.UtcNow.AddSeconds(currentWeather.Timezone);
                 RefreshAllDayButtons();
                 ShowCurrentDay();
+                AddEventToStackPanel();
             }
             else
             {
@@ -322,7 +325,7 @@ namespace CalendarMate
         private void Day_Click(object sender, RoutedEventArgs e)
         {
             Current_calendar_data.SetClickDate((Button_list_of_day.IndexOf(((Button)sender))+1)); 
-            AddAnEventWindow oneDay = new AddAnEventWindow(Current_calendar_data.Date);
+            AddAnEventWindow oneDay = new AddAnEventWindow(Current_calendar_data.Date, this);
             oneDay.ShowDialog();
         }
 
@@ -334,7 +337,7 @@ namespace CalendarMate
         /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void EventList_Click(object sender, RoutedEventArgs e)
         {
-            ShowAllEventsListWindow eventList = new ShowAllEventsListWindow(Current_data);
+            ShowAllEventsListWindow eventList = new ShowAllEventsListWindow(Current_data, this);
             eventList.ShowDialog();
         }
 
@@ -497,6 +500,19 @@ namespace CalendarMate
             if (Current_data.Year == Current_calendar_data.Date.Year && Current_data.Month == Current_calendar_data.Date.Month)
             {
                 Button_list_of_day[Current_data.Day - 1].Background = Brushes.DodgerBlue;
+            }
+        }
+
+        public void AddEventToStackPanel()
+        {
+            DataBaseEventDbContext db = new DataBaseEventDbContext();
+            var r = from d in db.DataBaseEvents1
+                    where d.Year == Current_calendar_data.Date.Year && d.Month == Current_calendar_data.Date.Month
+                    select d;
+
+            foreach (var item in r)
+            {
+                Button_list_of_day[item.Day - 1].Background = Brushes.Green;
             }
         }
     }
