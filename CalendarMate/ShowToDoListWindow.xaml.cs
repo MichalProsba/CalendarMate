@@ -49,16 +49,25 @@ namespace CalendarMate
         /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            DataBaseToDoListDbContext db1 = new DataBaseToDoListDbContext();
-            DataBaseToDoList1 doctroObject = new DataBaseToDoList1()
+            SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
+            blackBrush.Opacity = 0.9;
+            if (this.ToDoListNameShow.Foreground.Opacity == blackBrush.Opacity)
             {
-                Name = this.ToDoListNameShow.Text,
-                Done = false,
-            };
-            db1.DataBaseToDoLists1.Add(doctroObject);
-            db1.SaveChanges();
-            RestartWindow();
-            UpdateGrid();
+                DataBaseToDoListDbContext db1 = new DataBaseToDoListDbContext();
+                DataBaseToDoList1 doctroObject = new DataBaseToDoList1()
+                {
+                    Name = this.ToDoListNameShow.Text,
+                    Done = false,
+                };
+                db1.DataBaseToDoLists1.Add(doctroObject);
+                db1.SaveChanges();
+                RestartWindow();
+                UpdateGrid();
+            }
+            else
+            {
+                MessageBox.Show("Please corect you information?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         // The metod delete the information from database
@@ -126,7 +135,9 @@ namespace CalendarMate
                 obj.Done = done;
             }
             db.SaveChanges();
+            RestartWindow();
             UpdateGrid();
+            SetGrayForeground();
         }
 
         // Closes the current window

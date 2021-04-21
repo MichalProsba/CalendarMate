@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ApiLibrary\ApiLibrary.csproj" />
     <ProjectReference Include="..\Normalization\Normalization.csproj" />
+    <ProjectReference Include="..\WeatherChartData\WeatherChartData.csproj" />
   </ItemGroup>
 
 </Project>

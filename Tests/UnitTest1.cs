@@ -39,5 +39,27 @@ namespace Tests
             ApiLibrary.CurrentWeatherInfoModel obj = new ApiLibrary.CurrentWeatherInfoModel();
             Assert.IsTrue(obj.Cod == "404");
         }
+
+        [Test]
+        public void DailyWeatherInfoModelTest()
+        {
+            ApiLibrary.DailyWeatherInfoModel obj = new ApiLibrary.DailyWeatherInfoModel();
+            Assert.IsNotNull(obj);
+        }
+
+        [Test]
+        public void HourlyWeatherInfoModelTest()
+        {
+            ApiLibrary.HourlyWeatherInfoModel obj = new ApiLibrary.HourlyWeatherInfoModel();
+            Assert.IsNotNull(obj);
+        }
+
+        [Test]
+        public void DailyApparentTemperatureForecastTest()
+        {
+            ApiLibrary.DailyWeatherInfoModel current = new ApiLibrary.DailyWeatherInfoModel();
+            WeatherChartData.DailyApparentTemperatureForecast obj = new WeatherChartData.DailyApparentTemperatureForecast(current);
+            Assert.IsTrue(obj != null && obj.DayApparentTemperature.Count == 49);
+        }
     }
 }

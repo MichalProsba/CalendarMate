@@ -7,6 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 namespace DataBaseToDoList.EntityFramework
 {
+    // The DataBaseEventDbContext containes mechanics create a database contain to do list table
+    /// <summary>
+    /// The <c> DataBaseEventDbContext </c> class
+    /// </summary>
     public class DataBaseToDoListDbContext : DbContext
     {
         public DbSet<DataBaseToDoList1> DataBaseToDoLists1 { get; set; }

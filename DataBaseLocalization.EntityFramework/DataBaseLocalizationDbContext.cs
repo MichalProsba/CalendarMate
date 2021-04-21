@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataBaseLocalization.EntityFramework
 {
-    // The DataBaseEventDbContext containes mechanics create a database contain localizatuib table
+    // The DataBaseEventDbContext containes mechanics create a database contain localization table
     /// <summary>
     /// The <c> DataBaseEventDbContext </c> class
     /// </summary>
