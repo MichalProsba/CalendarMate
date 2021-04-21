@@ -90,17 +90,15 @@ namespace CalendarMate
         /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult msgBoxResult = MessageBox.Show("Are you sure you want Delete?", "Delete Event",
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Warning,
-                MessageBoxResult.No);
-
+            DecisionWindow decisionWindow = new DecisionWindow("Are you sure you want to delete this event?", "Delete Event");
+            bool msgBoxResult = decisionWindow.ShowDialog(true);
             DataBaseEventDbContext db1 = new DataBaseEventDbContext();
             var r = from d in db1.DataBaseEvents1
                     where d.Id == this.updatingEventID
                     select d;
 
-            if (msgBoxResult == MessageBoxResult.Yes)
+            //if (msgBoxResult == MessageBoxResult.Yes)
+            if (msgBoxResult == true)
             {
                 DataBaseEvent1 obj = r.SingleOrDefault();
 

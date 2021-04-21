@@ -14,23 +14,32 @@ using System.Windows.Shapes;
 
 namespace CalendarMate
 {
-    // The logic for AlertWindow.xaml
     /// <summary>
-    /// The logic for AlertWindow.xaml
+    /// Logika interakcji dla klasy DecisionWindow.xaml
     /// </summary>
-    public partial class AlertWindow : Window
+    public partial class DecisionWindow : Window
     {
-        // Creates the alert window with given strings
+        // The decision
+        /// <value>Containes the users decision.</value>
+        private bool decision = false;
+
+        // Creates the decision window with given strings
         /// <summary>
-        /// Creates the alert window with given strings.
+        /// Creates the decision window with given strings.
         /// </summary>
-        /// <param name="alert">String alert containing alert text.</param>
+        /// <param name="question">String alert containing alert text.</param>
         /// <param name="windowName">String windowName containing window name.</param>
-        public AlertWindow(string alert, string windowName)
+        public DecisionWindow(string question, string windowName)
         {
             InitializeComponent();
-            AlertText.Text = alert;
-            AlertWindowName.Text = windowName;
+            QuestionText.Text = question;
+            DecisionWindowName.Text = windowName;
+        }
+
+        public bool ShowDialog(bool customShowDialog)
+        {
+            this.ShowDialog();
+            return decision;
         }
 
         // Closes the current window
@@ -56,6 +65,18 @@ namespace CalendarMate
             {
                 this.DragMove();
             }
+        }
+
+        private void ButtonYes_Click(object sender, RoutedEventArgs e)
+        {
+            decision = true;
+            this.Close();
+        }
+
+        private void ButtonNo_Click(object sender, RoutedEventArgs e)
+        {
+            decision = false;
+            this.Close();
         }
     }
 }
