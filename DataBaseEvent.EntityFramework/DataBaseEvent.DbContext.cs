@@ -14,12 +14,24 @@ namespace DataBaseEvent.EntityFramework
     /// </summary>
     public class DataBaseEventDbContext : DbContext
     {
+        // The DataBaseEvents1
+        /// <value>Gets and sets the DataBaseEvents1 value.</value>
         public DbSet<DataBaseEvent1> DataBaseEvents1 { get; set; }
+
+        // Initializes the data base
+        /// <summary>
+        /// Initializes the data base. 
+        /// </summary>
         public DataBaseEventDbContext() : base("DataBaseAllEvent")
         {
             Database.SetInitializer<DataBaseEventDbContext>(new DropCreateDatabaseIfModelChanges<DataBaseEventDbContext>());
         }
 
+        // Configures the data base
+        /// <summary>
+        /// Configures the data base
+        /// </summary>
+        /// <param name="modelBuilder">DbModelBuilder object containes the database configuration.</param>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Types().Configure(t => t.MapToStoredProcedures());

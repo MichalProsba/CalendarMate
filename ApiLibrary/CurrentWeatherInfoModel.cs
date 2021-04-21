@@ -49,6 +49,10 @@ namespace ApiLibrary
         /// <value>Gets and sets the Cod value.</value>
         public string Cod { get; set; }
 
+        // Sets Cod value to "404"
+        /// <summary>
+        /// Sets Cod value to "404" 
+        /// </summary>
         public CurrentWeatherInfoModel()
         {
             Cod = "404";

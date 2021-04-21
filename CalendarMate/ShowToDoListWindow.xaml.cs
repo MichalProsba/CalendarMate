@@ -26,9 +26,11 @@ namespace CalendarMate
         // The id number
         /// <value> Variable updatingEventID holds the current id </value>
         private int updatingToDoListID = 0;
+
         // The id information which user will add to database
         /// <value> Variable done holds the information id which user will add to database </value>
         private bool done = false;
+
         //The ShowToDoListWindow Constructor 
         /// <summary>
         /// The ShowToDoListWindowConstructor 

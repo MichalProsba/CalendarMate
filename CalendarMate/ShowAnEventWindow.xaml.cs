@@ -19,7 +19,8 @@ namespace CalendarMate
 {
     // The ShowAnEventWindow class containes window mechanics displaying events from data base
     /// <summary>
-    /// The <c> ShowAnEventWindow </c> class
+    /// The <c> ShowAnEventWindow </c> class.
+    /// Containes window mechanics displaying events from data base.
     /// </summary>
     public partial class ShowAnEventWindow : Window
     {
