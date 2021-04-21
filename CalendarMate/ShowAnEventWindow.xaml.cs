@@ -160,12 +160,14 @@ namespace CalendarMate
                 }
                 else
                 {
-                    MessageBox.Show("Please corect you information?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    AlertWindow alertWindow = new AlertWindow("Please, corect your information!", "Input Error");
+                    alertWindow.ShowDialog();
                 }
             }
             else
             {
-                MessageBox.Show("Please corect you information?", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AlertWindow alertWindow = new AlertWindow("Please, corect your information!", "Input Error");
+                alertWindow.ShowDialog();
             }
         }
 
