@@ -54,12 +54,35 @@ namespace Tests
             Assert.IsNotNull(obj);
         }
 
+        // /////////////////////////////////
+        // WeatherChartData project tests //
+        // /////////////////////////////////
         [Test]
-        public void DailyApparentTemperatureForecastTest()
+        public void WindSpeedForecastDataTest()
         {
-            ApiLibrary.DailyWeatherInfoModel current = new ApiLibrary.DailyWeatherInfoModel();
-            WeatherChartData.DailyApparentTemperatureForecast obj = new WeatherChartData.DailyApparentTemperatureForecast(current);
-            Assert.IsTrue(obj != null && obj.DayApparentTemperature.Count == 49);
+            WeatherChartData.WindSpeedForecastData obj = new WeatherChartData.WindSpeedForecastData(10.12, "10.12.2021");
+            Assert.IsTrue(obj.WindSpeed == 10.12 && obj.Date == "10.12.2021");
+        }
+
+        [Test]
+        public void HumidityForecastDataTest()
+        {
+            WeatherChartData.HumidityForecastData obj = new WeatherChartData.HumidityForecastData(74, "10.12.2021");
+            Assert.IsTrue(obj.Humidity == 74 && obj.Date == "10.12.2021");
+        }
+
+        [Test]
+        public void PressureForecastDataTest()
+        {
+            WeatherChartData.PressureForecastData obj = new WeatherChartData.PressureForecastData(998, "10.12.2021");
+            Assert.IsTrue(obj.Pressure == 998 && obj.Date == "10.12.2021");
+        }
+
+        [Test]
+        public void TempForecastDataTest()
+        {
+            WeatherChartData.TempForecastData obj = new WeatherChartData.TempForecastData(35.17, "10.12.2021");
+            Assert.IsTrue(obj.Temperature == 35.17 && obj.Date == "10.12.2021");
         }
     }
 }
