@@ -31,18 +31,25 @@ namespace CalendarMate
         /// <value>Variable EventDate holds selected by the user date.</value>
         private DateTime EventDate;
 
+        /// <summary>
+        ///  Contain MainWindow object
+        /// </summary>
+        private MainWindow mainWindow;
+
         //The ShowAnEventWindow Constructor 
         /// <summary>
         /// The ShowAnEventWindow Constructor.
         /// </summary>
         /// <param name="eventDay">Contains a date selected by the user.</param>
-        public ShowAllEventsListWindow(DateTime eventDay)
+        public ShowAllEventsListWindow(DateTime eventDay, MainWindow main)
         {
                 this.EventDate = eventDay;
+                mainWindow = main;
                 InitializeComponent();
                 SetGrayForeground();
                 UpdateGrid();
                 CreateEvent(eventDay);
+                
             RestartWindow();
         }
 
@@ -101,6 +108,9 @@ namespace CalendarMate
                 }
             }
             UpdateGrid();
+            mainWindow.RefreshAllDayButtons();
+            mainWindow.ShowCurrentDay();
+            mainWindow.AddEventToStackPanel();
         }
 
         // The metod save change information to the database
@@ -146,6 +156,9 @@ namespace CalendarMate
                     }
                     db.SaveChanges();
                     UpdateGrid();
+                    mainWindow.RefreshAllDayButtons();
+                    mainWindow.ShowCurrentDay();
+                    mainWindow.AddEventToStackPanel();
                 }
                 else
                 {
@@ -433,6 +446,9 @@ namespace CalendarMate
                     db1.SaveChanges();
                     RestartWindow();
                     UpdateGrid();
+                    mainWindow.RefreshAllDayButtons();
+                    mainWindow.ShowCurrentDay();
+                    mainWindow.AddEventToStackPanel();
                 }
                 else
                 {

@@ -30,17 +30,26 @@ namespace CalendarMate
         /// </summary>
         private DateTime EventDate;
 
-
+        /// <summary>
+        ///  Contain ShowAnEventWindow object
+        /// </summary>
         private ShowAnEventWindow oneList;
+
+        /// <summary>
+        ///  Contain ShowAnEventWindow object
+        /// </summary>
+        private MainWindow mainWindow;
         // The AddAnEventWindow Constructor 
         /// <summary>
         /// The AddAnEventWindow Constructor 
         /// </summary>
         /// <param name="eventDay"> Contains a date selected by the user  </param>
-        public AddAnEventWindow(DateTime eventDay)
+        /// 
+        public AddAnEventWindow(DateTime eventDay, MainWindow main)
         {
             this.EventDate = eventDay;
-            oneList = new ShowAnEventWindow(EventDate.Date);
+            oneList = new ShowAnEventWindow(EventDate.Date, main);
+            mainWindow = main;
             InitializeComponent();
             CreateEvent(eventDay);
             RestartWindow();
@@ -82,6 +91,9 @@ namespace CalendarMate
                     db1.SaveChanges();
                     RestartWindow();
                     oneList.UpdateGrid();
+                    mainWindow.RefreshAllDayButtons();
+                    mainWindow.ShowCurrentDay();
+                    mainWindow.AddEventToStackPanel();
                 }
                 else
                 {
