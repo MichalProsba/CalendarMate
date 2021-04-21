@@ -401,8 +401,9 @@ namespace CalendarMate
             DateTime time2;
             DateTime time3;
 
-                if (DateTime.TryParse(EventStartAdd.Text, out time1) && DateTime.TryParse(EventStopAdd.Text, out time2) && DateTime.TryParse(EventYearAdd.Text + "/" + EventMonthAdd.Text + "/" + EventDayAdd.Text, out time3))
+            if (DateTime.TryParse(EventStartAdd.Text, out time1) && DateTime.TryParse(EventStopAdd.Text, out time2) && DateTime.TryParse(EventYearAdd.Text + "/" + EventMonthAdd.Text + "/" + EventDayAdd.Text, out time3))
             {
+
                 if (DateTime.Compare(time1, time2) < 0 && this.EventNameAdd.Foreground.Opacity == blackBrush.Opacity && this.EventLocalizationAdd.Foreground.Opacity == blackBrush.Opacity && this.EventStartAdd.Foreground.Opacity == blackBrush.Opacity && this.EventStopAdd.Foreground.Opacity == blackBrush.Opacity)
                 {
                     TimeSpan ts = new TimeSpan(RemindComboboxAdd.SelectedIndex, 0, 0);
