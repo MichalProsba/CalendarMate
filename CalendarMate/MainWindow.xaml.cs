@@ -23,12 +23,31 @@ using Normalization;
 
 namespace CalendarMate
 {
+    // The MainWindow class containes window mechanics
+    /// <summary>
+    /// The <c>MainWindow</c> class.
+    /// Containes window mechanics.
+    /// </summary>
     public partial class MainWindow : Window
     {
+        // The current displayed date
+        /// <value>Variable Current_calendar_data holds the current displayed date.</value>
         private CalendarDate Current_calendar_data = new CalendarDate();
+
+        // The button_list_of_day
+        /// <value>Button List button_list_of_day holds the days of month.</value>
         private List<Button> button_list_of_day = new List<Button>();
+
+        // The currentWeather
+        /// <value>Object currentWeather holds the current Weather.</value>
         private CurrentWeatherInfoModel currentWeather = new CurrentWeatherInfoModel();
+
+        // The current date
+        /// <value>Variable Current_data holds the current date.</value>
         private DateTime Current_data;
+
+        // The Button_list_of_day
+        /// <value>List Button_list_of_day holds the buttons of current list of day.</value>
         public List<Button> Button_list_of_day
         {
             get
@@ -43,6 +62,8 @@ namespace CalendarMate
 
         private List<TextBlock> textblock_list_of_day = new List<TextBlock>();
 
+        // The Textblock_list_of_day
+        /// <value>List Textblock_list_of_day holds the textblocks of current list of day.</value>
         public List<TextBlock> Textblock_list_of_day
         {
             get
@@ -55,6 +76,10 @@ namespace CalendarMate
             }
         }
 
+        // Initializes the main window
+        /// <summary>
+        /// Initializes the main window.
+        /// </summary>
         public MainWindow()
         {
             Current_calendar_data = new CalendarDate();
@@ -67,6 +92,11 @@ namespace CalendarMate
             LoadCurrentCity();
             LoadCurrentWeather();
         }
+
+        // Generates the day panel
+        /// <summary>
+        /// Generates the day panel 
+        /// </summary>
         public void GenerateDayPanel()
         {
             Month_And_Year_TextBlock.Text = Current_calendar_data.Date.ToString("Y", CultureInfo.CreateSpecificCulture("en-US"));
@@ -139,6 +169,10 @@ namespace CalendarMate
             }
         }
 
+        // Removes the day panel
+        /// <summary>
+        /// Removes the day panel 
+        /// </summary>
         public void RemoveDayPanel()
         {
             foreach (Button i in Button_list_of_day)
@@ -154,6 +188,10 @@ namespace CalendarMate
             Textblock_list_of_day.Clear();
         }
 
+        // Generates the current time
+        /// <summary>
+        /// Generates the current time 
+        /// </summary>
         private void GenerateCurrentTime()
         {
             DispatcherTimer actualTime = new DispatcherTimer();
@@ -161,6 +199,11 @@ namespace CalendarMate
             actualTime.Interval = new TimeSpan(0, 0, 1);
             actualTime.Start();
         }
+
+        // Updates the current time
+        /// <summary>
+        /// Updates the current time 
+        /// </summary>
         private void UpdateCurrentTime(object sender, EventArgs e)
         {
             if (isCurrentWeatherGood())
@@ -173,6 +216,10 @@ namespace CalendarMate
             }
         }
 
+        // Loads the current weather
+        /// <summary>
+        /// Loads the current weather
+        /// </summary>
         public async void LoadCurrentWeather()
         {
             currentWeather = await CurrentWeatherInfoProcessor.LoadCurrentWeather(ReturnCity());
@@ -191,6 +238,12 @@ namespace CalendarMate
             }
         }
 
+        // Loads the next page in the calendar
+        /// <summary>
+        /// Loads the next page in the calendar 
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void Next_Click(object sender, RoutedEventArgs e)
         {
             RemoveDayPanel();
@@ -198,13 +251,25 @@ namespace CalendarMate
             GenerateDayPanel();
         }
 
+        // Loads the previous page in the calendar
+        /// <summary>
+        /// Loads the previous page in the calendar 
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             RemoveDayPanel();
             Current_calendar_data.AddMonths(-1);
             GenerateDayPanel();
         }
-        
+
+        // Loads the current date page in the calendar
+        /// <summary>
+        /// Loads the current date page in the calendar
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void CurrentDate_Click(object sender, RoutedEventArgs e)
         {
             RemoveDayPanel();
@@ -212,39 +277,60 @@ namespace CalendarMate
             GenerateDayPanel();
         }
 
+        // Opens a new AddAnEventWindow
+        /// <summary>
+        /// Opens a new AddAnEventWindow
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void Day_Click(object sender, RoutedEventArgs e)
         {
             Current_calendar_data.SetClickDate((Button_list_of_day.IndexOf(((Button)sender))+1)); 
             AddAnEventWindow oneDay = new AddAnEventWindow(Current_calendar_data.Date);
             oneDay.ShowDialog();
         }
+
+        // Opens a new ShowAllEventsListWindow
+        /// <summary>
+        /// Opens a new ShowAllEventsListWindow
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void EventList_Click(object sender, RoutedEventArgs e)
         {
             ShowAllEventsListWindow eventList = new ShowAllEventsListWindow(Current_data);
             eventList.ShowDialog();
         }
 
+        // Opens a new ShowToDoListWindow
+        /// <summary>
+        /// Opens a new ShowToDoListWindow
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void EventToDoList_Click(object sender, RoutedEventArgs e)
         {
             ShowToDoListWindow eventList = new ShowToDoListWindow();
             eventList.ShowDialog();
         }
+
+        // Closes the main window
+        /// <summary>
+        /// Closes the main window
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void CloseMainWindow_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-        private void Calendar_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            RemoveDayPanel();
-            Current_calendar_data.AddMonths(1);
-            GenerateDayPanel();
-        }
-        private void Calendar_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            RemoveDayPanel();
-            Current_calendar_data.AddMonths(-1);
-            GenerateDayPanel();
-        }
+
+        // Opens a new WeatherWindow
+        /// <summary>
+        /// Opens a new WeatherWindow
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void CurrentWeather_Click(object sender, RoutedEventArgs e)
         {
             if (isCurrentWeatherGood())
@@ -253,6 +339,13 @@ namespace CalendarMate
                 weatherWindow.ShowDialog();
             }
         }
+
+        // Opens a new CurrentCityWindow
+        /// <summary>
+        /// Opens a new CurrentCityWindow
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void currentCity_Click(object sender, RoutedEventArgs e)
         {
             if (isCurrentWeatherGood())
@@ -261,11 +354,22 @@ namespace CalendarMate
                 currentCityWindow.ShowDialog();
             }
         }
+
+        // Refreshes the current weather
+        /// <summary>
+        /// Refreshes the current weather
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void refreshWeather_Click(object sender, RoutedEventArgs e)
         {
             LoadCurrentWeather();
         }
 
+        // Loads the current city from database
+        /// <summary>
+        /// Loads the current city  from database
+        /// </summary>
         private void CityInitialization()
         {
             DataBaseLocalizationDbContext db = new DataBaseLocalizationDbContext();
@@ -284,6 +388,11 @@ namespace CalendarMate
             }
         }
 
+        // Returns the current city
+        /// <summary>
+        /// Returns the current city 
+        /// </summary>
+        /// <returns>The current city</returns>
         private string ReturnCity()
         {
             DataBaseLocalizationDbContext db = new DataBaseLocalizationDbContext();
@@ -294,16 +403,31 @@ namespace CalendarMate
             return obj.Localization.ToString();
         }
 
+        // Loads the current city
+        /// <summary>
+        /// Loads the current city 
+        /// </summary>
         public void LoadCurrentCity()
         {
                 displayedCity.Text = ReturnCity();
         }
 
+        // Minimalizes the main window
+        /// <summary>
+        /// Minimalizes the main window
+        /// </summary>
+        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
+        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void Minimalize_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
         }
 
+        // Checks if the current weather information is downloaded from API
+        /// <summary>
+        /// Checks if the current weather information is downloaded from API
+        /// </summary>
+        /// <returns>True or false depending of the status of the current weather information.</returns>
         private bool isCurrentWeatherGood()
         {
             if (currentWeather.Cod != "404")

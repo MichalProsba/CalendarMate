@@ -17,28 +17,29 @@ using System.Windows.Shapes;
 
 namespace CalendarMate
 {
+    // Logic of class ShowAllEventsListWindow.xaml
     /// <summary>
-    /// Logika interakcji dla klasy ShowAllEventsListWindow.xaml
+    /// Logic of class ShowAllEventsListWindow.xaml.
     /// </summary>
     public partial class ShowAllEventsListWindow : Window
     {
-        /// <summary>
-        /// Contains information about switching combobox
-        /// </summary>
+        // The Combo selected
+        /// <value> Variable ComboSelected contains information about switching combobox.</value>
         private bool ComboSelected = false;
+
         // The id number
-        /// <value> Variable updatingEventID holds the current id </value>
+        /// <value>Variable updatingEventID holds the current id.</value>
         private int updatingEventID = 0;
 
         // The date selected by the user
-        /// <value> Variable EventDate holds selected by the user date </value>
+        /// <value>Variable EventDate holds selected by the user date.</value>
         private DateTime EventDate;
 
         //The ShowAnEventWindow Constructor 
         /// <summary>
-        /// The ShowAnEventWindow Constructor 
+        /// The ShowAnEventWindow Constructor.
         /// </summary>
-        /// <param name="eventDay"> Contains a date selected by the user  </param>
+        /// <param name="eventDay">Contains a date selected by the user.</param>
         public ShowAllEventsListWindow(DateTime eventDay)
         {
                 this.EventDate = eventDay;
@@ -51,10 +52,10 @@ namespace CalendarMate
 
         // The metod displays a selected DataGrid section in other TextBoxs
         /// <summary>
-        /// The metod displays a selected DataGrid section in other TextBoxs
+        /// The metod displays a selected DataGrid section in other TextBoxs.
         /// </summary>
-        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
-        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
+        /// <param name="sender">Contains a reference to the object that triggered the event.</param>
+        /// <param name="e">Contains state information and event data associated with a routed event.</param>
         private void EventGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (this.EventGrid.SelectedIndex >= 0)
@@ -81,10 +82,10 @@ namespace CalendarMate
 
         // The metod delete the information from database
         /// <summary>
-        /// The metod delete the information from database
+        /// The metod delete the information from database.
         /// </summary>
-        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
-        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
+        /// <param name="sender">Contains a reference to the object that triggered the event.</param>
+        /// <param name="e">Contains state information and event data associated with a routed event.</param>
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult msgBoxResult = MessageBox.Show("Are you sure you want Delete?", "Delete Event", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
@@ -108,10 +109,10 @@ namespace CalendarMate
 
         // The metod save change information to the database
         /// <summary>
-        /// The metod save change information to the database
+        /// The metod save change information to the database.
         /// </summary>
-        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
-        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
+        /// <param name="sender">Contains a reference to the object that triggered the event.</param>
+        /// <param name="e">Contains state information and event data associated with a routed event.</param>
         private void ButtonSaveChange_Click(object sender, RoutedEventArgs e)
         {
             string input1 = EventStartShow.Text;
@@ -161,22 +162,22 @@ namespace CalendarMate
             }
         }
 
-            // The method changes the title of the window
-            /// <summary>
-            /// The method changes the title of the window
-            /// </summary>
-            /// <param name="when"> Contains date which was selected by user </param>
-            private void CreateEvent(DateTime when)
+        // The method changes the title of the window
+        /// <summary>
+        /// The method changes the title of the window.
+        /// </summary>
+        /// <param name="when">Contains date which was selected by user.</param>
+        private void CreateEvent(DateTime when)
         {
             WindowTitle.Text = when.ToString("D", CultureInfo.CreateSpecificCulture("en-US"));
         }
 
         // The metod close the window after click on button
         /// <summary>
-        /// The metod close the window after click on button
+        /// The metod close the window after click on button.
         /// </summary>
-        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
-        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
+        /// <param name="sender">Contains a reference to the object that triggered the event.</param>
+        /// <param name="e">Contains state information and event data associated with a routed event.</param>
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -184,10 +185,10 @@ namespace CalendarMate
 
         // A method that allows change the position of the window
         /// <summary>
-        /// A method that allows change the position of the window
+        /// A method that allows change the position of the window.
         /// </summary>
-        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
-        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
+        /// <param name="sender">Contains a reference to the object that triggered the event.</param>
+        /// <param name="e">Contains state information and event data associated with a routed event.</param>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -198,10 +199,10 @@ namespace CalendarMate
 
         // The metod refresh the window after click on button
         /// <summary>
-        /// The metod refresh the window after click on button
+        /// The metod refresh the window after click on button.
         /// </summary>
-        /// <param name="sender"> Contains a reference to the object that triggered the event </param>
-        /// <param name="e"> Contains state information and event data associated with a routed event  </param>
+        /// <param name="sender">Contains a reference to the object that triggered the event.</param>
+        /// <param name="e">Contains state information and event data associated with a routed event.</param>
         private void ButtonRefresh_Click(object sender, RoutedEventArgs e)
         {
             UpdateGrid();
