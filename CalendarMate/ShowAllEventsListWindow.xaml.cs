@@ -46,7 +46,7 @@ namespace CalendarMate
                 SetGrayForeground();
                 UpdateGrid();
                 CreateEvent(eventDay);
-                RestartWindow();
+            RestartWindow();
         }
 
         // The metod displays a selected DataGrid section in other TextBoxs
@@ -403,7 +403,7 @@ namespace CalendarMate
 
                 if (DateTime.TryParse(EventStartAdd.Text, out time1) && DateTime.TryParse(EventStopAdd.Text, out time2) && DateTime.TryParse(EventYearAdd.Text + "/" + EventMonthAdd.Text + "/" + EventDayAdd.Text, out time3))
             {
-                if (DateTime.Compare(time1, time2) < 0 && this.EventNameAdd.Foreground.Opacity == blackBrush.Opacity && this.EventLocalizationAdd.Foreground.Opacity == blackBrush.Opacity && this.EventStartAdd.Foreground.Opacity == blackBrush.Opacity && this.EventStopAdd.Foreground.Opacity == blackBrush.Opacity && this.EventYearAdd.Foreground.Opacity == blackBrush.Opacity && this.EventMonthAdd.Foreground.Opacity == blackBrush.Opacity && this.EventDayAdd.Foreground.Opacity == blackBrush.Opacity)
+                if (DateTime.Compare(time1, time2) < 0 && this.EventNameAdd.Foreground.Opacity == blackBrush.Opacity && this.EventLocalizationAdd.Foreground.Opacity == blackBrush.Opacity && this.EventStartAdd.Foreground.Opacity == blackBrush.Opacity && this.EventStopAdd.Foreground.Opacity == blackBrush.Opacity)
                 {
                     TimeSpan ts = new TimeSpan(RemindComboboxAdd.SelectedIndex, 0, 0);
                     DateTime date = new DateTime(int.Parse(EventYearAdd.Text), int.Parse(EventMonthAdd.Text), int.Parse(EventDayAdd.Text));
