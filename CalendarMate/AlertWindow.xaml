@@ -11,14 +11,14 @@
         BorderBrush="Black"
         MouseDown="Window_MouseDown"
         ResizeMode="NoResize"
-        Title="ShowAnEventWindow" Height="236" Width="400">
+        Title="ShowAnEventWindow" Height="236" Width="600">
     <StackPanel Background="#666">
         <StackPanel  Background="#333">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100*"/>
                     <ColumnDefinition Width="400*"/>
-                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="64*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
