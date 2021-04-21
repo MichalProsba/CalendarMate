@@ -49,7 +49,6 @@ namespace CalendarMate
         {
             this.EventDate = eventDay;
             mainWindow = main;
-            oneList = new ShowAnEventWindow(EventDate.Date, mainWindow);
             InitializeComponent();
             CreateEvent(eventDay);
             RestartWindow();

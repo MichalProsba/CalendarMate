@@ -43,13 +43,12 @@ namespace CalendarMate
         /// <param name="eventDay">Contains a date selected by the user.</param>
         public ShowAllEventsListWindow(DateTime eventDay, MainWindow main)
         {
-                this.EventDate = eventDay;
-                mainWindow = main;
-                InitializeComponent();
-                SetGrayForeground();
-                UpdateGrid();
-                CreateEvent(eventDay);
-                
+            this.EventDate = eventDay;
+            mainWindow = main;
+            InitializeComponent();
+            SetGrayForeground();
+            UpdateGrid();
+            CreateEvent(eventDay);
             RestartWindow();
         }
 
