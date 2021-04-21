@@ -46,6 +46,7 @@ namespace CalendarMate
                 SetGrayForeground();
                 UpdateGrid();
                 CreateEvent(eventDay);
+                RestartWindow();
         }
 
         // The metod displays a selected DataGrid section in other TextBoxs
@@ -394,16 +395,15 @@ namespace CalendarMate
         /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            string input1 = EventStartAdd.Text;
-            string input2 = EventStopAdd.Text;
-            string inputdate = EventYearAdd.Text + "/" + EventMonthAdd.Text + "/" + EventDayAdd.Text;
+            SolidColorBrush blackBrush = new SolidColorBrush(Colors.Black);
+            blackBrush.Opacity = 0.9;
             DateTime time1;
             DateTime time2;
             DateTime time3;
-   
-            if (DateTime.TryParse(input1, out time1) && DateTime.TryParse(input2, out time2) && DateTime.TryParse(inputdate, out time3))
+
+                if (DateTime.TryParse(EventStartAdd.Text, out time1) && DateTime.TryParse(EventStopAdd.Text, out time2) && DateTime.TryParse(EventYearAdd.Text + "/" + EventMonthAdd.Text + "/" + EventDayAdd.Text, out time3))
             {
-                if (DateTime.Compare(time1, time2) < 0)
+                if (DateTime.Compare(time1, time2) < 0 && this.EventNameAdd.Foreground.Opacity == blackBrush.Opacity && this.EventLocalizationAdd.Foreground.Opacity == blackBrush.Opacity && this.EventStartAdd.Foreground.Opacity == blackBrush.Opacity && this.EventStopAdd.Foreground.Opacity == blackBrush.Opacity && this.EventYearAdd.Foreground.Opacity == blackBrush.Opacity && this.EventMonthAdd.Foreground.Opacity == blackBrush.Opacity && this.EventDayAdd.Foreground.Opacity == blackBrush.Opacity)
                 {
                     TimeSpan ts = new TimeSpan(RemindComboboxAdd.SelectedIndex, 0, 0);
                     DateTime date = new DateTime(int.Parse(EventYearAdd.Text), int.Parse(EventMonthAdd.Text), int.Parse(EventDayAdd.Text));
@@ -422,6 +422,7 @@ namespace CalendarMate
                     db1.DataBaseEvents1.Add(doctroObject);
                     db1.SaveChanges();
                     RestartWindow();
+                    UpdateGrid();
                 }
                 else
                 {

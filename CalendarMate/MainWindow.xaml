@@ -93,7 +93,7 @@
                                 <Button Padding="6" Height="60" BorderThickness="3" Background="#555" Click="EventToDoList_Click">
                                     <StackPanel Orientation="Horizontal">
                                         <fa:ImageAwesome Icon="ListAlt" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0"/>
-                                        <fa:FontAwesome Text="To do list" FontSize="30" />
+                                        <fa:FontAwesome Text="To-Do list" FontSize="30" />
                                     </StackPanel>
                                 </Button>
                             </Border>
