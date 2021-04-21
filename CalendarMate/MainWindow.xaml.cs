@@ -95,7 +95,6 @@ namespace CalendarMate
             LoadCurrentWeather();
             //Thread.Sleep(10000);
             Current_data = DateTime.UtcNow.AddSeconds(currentWeather.Timezone);
-            Current_calendar_data = new CalendarDate(DateTime.UtcNow.AddSeconds(currentWeather.Timezone));
             GenerateDayPanel();
         }
 
@@ -210,12 +209,11 @@ namespace CalendarMate
             if (isCurrentWeatherGood())
             {
                 Current_data = DateTime.UtcNow.AddSeconds(currentWeather.Timezone);
-                Current_calendar_data = new CalendarDate(Current_data);
-                Clock.Content = (Current_data).ToString();
+                Clock.Text = (Current_data).ToString();
             }
             else
             {
-                Clock.Content = DateTime.Now.ToString();
+                Clock.Text = DateTime.Now.ToString();
             }
         }
 
@@ -264,7 +262,6 @@ namespace CalendarMate
                 CurrentWeatherImage.Source = weatherImage;
                 CurrentWeather.Text = NormalizationOperations.NormalizeTemperature(currentWeather.Main.Temp).ToString() + "°C";
                 Current_data = DateTime.UtcNow.AddSeconds(currentWeather.Timezone);
-                Current_calendar_data = new CalendarDate(DateTime.UtcNow.AddSeconds(currentWeather.Timezone));
                 RefreshAllDayButtons();
                 ShowCurrentDay();
             }

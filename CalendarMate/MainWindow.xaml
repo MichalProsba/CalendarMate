@@ -32,8 +32,8 @@
             <StackPanel>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="9*"/>
+                        <ColumnDefinition Width="40*"/>
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Orientation="Vertical" Grid.Column="0">
@@ -55,7 +55,12 @@
                                 </Button>
                             </Border>
                             <Border Grid.Row="1" Padding="5" Background="#666">
-                                <Button FontWeight="Bold" Height="60" BorderThickness="3" FontSize="30"  Foreground="DodgerBlue" Background="#555" x:Name="Clock" Click="CurrentDate_Click"/>
+                                <Button Height="60" BorderThickness="3" FontSize="30"  Foreground="Black" Background="#555" Click="CurrentDate_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <fa:ImageAwesome Icon="ClockOutline" Width="30" Height="30" Foreground="DodgerBlue" Margin="0 0 10 0"/>
+                                        <fa:FontAwesome x:Name="Clock" FontSize="30" />
+                                    </StackPanel>
+                                </Button>
                             </Border>
                             <Grid  Grid.Row="2">
                                 <Grid.ColumnDefinitions>
@@ -71,7 +76,7 @@
                                     <Button x:Name="CurrentWeatherButton" Height="60" BorderThickness="3" Background="#555"  Click="CurrentWeather_Click">
                                         <StackPanel Orientation="Horizontal">
                                             <Image VerticalAlignment="Stretch" x:Name="CurrentWeatherImage"/>
-                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"  Foreground="DodgerBlue" x:Name="CurrentWeather" />
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"  Foreground="Black" x:Name="CurrentWeather" />
                                         </StackPanel>
                                     </Button>
                                 </Border>
