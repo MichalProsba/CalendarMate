@@ -10,7 +10,8 @@
             <Setter Property="Background" Value="DarkGray"/>
             <Setter Property="BorderThickness" Value="3" />
             <Setter Property="BorderBrush" Value="#555" />
-            <Setter Property="ColumnWidth" Value="*"/>
+            <Setter Property="MaxColumnWidth" Value="200"/>
+            <Setter Property="MinColumnWidth" Value="140"/>
             <Setter Property="RowHeight" Value="26"/>
             <Style.Triggers>
                 <Trigger Property="IsSelected" Value="True">

@@ -300,7 +300,7 @@ namespace CalendarMate
         {
             DataBaseEventDbContext db = new DataBaseEventDbContext();
             var r = from d in db.DataBaseEvents1
-                    where d.RemindTime.Year == Current_calendar_data.Date.Year && d.RemindTime.Month == Current_calendar_data.Date.Month && d.RemindTime.Day == Current_calendar_data.Date.Day && d.RemindTime.Hour == Current_calendar_data.Date.Hour && d.RemindTime.Minute == Current_calendar_data.Date.Minute
+                    where d.RemindTime.Year == Current_data.Year && d.RemindTime.Month == Current_data.Month && d.RemindTime.Day == Current_data.Day && d.RemindTime.Hour == Current_data.Hour && d.RemindTime.Minute == Current_data.Minute
                     select d;
             foreach (var item in r)
             {

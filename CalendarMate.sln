@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBaseLocalization.Entity
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBaseToDoList.EntityFramework", "DataBaseToDoList.EntityFramework\DataBaseToDoList.EntityFramework.csproj", "{7FA5EC68-678E-488F-AA36-1743A33A021E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{B1D649F8-A0E5-44B0-A3DA-7F371E174631}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{B1D649F8-A0E5-44B0-A3DA-7F371E174631}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
