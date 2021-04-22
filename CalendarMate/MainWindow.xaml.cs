@@ -288,7 +288,7 @@ namespace CalendarMate
         {
             DispatcherTimer actualTime = new DispatcherTimer();
             actualTime.Tick += new EventHandler(UpdateReminderTime);
-            actualTime.Interval = new TimeSpan(0, 0, 30);
+            actualTime.Interval = new TimeSpan(0, 1, 0);
             actualTime.Start();
         }
 
