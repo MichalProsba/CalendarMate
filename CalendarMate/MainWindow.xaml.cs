@@ -579,5 +579,18 @@ namespace CalendarMate
                 Image_list_of_day[item.Day - 1].Visibility= Visibility.Visible;
             }
         }
+
+        public void RemoveEventToStackPanel(int id)
+        {
+            DataBaseEventDbContext db = new DataBaseEventDbContext();
+            var r = from d in db.DataBaseEvents1
+                    where d.Id == id
+                    select d;
+
+            foreach (var item in r)
+            {
+                Image_list_of_day[item.Day - 1].Visibility = Visibility.Hidden;
+            }
+        }
     }
 }

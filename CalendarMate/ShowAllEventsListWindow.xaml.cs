@@ -102,6 +102,7 @@ namespace CalendarMate
 
                 if (obj != null)
                 {
+                    mainWindow.RemoveEventToStackPanel(this.updatingEventID);
                     SetGrayForeground();
                     db1.DataBaseEvents1.Remove(obj);
                     db1.SaveChanges();
@@ -110,7 +111,6 @@ namespace CalendarMate
             UpdateGrid();
             mainWindow.RefreshAllDayButtons();
             mainWindow.ShowCurrentDay();
-            mainWindow.AddEventToStackPanel();
         }
 
         // The metod save change information to the database
