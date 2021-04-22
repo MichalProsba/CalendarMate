@@ -6,6 +6,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\patry\source\repos\CalendarMate\CalendarMate\CalendarMate.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="AddAnEventWindow.xaml.cs~RF163200f4.TMP" />
     <None Remove="images\01d.png" />

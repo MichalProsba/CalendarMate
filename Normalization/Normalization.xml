@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Normalization</name>
+    </assembly>
+    <members>
+        <member name="T:Normalization.NormalizationOperations">
+            <summary>
+            The <c>NormalizationOperations</c> class.
+            Containes all methods necessary to store the current weather information that we download from the Weather API (openweathermap.org).
+            </summary>
+        </member>
+        <member name="M:Normalization.NormalizationOperations.NormalizeTemperature(System.Double)">
+            <summary>
+            Converts temperature from kelvin to celsius.
+            </summary>
+            <param name="kelvin">Double temperature value in kelvin degrees.</param>
+            <returns>Temperature in celsius degrees.</returns>
+        </member>
+        <member name="M:Normalization.NormalizationOperations.NormalizeDate(System.Double)">
+            <summary>
+            Converts time from seconds from 1.1.1970 to DateTime format and then to string.
+            </summary>
+            <param name="secondsToAdd">Double seconds value from 1.1.1970.</param>
+            <returns>Date as a string.</returns>
+        </member>
+    </members>
+</doc>

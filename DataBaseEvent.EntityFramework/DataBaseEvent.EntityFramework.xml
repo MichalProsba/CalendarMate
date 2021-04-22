@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataBaseEvent.EntityFramework</name>
+    </assembly>
+    <members>
+        <member name="T:DataBaseEvent.EntityFramework.DataBaseEventDbContext">
+            <summary>
+            The <c> DataBaseEventDbContext </c> class
+            </summary>
+        </member>
+        <member name="P:DataBaseEvent.EntityFramework.DataBaseEventDbContext.DataBaseEvents1">
+            <value>Gets and sets the DataBaseEvents1 value.</value>
+        </member>
+        <member name="M:DataBaseEvent.EntityFramework.DataBaseEventDbContext.#ctor">
+            <summary>
+            Initializes the data base. 
+            </summary>
+        </member>
+        <member name="M:DataBaseEvent.EntityFramework.DataBaseEventDbContext.OnModelCreating(System.Data.Entity.DbModelBuilder)">
+            <summary>
+            Configures the data base
+            </summary>
+            <param name="modelBuilder">DbModelBuilder object containes the database configuration.</param>
+        </member>
+    </members>
+</doc>

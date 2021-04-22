@@ -1,0 +1,1260 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CalendarMate</name>
+    </assembly>
+    <members>
+        <member name="T:CalendarMate.AddAnEventWindow">
+            <summary>
+            The <c> AddAnEventWindow </c> class
+            </summary>
+            <summary>
+            AddAnEventWindow
+            </summary>
+        </member>
+        <member name="F:CalendarMate.AddAnEventWindow.EventDate">
+            <summary>
+            Contains a date selected by the user
+            </summary>
+        </member>
+        <member name="F:CalendarMate.AddAnEventWindow.oneList">
+            <summary>
+             Contain ShowAnEventWindow object
+            </summary>
+        </member>
+        <member name="F:CalendarMate.AddAnEventWindow.mainWindow">
+            <summary>
+             Contain ShowAnEventWindow object
+            </summary>
+        </member>
+        <member name="M:CalendarMate.AddAnEventWindow.#ctor(System.DateTime,CalendarMate.MainWindow)">
+            <summary>
+            The AddAnEventWindow Constructor 
+            </summary>
+            <param name="eventDay"> Contains a date selected by the user  </param>
+            
+        </member>
+        <member name="M:CalendarMate.AddAnEventWindow.ButtonAdd_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod save information to the database
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.AddAnEventWindow.ButtonShow_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The method show new window which event list in selected day
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.AddAnEventWindow.TextBox_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The method change the appearance of focused textboxes 
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.AddAnEventWindow.TextBox_LostFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod changes the appearance of lost focused textboxes 
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.AddAnEventWindow.CheckBox_Checked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            CheckBox_Checked is an event which set default time for all day
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.AddAnEventWindow.CheckBox_Unchecked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            CheckBox_Checked is an event which set default time for none
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.AddAnEventWindow.CreateEvent(System.DateTime)">
+            <summary>
+            The method changes the title of the window
+            </summary>
+            <param name="when"> Contains date which was selected by user </param>
+        </member>
+        <member name="M:CalendarMate.AddAnEventWindow.ComboBox_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            The method change combox appearance 
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.AddAnEventWindow.RemindCombobox_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The method change combox appearance 
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.AddAnEventWindow.Close_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod close the window after click on button
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.AddAnEventWindow.Window_MouseDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            A method that allows change the position of the window
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.AddAnEventWindow.RestartWindow">
+            <summary>
+            Method restart window
+            </summary>
+        </member>
+        <member name="M:CalendarMate.AddAnEventWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:CalendarMate.AlertWindow">
+            <summary>
+            The logic for AlertWindow.xaml
+            </summary>
+            <summary>
+            AlertWindow
+            </summary>
+        </member>
+        <member name="M:CalendarMate.AlertWindow.#ctor(System.String,System.String)">
+            <summary>
+            Creates the alert window with given strings.
+            </summary>
+            <param name="alert">String alert containing alert text.</param>
+            <param name="windowName">String windowName containing window name.</param>
+        </member>
+        <member name="M:CalendarMate.AlertWindow.Close_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Closes the current window.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.AlertWindow.Window_MouseDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Alows to drag the current window .
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.AlertWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:CalendarMate.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:CalendarMate.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:CalendarMate.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:CalendarMate.CalendarDate">
+            <summary>
+            The <c>CalendarDate</c> class.
+            Containes and modifies given date.
+            </summary>
+        </member>
+        <member name="F:CalendarMate.CalendarDate.date">
+            <value>Gets and sets the date value.</value>
+        </member>
+        <member name="P:CalendarMate.CalendarDate.Date">
+            <value>Gets and sets the Date value.</value>
+        </member>
+        <member name="F:CalendarMate.CalendarDate.calendar">
+            <value>Gets and sets the calendar value.</value>
+        </member>
+        <member name="P:CalendarMate.CalendarDate.Calendar">
+            <value>Gets and sets the Calendar value.</value>
+        </member>
+        <member name="M:CalendarMate.CalendarDate.#ctor">
+            <summary>
+            Parameterless Constructor - the date is set as today date.
+            </summary>
+        </member>
+        <member name="M:CalendarMate.CalendarDate.#ctor(System.DateTime)">
+            <summary>
+            Parameter Constructor - the date is set as date given in argument.
+            </summary>
+            <param name="arg1">DateTime object containing the date.</param>
+        </member>
+        <member name="M:CalendarMate.CalendarDate.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Parameter Constructor - the date is set as date given in argument.
+            </summary>
+            <param name="year">Int variable containing the year.</param>
+            <param name="month">Int variable containing the month.</param>
+            <param name="day_of_month">Int variable containing the day of month.</param>
+        </member>
+        <member name="M:CalendarMate.CalendarDate.SetCurrentDate">
+            <summary>
+            Sets the current date.
+            </summary>
+        </member>
+        <member name="M:CalendarMate.CalendarDate.SetClickDate(System.Int32)">
+            <summary>
+            Sets the clicked date to given argument.
+            </summary>
+            <param name="day_of_click_month">Int variable containing day of month.</param>
+        </member>
+        <member name="M:CalendarMate.CalendarDate.AddYears(System.Int32)">
+            <summary>
+            Adds years to date.
+            </summary>
+            <param name="arg">Int variable containing years.</param>
+        </member>
+        <member name="M:CalendarMate.CalendarDate.AddMonths(System.Int32)">
+            <summary>
+            Adds months to date.
+            </summary>
+            <param name="arg">Int variable containing months.</param>
+        </member>
+        <member name="M:CalendarMate.CalendarDate.AddWeeks(System.Int32)">
+            <summary>
+            Adds weeks to date.
+            </summary>
+            <param name="arg">Int variable containing weeks.</param>
+        </member>
+        <member name="M:CalendarMate.CalendarDate.AddDays(System.Int32)">
+            <summary>
+            Adds days to date.
+            </summary>
+            <param name="arg">Int variable containing days.</param>
+        </member>
+        <member name="M:CalendarMate.CalendarDate.AddHours(System.Int32)">
+            <summary>
+            Adds hours to date.
+            </summary>
+            <param name="arg">Int variable containing hours.</param>
+        </member>
+        <member name="M:CalendarMate.CalendarDate.AddMinutes(System.Int32)">
+            <summary>
+            Adds minutes to date.
+            </summary>
+            <param name="arg">Int variable containing minutes.</param>
+        </member>
+        <member name="M:CalendarMate.CalendarDate.AddSeconds(System.Int32)">
+            <summary>
+            Adds seconds to date.
+            </summary>
+            <param name="arg">Int variable containing seconds.</param>
+        </member>
+        <member name="M:CalendarMate.CalendarDate.AddMilliseconds(System.Int32)">
+            <summary>
+            Adds milliseconds to date.
+            </summary>
+            <param name="arg">Int variable containing milliseconds.</param>
+        </member>
+        <member name="M:CalendarMate.CalendarDate.DisplayDate">
+            <summary>
+            Displays the date.
+            </summary>
+        </member>
+        <member name="M:CalendarMate.CalendarDate.FirstDayOfCalendarMonth">
+            <summary>
+            Returns the date of the first day of the month.
+            </summary>
+            <returns> The date of the first day of month.</returns>
+        </member>
+        <member name="M:CalendarMate.CalendarDate.LastDayOfCalendarMonth">
+            <summary>
+            Returns the date of the last day of the month.
+            </summary>
+            <returns> The date of the last day of month.</returns>
+        </member>
+        <member name="M:CalendarMate.CalendarDate.DaysInCalendarMonth">
+            <summary>
+            Returns the number of days in a month.
+            </summary>
+            <returns> The number of days in a month.</returns>
+        </member>
+        <member name="M:CalendarMate.CalendarDate.FirstDayOfWeekCalendarMonth">
+            <summary>
+            Returns the day of week of date.
+            </summary>
+            <returns> The day of week of date.</returns>
+        </member>
+        <member name="T:CalendarMate.CurrentCityWindow">
+            <summary>
+            The <c> CurrentCityWindow </c> class
+            </summary>
+            <summary>
+            CurrentCityWindow
+            </summary>
+        </member>
+        <member name="F:CalendarMate.CurrentCityWindow.mainWindow">
+            <summary>
+            MainWindow object to store the reference to our main window.
+            </summary>
+        </member>
+        <member name="M:CalendarMate.CurrentCityWindow.#ctor(CalendarMate.MainWindow)">
+            <summary>
+            The CurrentCityWindow constructor. 
+            </summary>
+        </member>
+        <member name="M:CalendarMate.CurrentCityWindow.Close_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Closes the current window.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.CurrentCityWindow.Window_MouseDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Alows to drag the current window .
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.CurrentCityWindow.ButtonSave_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod save change information to the database
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.CurrentCityWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:CalendarMate.DateTimeDayOfMonth">
+            <summary>
+            The <c>DateTimeDayOfMonth</c> class.
+            Containes and modifies given date.
+            </summary>
+        </member>
+        <member name="M:CalendarMate.DateTimeDayOfMonth.FirstDayOfMonth(System.DateTime)">
+            <summary>
+            Returns the date of the first day of the month.
+            </summary>
+            <param arg1="value">DateTime object containing any date of the current month.</param>
+            <returns> The date of the first day of the month.</returns>
+        </member>
+        <member name="M:CalendarMate.DateTimeDayOfMonth.LastDayOfMonth(System.DateTime)">
+            <summary>
+            Returns the date of the last day of the month.
+            </summary>
+            <param arg1="value">DateTime object containing any date of the current month.</param>
+            <returns>The date of the last day of the month.</returns>
+        </member>
+        <member name="M:CalendarMate.DateTimeDayOfMonth.DaysInMonth(System.DateTime)">
+            <summary>
+            Returns the number of days in a month.
+            </summary>
+            <param arg1="value">DateTime object containing any date of the current month.</param>
+            <returns>The number of days in a month.</returns>
+        </member>
+        <member name="M:CalendarMate.DateTimeDayOfMonth.DayOfWeekOfGivenDate(System.DateTime)">
+            <summary>
+            Returns the day of week of given date.
+            </summary>
+            <param arg1="value">DateTime object containing any date.</param>
+            <returns>The day of week of given date.</returns>
+        </member>
+        <member name="M:CalendarMate.DateTimeDayOfMonth.NextMonth(System.DateTime)">
+            <summary>
+            Returns the next month of given date.
+            </summary>
+            <param name="current_date">DateTime object containing any date.</param>
+            <returns>The next month of given date.</returns>
+        </member>
+        <member name="M:CalendarMate.DateTimeDayOfMonth.PreviousMonth(System.DateTime)">
+            <summary>
+            Returns the previous month of given date.
+            </summary>
+            <param name="current_date">DateTime object containing any date.</param>
+            <returns>The previous month of given date.</returns>
+        </member>
+        <member name="T:CalendarMate.DecisionWindow">
+            <summary>
+            Logika interakcji dla klasy DecisionWindow.xaml
+            </summary>
+            <summary>
+            DecisionWindow
+            </summary>
+        </member>
+        <member name="F:CalendarMate.DecisionWindow.decision">
+            <value>Containes the users decision.</value>
+        </member>
+        <member name="M:CalendarMate.DecisionWindow.#ctor(System.String,System.String)">
+            <summary>
+            Creates the decision window with given strings.
+            </summary>
+            <param name="question">String alert containing alert text.</param>
+            <param name="windowName">String windowName containing window name.</param>
+        </member>
+        <member name="M:CalendarMate.DecisionWindow.Close_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Closes the current window.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.DecisionWindow.Window_MouseDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Alows to drag the current window .
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.DecisionWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:CalendarMate.MainWindow">
+            <summary>
+            The <c>MainWindow</c> class.
+            Containes window mechanics.
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="F:CalendarMate.MainWindow.Current_calendar_data">
+            <value>Variable Current_calendar_data holds the current displayed date.</value>
+        </member>
+        <member name="F:CalendarMate.MainWindow.currentWeather">
+            <value>Object currentWeather holds the current Weather.</value>
+        </member>
+        <member name="F:CalendarMate.MainWindow.Current_data">
+            <value>Variable Current_data holds the current date.</value>
+        </member>
+        <member name="F:CalendarMate.MainWindow.button_list_of_day">
+            <value>Button List button_list_of_day holds the days of month.</value>
+        </member>
+        <member name="P:CalendarMate.MainWindow.Button_list_of_day">
+            <value>List Button_list_of_day holds the buttons of current list of day.</value>
+        </member>
+        <member name="F:CalendarMate.MainWindow.textblock_list_of_day">
+            <value>Button List textblock_list_of_day holds the days of month number.</value>
+        </member>
+        <member name="P:CalendarMate.MainWindow.Textblock_list_of_day">
+            <value>List Textblock_list_of_day holds the textblocks of current list of day.</value>
+        </member>
+        <member name="F:CalendarMate.MainWindow.image_list_of_day">
+            <value>Button List textblock_event_list_of_day holds the days of month number.</value>
+        </member>
+        <member name="P:CalendarMate.MainWindow.Image_list_of_day">
+            <value>List textblock_event_list_of_day holds the textblocks of current list of day and event.</value>
+        </member>
+        <member name="M:CalendarMate.MainWindow.#ctor">
+            <summary>
+            Initializes the main window.
+            </summary>
+        </member>
+        <member name="M:CalendarMate.MainWindow.GenerateDayPanel">
+            <summary>
+            Generates the day panel 
+            </summary>
+        </member>
+        <member name="M:CalendarMate.MainWindow.RemoveDayPanel">
+            <summary>
+            Removes the day panel 
+            </summary>
+        </member>
+        <member name="M:CalendarMate.MainWindow.GenerateCurrentTime">
+            <summary>
+            Generates the current time 
+            </summary>
+        </member>
+        <member name="M:CalendarMate.MainWindow.UpdateCurrentTime(System.Object,System.EventArgs)">
+            <summary>
+            Updates the current time 
+            </summary>
+        </member>
+        <member name="M:CalendarMate.MainWindow.GenerateReminderTime">
+            <summary>
+            Generates the current reminder time 
+            </summary>
+        </member>
+        <member name="M:CalendarMate.MainWindow.UpdateReminderTime(System.Object,System.EventArgs)">
+            <summary>
+            Updates the current reminder time 
+            </summary>
+        </member>
+        <member name="M:CalendarMate.MainWindow.LoadCurrentWeather">
+            <summary>
+            Loads the current weather
+            </summary>
+        </member>
+        <member name="M:CalendarMate.MainWindow.Next_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Loads the next page in the calendar 
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.MainWindow.Back_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Loads the previous page in the calendar 
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.MainWindow.CurrentDate_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Loads the current date page in the calendar
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.MainWindow.Day_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Opens a new AddAnEventWindow
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.MainWindow.EventList_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Opens a new ShowAllEventsListWindow
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.MainWindow.EventToDoList_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Opens a new ShowToDoListWindow
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.MainWindow.CloseMainWindow_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Closes the main window
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.MainWindow.CurrentWeather_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Opens a new WeatherWindow
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.MainWindow.currentCity_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Opens a new CurrentCityWindow
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.MainWindow.refreshWeather_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Refreshes the current weather
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.MainWindow.CityInitialization">
+            <summary>
+            Loads the current city  from database
+            </summary>
+        </member>
+        <member name="M:CalendarMate.MainWindow.ReturnCity">
+            <summary>
+            Returns the current city 
+            </summary>
+            <returns>The current city</returns>
+        </member>
+        <member name="M:CalendarMate.MainWindow.LoadCurrentCity">
+            <summary>
+            Loads the current city 
+            </summary>
+        </member>
+        <member name="M:CalendarMate.MainWindow.Minimalize_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Minimalizes the main window
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.MainWindow.isCurrentWeatherGood">
+            <summary>
+            Checks if the current weather information is downloaded from API
+            </summary>
+            <returns>True or false depending of the status of the current weather information.</returns>
+        </member>
+        <member name="M:CalendarMate.MainWindow.RefreshAllDayButtons">
+            <summary>
+            Refreshes all day buttons 
+            </summary>
+        </member>
+        <member name="M:CalendarMate.MainWindow.ShowCurrentDay">
+            <summary>
+            Shows current day in dodgerblue 
+            </summary>
+        </member>
+        <member name="M:CalendarMate.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:CalendarMate.ShowAllEventsListWindow">
+            <summary>
+            Logic of class ShowAllEventsListWindow.xaml.
+            </summary>
+            <summary>
+            ShowAllEventsListWindow
+            </summary>
+        </member>
+        <member name="F:CalendarMate.ShowAllEventsListWindow.updatingEventID">
+            <value>Variable updatingEventID holds the current id.</value>
+        </member>
+        <member name="F:CalendarMate.ShowAllEventsListWindow.EventDate">
+            <value>Variable EventDate holds selected by the user date.</value>
+        </member>
+        <member name="F:CalendarMate.ShowAllEventsListWindow.mainWindow">
+            <summary>
+             Contain MainWindow object
+            </summary>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.#ctor(System.DateTime,CalendarMate.MainWindow)">
+            <summary>
+            The ShowAnEventWindow Constructor.
+            </summary>
+            <param name="eventDay">Contains a date selected by the user.</param>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.EventGrid_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            The metod displays a selected DataGrid section in other TextBoxs.
+            </summary>
+            <param name="sender">Contains a reference to the object that triggered the event.</param>
+            <param name="e">Contains state information and event data associated with a routed event.</param>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.ButtonDelete_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod delete the information from database.
+            </summary>
+            <param name="sender">Contains a reference to the object that triggered the event.</param>
+            <param name="e">Contains state information and event data associated with a routed event.</param>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.ButtonSaveChange_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod save change information to the database.
+            </summary>
+            <param name="sender">Contains a reference to the object that triggered the event.</param>
+            <param name="e">Contains state information and event data associated with a routed event.</param>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.CreateEvent(System.DateTime)">
+            <summary>
+            The method changes the title of the window.
+            </summary>
+            <param name="when">Contains date which was selected by user.</param>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.Close_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod close the window after click on button.
+            </summary>
+            <param name="sender">Contains a reference to the object that triggered the event.</param>
+            <param name="e">Contains state information and event data associated with a routed event.</param>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.Window_MouseDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            A method that allows change the position of the window.
+            </summary>
+            <param name="sender">Contains a reference to the object that triggered the event.</param>
+            <param name="e">Contains state information and event data associated with a routed event.</param>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.ButtonRefresh_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod refresh the window after click on button.
+            </summary>
+            <param name="sender">Contains a reference to the object that triggered the event.</param>
+            <param name="e">Contains state information and event data associated with a routed event.</param>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.Between(System.String,System.String,System.String)">
+            <summary>
+            The method extracts characters between the first and second string from the string
+            </summary>
+            <param name="AllString"> Contains processed string </param>
+            <param name="FirstString"> Contains the beginning of a string after which we want to look </param>
+            <param name="LastString"> Contains the ending of a string before which we want to look </param>
+            <returns> Return string beetwen FirstString and LastString in AllString </returns>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.SetGrayForeground">
+            <summary>
+            The metod change the appearance of the elements to be unactive
+            </summary>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.SetBlackForeground(System.String,System.String,System.String,System.String,System.DateTime,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            The metod change the appearance of the elements to be active
+            </summary>
+            <param name="name"> Contains selected event name </param>
+            <param name="localization"> Contains selected event localization </param>
+            <param name="start"> Contains selected time to start event </param>
+            <param name="stop"> Contains selected end time event </param>
+            <param name="remind_hour"> Contains selected remind hour event</param>
+            <param name="year"> Contains selected year </param>
+            <param name="month"> Contains selected month </param>
+            <param name="day"> Contains selected day </param>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.EventGrid_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod takes an id focused DataGrid row and change color of information
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.UpdateGrid">
+            <summary>
+            Method to update the DataGrid
+            </summary>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.CheckBox_Checked_Show(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            CheckBox_Checked is an event which set default time for all day
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.CheckBox_Unchecked_Show(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            CheckBox_Checked is an event which set default time for none
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.ButtonAdd_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod save information to the database
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.TextBox_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The method change the appearance of focused textboxes 
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.TextBox_LostFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod changes the appearance of lost focused textboxes 
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.CheckBox_Checked_Add(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            CheckBox_Checked is an event which set default time for all day
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.CheckBox_Unchecked_Add(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            CheckBox_Checked is an event which set default time for none
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.ComboBox_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            The method change combox appearance 
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.RemindComboboxAdd_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The method change combox appearance 
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.RestartWindow">
+            <summary>
+            Method restart window
+            </summary>
+        </member>
+        <member name="M:CalendarMate.ShowAllEventsListWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:CalendarMate.ShowAnEventWindow">
+            <summary>
+            The <c> ShowAnEventWindow </c> class.
+            Containes window mechanics displaying events from data base.
+            </summary>
+            <summary>
+            ShowAnEventWindow
+            </summary>
+        </member>
+        <member name="F:CalendarMate.ShowAnEventWindow.updatingEventID">
+            <value> Variable updatingEventID holds the current id </value>
+        </member>
+        <member name="F:CalendarMate.ShowAnEventWindow.EventDate">
+            <value> Variable EventDate holds selected by the user date </value>
+        </member>
+        <member name="F:CalendarMate.ShowAnEventWindow.mainWindow">
+            <summary>
+             Contain MainWindow object
+            </summary>
+        </member>
+        <member name="M:CalendarMate.ShowAnEventWindow.#ctor(System.DateTime,CalendarMate.MainWindow)">
+            <summary>
+            The ShowAnEventWindow Constructor 
+            </summary>
+            <param name="eventDay"> Contains a date selected by the user  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAnEventWindow.EventGrid_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            The metod displays a selected DataGrid section in other TextBoxs
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAnEventWindow.ButtonDelete_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod delete the information from database
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAnEventWindow.ButtonSaveChange_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod save change information to the database
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAnEventWindow.CreateEvent(System.DateTime)">
+            <summary>
+            The method changes the title of the window
+            </summary>
+            <param name="when"> Contains date which was selected by user </param>
+        </member>
+        <member name="M:CalendarMate.ShowAnEventWindow.Close_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod close the window after click on button
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAnEventWindow.Window_MouseDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            A method that allows change the position of the window
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAnEventWindow.ButtonRefresh_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod refresh the window after click on button
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAnEventWindow.Between(System.String,System.String,System.String)">
+            <summary>
+            The method extracts characters between the first and second string from the string
+            </summary>
+            <param name="AllString"> Contains processed string </param>
+            <param name="FirstString"> Contains the beginning of a string after which we want to look </param>
+            <param name="LastString"> Contains the ending of a string before which we want to look </param>
+            <returns> Return string beetwen FirstString and LastString in AllString </returns>
+        </member>
+        <member name="M:CalendarMate.ShowAnEventWindow.SetGrayForeground">
+            <summary>
+            The metod change the appearance of the elements to be unactive
+            </summary>
+        </member>
+        <member name="M:CalendarMate.ShowAnEventWindow.SetBlackForeground(System.String,System.String,System.String,System.String,System.DateTime)">
+            <summary>
+            The metod change the appearance of the elements to be active
+            </summary>
+            <param name="name"> Contains selected event name </param>
+            <param name="localization"> Contains selected event localization </param>
+            <param name="start"> Contains selected time to start event </param>
+            <param name="stop"> Contains selected end time event </param>
+            <param name="remind"> Contains selected remind date event</param>
+        </member>
+        <member name="M:CalendarMate.ShowAnEventWindow.EventGrid_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod takes an id focused DataGrid row and change color of information
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAnEventWindow.UpdateGrid">
+            <summary>
+            Method to update the DataGrid
+            </summary>
+        </member>
+        <member name="M:CalendarMate.ShowAnEventWindow.CheckBox_Checked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            CheckBox_Checked is an event which set default time for all day
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAnEventWindow.CheckBox_Unchecked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            CheckBox_Checked is an event which set default time for none
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowAnEventWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:CalendarMate.ShowToDoListWindow">
+            <summary>
+            The <c> ShowToDoListWindow </c> class
+            </summary>
+            <summary>
+            ShowToDoListWindow
+            </summary>
+        </member>
+        <member name="F:CalendarMate.ShowToDoListWindow.updatingToDoListID">
+            <value> Variable updatingEventID holds the current id </value>
+        </member>
+        <member name="F:CalendarMate.ShowToDoListWindow.done">
+            <value> Variable done holds the information id which user will add to database </value>
+        </member>
+        <member name="M:CalendarMate.ShowToDoListWindow.#ctor">
+            <summary>
+            The ShowToDoListWindowConstructor 
+            </summary>
+        </member>
+        <member name="M:CalendarMate.ShowToDoListWindow.Add_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod save information to the database
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowToDoListWindow.Delete_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod delete the information from database
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowToDoListWindow.Refresh_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod refresh the window after click on button
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowToDoListWindow.SaveChanges_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod save change information to the database
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowToDoListWindow.Close_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Closes the current window.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.ShowToDoListWindow.Window_MouseDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Alows to drag the current window .
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.ShowToDoListWindow.EventGrid_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            The metod displays a selected DataGrid section in other TextBoxs
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowToDoListWindow.CheckBox_Checked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            CheckBox_Checked is an event which set default time for all day
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowToDoListWindow.CheckBox_Unchecked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            CheckBox_Checked is an event which set default time for none
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowToDoListWindow.EventGrid_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The metod takes an id focused DataGrid row and change color of information
+            </summary>
+            <param name="sender"> Contains a reference to the object that triggered the event </param>
+            <param name="e"> Contains state information and event data associated with a routed event  </param>
+        </member>
+        <member name="M:CalendarMate.ShowToDoListWindow.TextBox_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            TextBox_GotFocus is an event which changes the appearance of focused textboxes 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.ShowToDoListWindow.TextBox_LostFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            TextBox_LostFocus is an event which changes the appearance of lost focused textboxes 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.ShowToDoListWindow.RestartWindow">
+            <summary>
+            Method restart window
+            </summary>
+        </member>
+        <member name="M:CalendarMate.ShowToDoListWindow.UpdateGrid">
+            <summary>
+            Method to update the DataGrid
+            </summary>
+        </member>
+        <member name="M:CalendarMate.ShowToDoListWindow.Between(System.String,System.String,System.String)">
+            <summary>
+            The method extracts characters between the first and second string from the string
+            </summary>
+            <param name="AllString"> Contains processed string </param>
+            <param name="FirstString"> Contains the beginning of a string after which we want to look </param>
+            <param name="LastString"> Contains the ending of a string before which we want to look </param>
+            <returns> Return string beetwen FirstString and LastString in AllString </returns>
+        </member>
+        <member name="M:CalendarMate.ShowToDoListWindow.SetGrayForeground">
+            <summary>
+            The metod change the appearance of the elements to be unactive
+            </summary>
+        </member>
+        <member name="M:CalendarMate.ShowToDoListWindow.SetBlackForeground(System.String,System.Boolean)">
+            <summary>
+            The metod change the appearance of the elements to be active
+            </summary>
+            <param name="name"> Contains selected event name </param>
+            <param name="done"> Contains selected done information </param>
+        </member>
+        <member name="M:CalendarMate.ShowToDoListWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:CalendarMate.WeatherWindow">
+            <summary>
+            The <c>WeatherWindow</c> class.
+            Containes methods and variables necessary to create and manage the Weather Window.
+            </summary>
+            <summary>
+            WeatherWindow
+            </summary>
+        </member>
+        <member name="F:CalendarMate.WeatherWindow.currentWeather">
+            <value>Gets and Sets the current weather information.</value>
+        </member>
+        <member name="F:CalendarMate.WeatherWindow.dailyWeather">
+            <value>Gets and Sets the daily weather information.</value>
+        </member>
+        <member name="F:CalendarMate.WeatherWindow.hourlyWeather">
+            <value>Gets and Sets the hourly weather information.</value>
+        </member>
+        <member name="F:CalendarMate.WeatherWindow.mainWindow">
+            <summary>
+            MainWindow object to store the reference to our main window.
+            </summary>
+        </member>
+        <member name="F:CalendarMate.WeatherWindow.forecastType">
+            <summary>
+            A bool value that containes the current displayed forecast type .
+            false = 7 day forecast, true = 48 hour forecast.
+            </summary>
+        </member>
+        <member name="F:CalendarMate.WeatherWindow.primaryAxis">
+            <summary>
+            CategoryAxis object to store the x axis information.
+            </summary>
+        </member>
+        <member name="F:CalendarMate.WeatherWindow.secondaryAxis">
+            <summary>
+            NumericalAxis object to store the y axis information.
+            </summary>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.#ctor(ApiLibrary.CurrentWeatherInfoModel,CalendarMate.MainWindow)">
+            <summary>
+            The WeatherWindow constructor. 
+            </summary>
+            <param name="weather">CurrentWeatherInfoModel object containing current weather information.</param>
+            <param name="main">MainWindow object cotaining the reference to our main window.</param>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.LoadCurrentWeather">
+            <summary>
+            Loads the current weather.
+            </summary>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.SetChartStyle">
+            <summary>
+            Sets the charts style.
+            </summary>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.LoadDayilyTemperatureChart">
+            <summary>
+            Loads the daily temperature chart.
+            </summary>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.LoadDayilyApparentTemperatureChart">
+            <summary>
+            Loads the daily apparent temperature chart.
+            </summary>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.LoadDayilyHumidityChart">
+            <summary>
+            Loads the daily humidity chart.
+            </summary>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.LoadDayilyPressureChart">
+            <summary>
+            Loads the daily pressure chart.
+            </summary>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.LoadDayilyWindSpeedChart">
+            <summary>
+            Loads the daily wind speed chart.
+            </summary>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.LoadHourlyTemperatureChart">
+            <summary>
+            Loads the hourly temperature chart.
+            </summary>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.LoadHourlyApparentTemperatureChart">
+            <summary>
+            Loads the hourly apparent temperature chart.
+            </summary>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.LoadHourlyHumidityChart">
+            <summary>
+            Loads the hourly humidity chart
+            </summary>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.LoadHourlyPressureChart">
+            <summary>
+            Loads the hourly pressure chart.
+            </summary>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.LoadHourlyWindSpeedChart">
+            <summary>
+            Loads the hourly wind speed chart.
+            </summary>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.Close_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Closes the current window.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.Window_MouseDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Alows to drag the current window .
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.sevenDayForecast_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Changes current chart to seven day temperature forecast chart.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.temperatureForecast_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Changes current chart to daily or hourly (depending on the <c>forecastType</c> value) temperature forecast chart.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.apparentTemperatureForecast_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Changes current chart to daily or hourly (depending on the <c>forecastType</c> value) apparent temperature forecast chart.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.humidityForecast_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Changes current chart to daily or hourly (depending on the <c>forecastType</c> value) humidity forecast chart.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.pressureForecast_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Changes current chart to daily or hourly (depending on the <c>forecastType</c> value) pressure forecast chart.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.windSpeedForecast_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Changes current chart to daily or hourly (depending on the <c>forecastType</c> value) wind speed forecast chart.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.fourtyEightHourForecast_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Changes current chart to 48 hour temperature forecast chart.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.refreshWeather_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Refreshes the current weather.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.ReturnCity">
+            <summary>
+            Returns the current city from database.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CalendarMate.WeatherWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>

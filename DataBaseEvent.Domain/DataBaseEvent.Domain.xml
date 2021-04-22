@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataBaseEvent.Domain</name>
+    </assembly>
+    <members>
+        <member name="T:DataBaseEvent.Domain.Models.DataBaseEvent1">
+            <summary>
+            The <c> DataBaseEvent1 </c> class
+            </summary>
+        </member>
+        <member name="P:DataBaseEvent.Domain.Models.DataBaseEvent1.Id">
+            <value>Gets and sets the Id value.</value>
+        </member>
+        <member name="P:DataBaseEvent.Domain.Models.DataBaseEvent1.Name">
+            <value>Gets and sets the Name value.</value>
+        </member>
+        <member name="P:DataBaseEvent.Domain.Models.DataBaseEvent1.Localization">
+            <value>Gets and sets the Localization value.</value>
+        </member>
+        <member name="P:DataBaseEvent.Domain.Models.DataBaseEvent1.Year">
+            <value>Gets and sets the Year value.</value>
+        </member>
+        <member name="P:DataBaseEvent.Domain.Models.DataBaseEvent1.Month">
+            <value>Gets and sets the Month value.</value>
+        </member>
+        <member name="P:DataBaseEvent.Domain.Models.DataBaseEvent1.Day">
+            <value>Gets and sets the Day value.</value>
+        </member>
+        <member name="P:DataBaseEvent.Domain.Models.DataBaseEvent1.StartTime">
+            <value>Gets and sets the Start Time value.</value>
+        </member>
+        <member name="P:DataBaseEvent.Domain.Models.DataBaseEvent1.StopTime">
+            <value>Gets and sets the Stop Time value.</value>
+        </member>
+        <member name="P:DataBaseEvent.Domain.Models.DataBaseEvent1.RemindTime">
+            <value>Gets and sets the Remind Time value.</value>
+        </member>
+        <member name="T:DataBaseEvent.Domain.Models.DataBaseLocalization1">
+            <summary>
+            The <c> DataBaseLocalization1 </c> class
+            </summary>
+        </member>
+        <member name="P:DataBaseEvent.Domain.Models.DataBaseLocalization1.Id">
+            <value>Gets and sets the Id value.</value>
+        </member>
+        <member name="P:DataBaseEvent.Domain.Models.DataBaseLocalization1.Localization">
+            <value>Gets and sets the Localization value.</value>
+        </member>
+        <member name="T:DataBaseEvent.Domain.Models.DataBaseToDoList1">
+            <summary>
+            The <c> DataBaseToDoList1 </c> class
+            </summary>
+        </member>
+        <member name="P:DataBaseEvent.Domain.Models.DataBaseToDoList1.Id">
+            <value>Gets and sets the Id value.</value>
+        </member>
+        <member name="P:DataBaseEvent.Domain.Models.DataBaseToDoList1.Name">
+            <value>Gets and sets the Name value.</value>
+        </member>
+        <member name="P:DataBaseEvent.Domain.Models.DataBaseToDoList1.Done">
+            <value>Gets and sets the Done status value.</value>
+        </member>
+    </members>
+</doc>

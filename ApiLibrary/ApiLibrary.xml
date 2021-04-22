@@ -1,0 +1,276 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ApiLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:ApiLibrary.ApiHelper">
+            <summary>
+            The <c>ApiHelper</c> class.
+            Contains variables and methods necessary for creating a http client.
+            </summary>
+        </member>
+        <member name="P:ApiLibrary.ApiHelper.ApiClient">
+            <value>Gets and Sets the ApiClient value.</value>
+        </member>
+        <member name="M:ApiLibrary.ApiHelper.InitializeClient">
+            <summary>
+            Initializes the http client.
+            </summary>
+        </member>
+        <member name="T:ApiLibrary.CurrentWeatherCoordModel">
+            <summary>
+            The <c>CurrentWeatherCoordModel</c> class.
+            Containes geographical coordinates.
+            </summary>
+        </member>
+        <member name="P:ApiLibrary.CurrentWeatherCoordModel.Lon">
+            <value>Gets and sets the Longitude value.</value>
+        </member>
+        <member name="P:ApiLibrary.CurrentWeatherCoordModel.Lat">
+            <value>Gets and sets the Latitude value.</value>
+        </member>
+        <member name="T:ApiLibrary.CurrentWeatherInfoModel">
+            <summary>
+            The <c>CurrentWeatherInfoModel</c> class.
+            Containes all variables and methods necessary to store the current weather information that we download from the Weather API (openweathermap.org).
+            </summary>
+        </member>
+        <member name="P:ApiLibrary.CurrentWeatherInfoModel.Coord">
+            <value>Gets and sets the Coordinates value.</value>
+        </member>
+        <member name="P:ApiLibrary.CurrentWeatherInfoModel.Weather">
+            <value>Gets and sets the Weather informarmation list value.</value>
+        </member>
+        <member name="P:ApiLibrary.CurrentWeatherInfoModel.Main">
+            <value>Gets and sets the Weather Main information value.</value>
+        </member>
+        <member name="P:ApiLibrary.CurrentWeatherInfoModel.Wind">
+            <value>Gets and sets the Wind information value.</value>
+        </member>
+        <member name="P:ApiLibrary.CurrentWeatherInfoModel.Sys">
+            <value>Gets and sets the Sun information value.</value>
+        </member>
+        <member name="P:ApiLibrary.CurrentWeatherInfoModel.Name">
+            <value>Gets and sets the Terytory Name value.</value>
+        </member>
+        <member name="P:ApiLibrary.CurrentWeatherInfoModel.Visibility">
+            <value>Gets and sets the Visibility value.</value>
+        </member>
+        <member name="P:ApiLibrary.CurrentWeatherInfoModel.Timezone">
+            <value>Gets and sets the Timezone value.</value>
+        </member>
+        <member name="P:ApiLibrary.CurrentWeatherInfoModel.Cod">
+            <value>Gets and sets the Cod value.</value>
+        </member>
+        <member name="M:ApiLibrary.CurrentWeatherInfoModel.#ctor">
+            <summary>
+            Sets Cod value to "404" 
+            </summary>
+        </member>
+        <member name="T:ApiLibrary.CurrentWeatherInfoProcessor">
+            <summary>
+            The <c>CurrentWeatherInfoProcessor</c> class.
+            Containes variables and methods necessary to download current weather information from weather API (openweathermap.org).
+            </summary>
+        </member>
+        <member name="M:ApiLibrary.CurrentWeatherInfoProcessor.LoadCurrentWeather(System.String)">
+            <summary>
+            Download and process current weather information.
+            </summary>
+            <returns>Weather information inside an CurrentWeatherInfoModel class object or a exception response in an Exception class object.</returns>
+        </member>
+        <member name="T:ApiLibrary.CurrentWeatherMainModel">
+            <summary>
+            The <c>CurrentWeatherMainModel</c> class.
+            Containes basic weather information. 
+            </summary>
+        </member>
+        <member name="P:ApiLibrary.CurrentWeatherMainModel.Temp">
+            <value>Gets and sets the temperature value.</value>
+        </member>
+        <member name="P:ApiLibrary.CurrentWeatherMainModel.Feels_like">
+            <value>Gets and sets the apparent temperature value.</value>
+        </member>
+        <member name="P:ApiLibrary.CurrentWeatherMainModel.Pressure">
+            <value>Gets and sets the pressure value.</value>
+        </member>
+        <member name="P:ApiLibrary.CurrentWeatherMainModel.Humidity">
+            <value>Gets and sets the humidity value.</value>
+        </member>
+        <member name="T:ApiLibrary.CurrentWeatherSysModel">
+            <summary>
+            The <c>CurrentWeatherSysModel</c> class.
+            Containes information abut sunrise and sunset.
+            </summary>
+        </member>
+        <member name="P:ApiLibrary.CurrentWeatherSysModel.Sunrise">
+            <value>Gets and sets the sunrise time value.</value>
+        </member>
+        <member name="P:ApiLibrary.CurrentWeatherSysModel.Sunset">
+            <value>Gets and sets the sunset time value.</value>
+        </member>
+        <member name="T:ApiLibrary.CurrentWeatherWindModel">
+            <summary>
+            The <c>CurrentWeatherWindModel</c> class.
+            Containes information about Wind.
+            </summary>
+        </member>
+        <member name="P:ApiLibrary.CurrentWeatherWindModel.Speed">
+            <value>Gets and sets the wind speed value.</value>
+        </member>
+        <member name="T:ApiLibrary.DailyWeatherInfoModel">
+            <summary>
+            The <c>DailyWeatherInfoModel</c> class.
+            Containes information about 7-day weather forecast.
+            </summary>
+        </member>
+        <member name="P:ApiLibrary.DailyWeatherInfoModel.Daily">
+            <value>Gets and sets the daily weather forecast list value.</value>
+        </member>
+        <member name="T:ApiLibrary.DailyWeatherInfoProcessor">
+            <summary>
+            The <c>DailyWeatherInfoProcessor</c> class.
+            Containes variables and methods necessary to download daily weather forecast information from weather API (openweathermap.org).
+            </summary>
+        </member>
+        <member name="M:ApiLibrary.DailyWeatherInfoProcessor.LoadDailyWeather(System.String,System.String)">
+            <summary>
+            Download and process daily weather forecast information.
+            </summary>
+            <returns>Daily weather forecast information inside an DailyWeatherInfoModel class object or a exception response in an Exception class object.</returns>
+        </member>
+        <member name="T:ApiLibrary.DayWeatherModel">
+            <summary>
+            The <c>DayWeatherModel</c> class.
+            Containes all variables and methods necessary to store the day weather information that we download from the Weather API (openweathermap.org).
+            </summary>
+        </member>
+        <member name="P:ApiLibrary.DayWeatherModel.Dt">
+            <value>Gets and sets the time in seconds from 1.1.1970 value.</value>
+        </member>
+        <member name="P:ApiLibrary.DayWeatherModel.Sunrise">
+            <value>Gets and sets the sunrise in seconds from 1.1.1970 value.</value>
+        </member>
+        <member name="P:ApiLibrary.DayWeatherModel.Sunset">
+            <value>Gets and sets the sunset in seconds from 1.1.1970 value.</value>
+        </member>
+        <member name="P:ApiLibrary.DayWeatherModel.Temp">
+            <value>Gets and sets the temperature information value.</value>
+        </member>
+        <member name="P:ApiLibrary.DayWeatherModel.Feels_like">
+            <value>Gets and sets the apparent temperature information value.</value>
+        </member>
+        <member name="P:ApiLibrary.DayWeatherModel.Pressure">
+            <value>Gets and sets the pressure value.</value>
+        </member>
+        <member name="P:ApiLibrary.DayWeatherModel.Humidity">
+            <value>Gets and sets the humidity value.</value>
+        </member>
+        <member name="P:ApiLibrary.DayWeatherModel.Wind_speed">
+            <value>Gets and sets the wind speed value.</value>
+        </member>
+        <member name="P:ApiLibrary.DayWeatherModel.Weather">
+            <value>Gets and sets the Weather informarmation list value.</value>
+        </member>
+        <member name="T:ApiLibrary.HourlyWeatherInfoModel">
+            <summary>
+            The <c>HourlyWeatherInfoModel</c> class.
+            Containes information about 48-hour weather forecast.
+            </summary>
+        </member>
+        <member name="P:ApiLibrary.HourlyWeatherInfoModel.Hourly">
+            <value>Gets and sets the hourly weather forecast list value.</value>
+        </member>
+        <member name="T:ApiLibrary.HourlyWeatherInfoProcessor">
+            <summary>
+            The <c>HourlyWeatherInfoProcessor</c> class.
+            Containes variables and methods necessary to download hourly weather forecast information from weather API (openweathermap.org).
+            </summary>
+        </member>
+        <member name="M:ApiLibrary.HourlyWeatherInfoProcessor.LoadHourlyWeather(System.String,System.String)">
+            <summary>
+            Download and process hourly weather forecast information.
+            </summary>
+            <returns>Hourly weather forecast information inside an HourlyWeatherInfoModel class object or a exception response in an Exception class object.</returns>
+        </member>
+        <member name="T:ApiLibrary.HourWeatherModel">
+            <summary>
+            The <c>HourWeatherModel</c> class.
+            Containes all variables and methods necessary to store the hour weather information that we download from the Weather API (openweathermap.org).
+            </summary>
+        </member>
+        <member name="P:ApiLibrary.HourWeatherModel.Dt">
+            <value>Gets and sets the time in seconds from 1.1.1970 value.</value>
+        </member>
+        <member name="P:ApiLibrary.HourWeatherModel.Temp">
+            <value>Gets and sets the temperature value.</value>
+        </member>
+        <member name="P:ApiLibrary.HourWeatherModel.Feels_like">
+            <value>Gets and sets the apparent temperature value.</value>
+        </member>
+        <member name="P:ApiLibrary.HourWeatherModel.Pressure">
+            <value>Gets and sets the pressure value.</value>
+        </member>
+        <member name="P:ApiLibrary.HourWeatherModel.Humidity">
+            <value>Gets and sets the humidity value.</value>
+        </member>
+        <member name="P:ApiLibrary.HourWeatherModel.Visibility">
+            <value>Gets and sets the Visibility value.</value>
+        </member>
+        <member name="P:ApiLibrary.HourWeatherModel.Wind_speed">
+            <value>Gets and sets the wind speed value.</value>
+        </member>
+        <member name="P:ApiLibrary.HourWeatherModel.Weather">
+            <value>Gets and sets the Weather informarmation list value.</value>
+        </member>
+        <member name="T:ApiLibrary.WeatherFeelsLikeModel">
+            <summary>
+            The <c>WeatherTempModel</c> class.
+            Containes apparent temperature information.
+            </summary>
+        </member>
+        <member name="P:ApiLibrary.WeatherFeelsLikeModel.Day">
+            <value>Gets and sets the day apparent temperature value.</value>
+        </member>
+        <member name="P:ApiLibrary.WeatherFeelsLikeModel.Night">
+            <value>Gets and sets the Night apparent temperature value.</value>
+        </member>
+        <member name="P:ApiLibrary.WeatherFeelsLikeModel.Eve">
+            <value>Gets and sets the Evening apparent temperature value.</value>
+        </member>
+        <member name="P:ApiLibrary.WeatherFeelsLikeModel.Morn">
+            <value>Gets and sets the Morning apparent temperature value.</value>
+        </member>
+        <member name="T:ApiLibrary.WeatherTempModel">
+            <summary>
+            The <c>WeatherTempModel</c> class.
+            Containes temperature information.
+            </summary>
+        </member>
+        <member name="P:ApiLibrary.WeatherTempModel.Day">
+            <value>Gets and sets the day temperature value.</value>
+        </member>
+        <member name="P:ApiLibrary.WeatherTempModel.Night">
+            <value>Gets and sets the Night temperature value.</value>
+        </member>
+        <member name="P:ApiLibrary.WeatherTempModel.Eve">
+            <value>Gets and sets the Evening temperature value.</value>
+        </member>
+        <member name="P:ApiLibrary.WeatherTempModel.Morn">
+            <value>Gets and sets the Morning temperature value.</value>
+        </member>
+        <member name="T:ApiLibrary.WeatherWeatherModel">
+            <summary>
+            The <c>WeatherWeatherModel</c> class.
+            Containes basic information about the weather.
+            </summary>
+        </member>
+        <member name="P:ApiLibrary.WeatherWeatherModel.Icon">
+            <value>Gets and sets the weather icon name value.</value>
+        </member>
+        <member name="P:ApiLibrary.WeatherWeatherModel.Description">
+            <value>Gets and sets the weather description value.</value>
+        </member>
+    </members>
+</doc>

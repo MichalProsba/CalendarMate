@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataBaseToDoList.EntityFramework</name>
+    </assembly>
+    <members>
+        <member name="T:DataBaseToDoList.EntityFramework.DataBaseToDoListDbContext">
+            <summary>
+            The <c> DataBaseEventDbContext </c> class
+            </summary>
+        </member>
+        <member name="P:DataBaseToDoList.EntityFramework.DataBaseToDoListDbContext.DataBaseToDoLists1">
+            <value>Gets and sets the DataBaseToDoLists1 value.</value>
+        </member>
+        <member name="M:DataBaseToDoList.EntityFramework.DataBaseToDoListDbContext.#ctor">
+            <summary>
+            Initializes the data base. 
+            </summary>
+        </member>
+        <member name="M:DataBaseToDoList.EntityFramework.DataBaseToDoListDbContext.OnModelCreating(System.Data.Entity.DbModelBuilder)">
+            <summary>
+            Configures the data base
+            </summary>
+            <param name="modelBuilder">DbModelBuilder object containes the database configuration.</param>
+        </member>
+    </members>
+</doc>

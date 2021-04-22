@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WeatherChartData</name>
+    </assembly>
+    <members>
+        <member name="T:WeatherChartData.DailyApparentTemperatureForecast">
+            <summary>
+            The <c>DailyApparentTemperatureForecast</c> class.
+            Containes daily apparent temperature data for charts.
+            </summary>
+        </member>
+        <member name="P:WeatherChartData.DailyApparentTemperatureForecast.MorningApparentTemperature">
+            <value>Gets or sets the morning apparent temperature list.</value>
+        </member>
+        <member name="P:WeatherChartData.DailyApparentTemperatureForecast.DayApparentTemperature">
+            <value>Gets or sets the day apparent temperature list.</value>
+        </member>
+        <member name="P:WeatherChartData.DailyApparentTemperatureForecast.EveningApparentTemperature">
+            <value>Gets or sets the evening apparent temperature list.</value>
+        </member>
+        <member name="P:WeatherChartData.DailyApparentTemperatureForecast.NightApparentTemperature">
+            <value>Gets or sets the night apparent temperature list.</value>
+        </member>
+        <member name="M:WeatherChartData.DailyApparentTemperatureForecast.#ctor(ApiLibrary.DailyWeatherInfoModel)">
+            <summary>
+            Copies apparent temperature data from ApiLibrary structures to new structures prepared for chart display.
+            </summary>
+            <param name="dailyForecastSource">DailyWeatherInfoModel object containing apparent day temperature information.</param>
+        </member>
+        <member name="T:WeatherChartData.DailyTemperatureForecast">
+            <summary>
+            The <c>DailyApparentTemperatureForecast</c> class.
+            Containes daily temperature data for charts.
+            </summary>
+        </member>
+        <member name="P:WeatherChartData.DailyTemperatureForecast.MorningTemperature">
+            <value>Gets or sets the morning temperature list.</value>
+        </member>
+        <member name="P:WeatherChartData.DailyTemperatureForecast.DayTemperature">
+            <value>Gets or sets the day temperature list.</value>
+        </member>
+        <member name="P:WeatherChartData.DailyTemperatureForecast.EveningTemperature">
+            <value>Gets or sets the evening temperature list.</value>
+        </member>
+        <member name="P:WeatherChartData.DailyTemperatureForecast.NightTemperature">
+            <value>Gets or sets the night temperature list.</value>
+        </member>
+        <member name="M:WeatherChartData.DailyTemperatureForecast.#ctor(ApiLibrary.DailyWeatherInfoModel)">
+            <summary>
+            Copies temperature data from ApiLibrary structures to new structures prepared for chart display.
+            </summary>
+            <param name="dailyForecastSource">DailyWeatherInfoModel object containing day temperature information.</param>
+        </member>
+        <member name="T:WeatherChartData.DailyWeatherForecast">
+            <summary>
+            The <c>DailyWeatherForecast</c> class.
+            Containes daily weather forecast data for chart display.
+            </summary>
+        </member>
+        <member name="P:WeatherChartData.DailyWeatherForecast.dailyTemperatureForecast">
+            <value>Gets and sets the daily temperature forecast value.</value>
+        </member>
+        <member name="P:WeatherChartData.DailyWeatherForecast.dailyApparentTemperatureForecast">
+            <value>Gets and sets the daily apparent temperature forecast value.</value>
+        </member>
+        <member name="P:WeatherChartData.DailyWeatherForecast.humidity">
+            <value>Gets and sets the daily humidity forecast value.</value>
+        </member>
+        <member name="P:WeatherChartData.DailyWeatherForecast.pressure">
+            <value>Gets and sets the daily pressure forecast value.</value>
+        </member>
+        <member name="P:WeatherChartData.DailyWeatherForecast.windSpeed">
+            <value>Gets and sets the daily wind speed forecast value.</value>
+        </member>
+        <member name="M:WeatherChartData.DailyWeatherForecast.#ctor(ApiLibrary.DailyWeatherInfoModel)">
+            <summary>
+            Copies daily weather forecast data from ApiLibrary structures to new structures prepared for chart display.
+            </summary>
+            <param name="dailyForecastSource">DailyWeatherInfoModel object containing daily weather forecast information.</param>
+        </member>
+        <member name="T:WeatherChartData.HourlyWeatherForecast">
+            <summary>
+            The <c>HourlyWeatherForecast</c> class.
+            Containes hourly weather forecast data for chart display.
+            </summary>
+        </member>
+        <member name="F:WeatherChartData.HourlyWeatherForecast.now">
+            <summary>
+            DateTime object to store the current date and time.
+            </summary>
+        </member>
+        <member name="P:WeatherChartData.HourlyWeatherForecast.temperature">
+            <value>Gets and sets the hourly temperature forecast list value.</value>
+        </member>
+        <member name="P:WeatherChartData.HourlyWeatherForecast.apparentTemperature">
+            <value>Gets and sets the hourly apparent temperature forecast list value.</value>
+        </member>
+        <member name="P:WeatherChartData.HourlyWeatherForecast.humidity">
+            <value>Gets and sets the hourly humidity forecast list value.</value>
+        </member>
+        <member name="P:WeatherChartData.HourlyWeatherForecast.pressure">
+            <value>Gets and sets the hourly pressure forecast list value.</value>
+        </member>
+        <member name="P:WeatherChartData.HourlyWeatherForecast.windSpeed">
+            <value>Gets and sets the hourly wind speed forecast list value.</value>
+        </member>
+        <member name="M:WeatherChartData.HourlyWeatherForecast.#ctor(ApiLibrary.HourlyWeatherInfoModel)">
+            <summary>
+            Copies hourly weather forecast data from ApiLibrary structures to new structures prepared for chart display.
+            </summary>
+            <param name="dailyForecastSource">HourlyWeatherInfoModel object containing hourly weather forecast information.</param>
+        </member>
+        <member name="T:WeatherChartData.HumidityForecastData">
+            <summary>
+            The <c>HumidityForecastData</c> class.
+            Containes information about humidity.
+            </summary>
+        </member>
+        <member name="P:WeatherChartData.HumidityForecastData.Humidity">
+            <value>Gets and sets the humidity value.</value>
+        </member>
+        <member name="P:WeatherChartData.HumidityForecastData.Date">
+            <value>Gets and sets the date value.</value>
+        </member>
+        <member name="M:WeatherChartData.HumidityForecastData.#ctor(System.Int32,System.String)">
+            <summary>
+            Copies given parameters to object parameters.
+            </summary>
+            <param name="hum">Double humidity value.</param>
+            <param name="dt">String date value.</param>
+        </member>
+        <member name="T:WeatherChartData.PressureForecastData">
+            <summary>
+            The <c>PressureForecastData</c> class.
+            Containes information about pressure.
+            </summary>
+        </member>
+        <member name="P:WeatherChartData.PressureForecastData.Pressure">
+            <value>Gets and sets the pressure value.</value>
+        </member>
+        <member name="P:WeatherChartData.PressureForecastData.Date">
+            <value>Gets and sets the date value.</value>
+        </member>
+        <member name="M:WeatherChartData.PressureForecastData.#ctor(System.Int32,System.String)">
+            <summary>
+            Copies given parameters to object parameters.
+            </summary>
+            <param name="pre">Double pressure value.</param>
+            <param name="dt">String date value.</param>
+        </member>
+        <member name="T:WeatherChartData.TempForecastData">
+            <summary>
+            The <c>TempForecastData</c> class.
+            Containes information about temperature.
+            </summary>
+        </member>
+        <member name="P:WeatherChartData.TempForecastData.Temperature">
+            <value>Gets and sets the temperature value.</value>
+        </member>
+        <member name="P:WeatherChartData.TempForecastData.Date">
+            <value>Gets and sets the date value.</value>
+        </member>
+        <member name="M:WeatherChartData.TempForecastData.#ctor(System.Double,System.String)">
+            <summary>
+            Copies given parameters to object parameters.
+            </summary>
+            <param name="temp">Double temperature value.</param>
+            <param name="dt">String date value.</param>
+        </member>
+        <member name="T:WeatherChartData.WindSpeedForecastData">
+            <summary>
+            The <c>WindSpeedForecastData</c> class.
+            Containes information about wind speed.
+            </summary>
+        </member>
+        <member name="P:WeatherChartData.WindSpeedForecastData.WindSpeed">
+            <value>Gets and sets the wind speed value.</value>
+        </member>
+        <member name="P:WeatherChartData.WindSpeedForecastData.Date">
+            <value>Gets and sets the date value.</value>
+        </member>
+        <member name="M:WeatherChartData.WindSpeedForecastData.#ctor(System.Double,System.String)">
+            <summary>
+            Copies given parameters to object parameters.
+            </summary>
+            <param name="ws">Double wind speed value.</param>
+            <param name="dt">String date value.</param>
+        </member>
+    </members>
+</doc>

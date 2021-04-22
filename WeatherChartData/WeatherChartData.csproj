@@ -5,6 +5,10 @@
     <OutputType>Library</OutputType>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\patry\source\repos\CalendarMate\WeatherChartData\WeatherChartData.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="../Apilibrary/Apilibrary.csproj" />
     <ProjectReference Include="../Normalization/Normalization.csproj" />
