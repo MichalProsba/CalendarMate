@@ -304,8 +304,9 @@ namespace CalendarMate
                     select d;
             foreach (var item in r)
             {
-                string eventReminder = "Event name: " + item.Name.ToString() + " starts at: " + item.StartTime.ToString();
-                MessageBox.Show(eventReminder, "Reminder", MessageBoxButton.OK, MessageBoxImage.Warning);
+                string eventReminder = "Event " + item.Name.ToString() + " starts at " + item.StartTime.ToString();
+                AlertWindow alertWindow = new AlertWindow(eventReminder, "Reminder");
+                alertWindow.ShowDialog();
             }
         }
 

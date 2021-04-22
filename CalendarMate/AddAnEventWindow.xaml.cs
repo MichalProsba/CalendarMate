@@ -89,7 +89,10 @@ namespace CalendarMate
                     db1.DataBaseEvents1.Add(doctroObject);
                     db1.SaveChanges();
                     RestartWindow();
-                    oneList.UpdateGrid();
+                    if (oneList != null)
+                    {
+                        oneList.UpdateGrid();
+                    }
                     mainWindow.RefreshAllDayButtons();
                     mainWindow.ShowCurrentDay();
                     mainWindow.AddEventToStackPanel();
