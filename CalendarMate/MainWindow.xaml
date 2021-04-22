@@ -9,7 +9,7 @@
         WindowState="Maximized"
         WindowStyle="None"
         Background="#666"
-        Title="CalendarMate" ResizeMode="NoResize" Height="1100" Width="1200">
+        Title="CalendarMate" ResizeMode="NoResize" Height="1100" Width="1200" Icon="images/calendar2.ico">
     <StackPanel>
         <StackPanel  Background="#333">
             <Grid>

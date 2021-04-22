@@ -26,6 +26,8 @@
     <None Remove="images\13n.png" />
     <None Remove="images\50d.png" />
     <None Remove="images\50n.png" />
+    <None Remove="images\calendar.ico" />
+    <None Remove="images\calendar2.ico" />
     <None Remove="images\Event.png" />
   </ItemGroup>
 
@@ -62,6 +64,8 @@
     <Resource Include="images\13n.png" />
     <Resource Include="images\50d.png" />
     <Resource Include="images\50n.png" />
+    <Resource Include="images\calendar.ico" />
+    <Resource Include="images\calendar2.ico" />
     <Resource Include="images\Event.png" />
   </ItemGroup>
 

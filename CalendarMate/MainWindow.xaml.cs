@@ -522,6 +522,7 @@ namespace CalendarMate
         private void Minimalize_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+            //this.Hide();
         }
 
         // Checks if the current weather information is downloaded from API
