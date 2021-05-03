@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.5" />
   </ItemGroup>
 
   <ItemGroup>

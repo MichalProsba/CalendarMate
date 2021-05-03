@@ -23,6 +23,12 @@ namespace CalendarMate
     /// </summary>
     public partial class CurrentCityWindow : Window
     {
+        //Serializer class
+        /// <summary>
+        /// Serializer class
+        /// </summary>
+        DataBaseLocalizationSerializer DbLocalization = new DataBaseLocalizationSerializer();
+
         // MainWindow object to store the reference to our main window
         /// <summary>
         /// MainWindow object to store the reference to our main window.
@@ -36,14 +42,7 @@ namespace CalendarMate
         public CurrentCityWindow(MainWindow main)
         {
             InitializeComponent();
-            DataBaseLocalizationDbContext db = new DataBaseLocalizationDbContext();
-            var r = from d in db.DataBaseLocalizations1
-                    select d;
-            DataBaseLocalization1 obj = r.SingleOrDefault();
-            if (obj != null)
-            {
-                EventLocalization.Text = obj.Localization.ToString();
-            }
+            EventLocalization.Text = DbLocalization.GetLocalization();
             mainWindow = main;
         }
 
@@ -80,11 +79,6 @@ namespace CalendarMate
         /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private async void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
-            DataBaseLocalizationDbContext db = new DataBaseLocalizationDbContext();
-            var r = from d in db.DataBaseLocalizations1
-                    where d.Id == 1
-                    select d;
-            DataBaseLocalization1 obj = r.SingleOrDefault();
             CurrentWeatherInfoModel currentWeather = await CurrentWeatherInfoProcessor.LoadCurrentWeather(EventLocalization.Text);
             if (currentWeather.Cod == "404")
             {
@@ -93,11 +87,7 @@ namespace CalendarMate
             }
             else
             {
-                if (obj != null)
-                {
-                    obj.Localization = EventLocalization.Text;
-                }
-                db.SaveChanges();
+                DbLocalization.SaveLocalization(EventLocalization.Text);
                 mainWindow.LoadCurrentCity();
                 mainWindow.LoadCurrentWeather();
             } 

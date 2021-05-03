@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace DataBaseEvent.Domain.Models
 {
@@ -14,10 +15,10 @@ namespace DataBaseEvent.Domain.Models
     {
         // The Id
         /// <value>Gets and sets the Id value.</value>
-        public int Id { get; set; }
+        [Key] public int Id { get; set; }
 
         // The Localization
         /// <value>Gets and sets the Localization value.</value>
-        public string Localization { get; set; }
+        [Required] [MaxLength(50)] public string Localization { get; set; }
     }
 }

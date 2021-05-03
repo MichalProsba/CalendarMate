@@ -31,6 +31,12 @@ namespace CalendarMate
         /// <value>Variable EventDate holds selected by the user date.</value>
         private DateTime EventDate;
 
+        //Serializer class
+        /// <summary>
+        /// Serializer class
+        /// </summary>
+        DataBaseEventSerializer DbEvent = new DataBaseEventSerializer();
+
         /// <summary>
         ///  Contain MainWindow object
         /// </summary>
@@ -92,21 +98,11 @@ namespace CalendarMate
         {
             DecisionWindow decisionWindow = new DecisionWindow("Are you sure you want to delete this event?", "Delete Event");
             bool msgBoxResult = decisionWindow.ShowDialog(true);
-            DataBaseEventDbContext db1 = new DataBaseEventDbContext();
-            var r = from d in db1.DataBaseEvents1
-                    where d.Id == this.updatingEventID
-                    select d;
             if (msgBoxResult == true)
             {
-                DataBaseEvent1 obj = r.SingleOrDefault();
-
-                if (obj != null)
-                {
-                    mainWindow.RemoveEventToStackPanel(this.updatingEventID);
-                    SetGrayForeground();
-                    db1.DataBaseEvents1.Remove(obj);
-                    db1.SaveChanges();
-                }
+                mainWindow.RemoveEventToStackPanel(this.updatingEventID);
+                SetGrayForeground();
+                DbEvent.DeleteEvent(this.updatingEventID);
             }
             UpdateGrid();
             mainWindow.RefreshAllDayButtons();
@@ -134,27 +130,19 @@ namespace CalendarMate
                 {
                     TimeSpan ts = new TimeSpan(RemindComboboxShow.SelectedIndex, 0, 0);
                     DateTime from_date = new DateTime(int.Parse(EventYearShow.Text), int.Parse(EventMonthShow.Text), int.Parse(EventDayShow.Text));
-                    DataBaseEventDbContext db = new DataBaseEventDbContext();
-                    var r = from d in db.DataBaseEvents1
-                            where d.Id == updatingEventID
-                            select d;
-
-                    DataBaseEvent1 obj = r.SingleOrDefault();
+                    DataBaseEvent1 obj = new DataBaseEvent1();
                     if (obj != null)
                     {
                         obj.Name = EventNameShow.Text;
                         obj.Localization = EventLocalizationShow.Text;
-                        obj.Year = EventDate.Year;
-                        obj.Month = EventDate.Month;
-                        obj.Day = EventDate.Day;
-                        obj.StartTime = EventStartShow.Text;
-                        obj.StopTime = EventStopShow.Text;
-                        obj.RemindTime = from_date - ts;
                         obj.Year = int.Parse(EventYearShow.Text);
                         obj.Month = int.Parse(EventMonthShow.Text);
                         obj.Day = int.Parse(EventDayShow.Text);
+                        obj.StartTime = EventStartShow.Text;
+                        obj.StopTime = EventStopShow.Text;
+                        obj.RemindTime = from_date - ts;
                     }
-                    db.SaveChanges();
+                    DbEvent.SaveChangesEvent(obj, updatingEventID);
                     UpdateGrid();
                     mainWindow.RefreshAllDayButtons();
                     mainWindow.ShowCurrentDay();
@@ -432,8 +420,7 @@ namespace CalendarMate
                 {
                     TimeSpan ts = new TimeSpan(RemindComboboxAdd.SelectedIndex, 0, 0);
                     DateTime from_date = new DateTime(int.Parse(EventYearAdd.Text), int.Parse(EventMonthAdd.Text), int.Parse(EventDayAdd.Text)) + time1;
-                    DataBaseEventDbContext db1 = new DataBaseEventDbContext();
-                    DataBaseEvent1 doctroObject = new DataBaseEvent1()
+                    DataBaseEvent1 obj = new DataBaseEvent1()
                     {
                         Name = EventNameAdd.Text,
                         Localization = EventLocalizationAdd.Text,
@@ -444,8 +431,7 @@ namespace CalendarMate
                         StopTime = EventStopAdd.Text,
                         RemindTime = from_date - ts,
                     };
-                    db1.DataBaseEvents1.Add(doctroObject);
-                    db1.SaveChanges();
+                    DbEvent.SaveEvent(obj);
                     RestartWindow();
                     UpdateGrid();
                     mainWindow.RefreshAllDayButtons();

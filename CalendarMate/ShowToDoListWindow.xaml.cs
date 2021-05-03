@@ -31,6 +31,12 @@ namespace CalendarMate
         /// <value> Variable done holds the information id which user will add to database </value>
         private bool done = false;
 
+        //Serializer class
+        /// <summary>
+        /// Serializer class
+        /// </summary>
+        DataBaseToDoListSerializer DbToDoList = new DataBaseToDoListSerializer();
+
         //The ShowToDoListWindow Constructor 
         /// <summary>
         /// The ShowToDoListWindowConstructor 
@@ -55,14 +61,12 @@ namespace CalendarMate
             blackBrush.Opacity = 0.9;
             if (this.ToDoListNameShow.Foreground.Opacity == blackBrush.Opacity)
             {
-                DataBaseToDoListDbContext db1 = new DataBaseToDoListDbContext();
-                DataBaseToDoList1 doctroObject = new DataBaseToDoList1()
+                DataBaseToDoList1 todolist = new DataBaseToDoList1()
                 {
                     Name = this.ToDoListNameShow.Text,
                     Done = false,
                 };
-                db1.DataBaseToDoLists1.Add(doctroObject);
-                db1.SaveChanges();
+                DbToDoList.SaveToDoList(todolist);
                 RestartWindow();
                 UpdateGrid();
             }
@@ -83,21 +87,10 @@ namespace CalendarMate
         {
             DecisionWindow decisionWindow = new DecisionWindow("Are you sure you want to delete this task?", "Delete Event");
             bool msgBoxResult = decisionWindow.ShowDialog(true);
-            DataBaseToDoListDbContext db1 = new DataBaseToDoListDbContext();
-            var r = from d in db1.DataBaseToDoLists1
-                    where d.Id == this.updatingToDoListID
-                    select d;
-
             if (msgBoxResult == true)
             {
-                DataBaseToDoList1 obj = r.SingleOrDefault();
-
-                if (obj != null)
-                {
                     SetGrayForeground();
-                    db1.DataBaseToDoLists1.Remove(obj);
-                    db1.SaveChanges();
-                }
+                    DbToDoList.DeleteToDoList(this.updatingToDoListID);
             }
             UpdateGrid();
         }
@@ -123,18 +116,13 @@ namespace CalendarMate
         /// <param name="e"> Contains state information and event data associated with a routed event  </param>
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
         {
-            DataBaseToDoListDbContext db = new DataBaseToDoListDbContext();
-            var r = from d in db.DataBaseToDoLists1
-                    where d.Id == updatingToDoListID
-                    select d;
-
-            DataBaseToDoList1 obj = r.SingleOrDefault();
-            if (obj != null)
+            DataBaseToDoList1 todolist = new DataBaseToDoList1();
+            if (todolist != null)
             {
-                obj.Name = this.ToDoListEditShow.Text;
-                obj.Done = done;
+                todolist.Name = this.ToDoListEditShow.Text;
+                todolist.Done = done;
             }
-            db.SaveChanges();
+            DbToDoList.SaveChangesToDoList(todolist, updatingToDoListID);
             RestartWindow();
             UpdateGrid();
             SetGrayForeground();
@@ -321,8 +309,7 @@ namespace CalendarMate
         /// </summary>
         private void UpdateGrid()
         {
-            DataBaseToDoListDbContext db = new DataBaseToDoListDbContext();
-            var docs = from d in db.DataBaseToDoLists1
+            var docs = from d in DbToDoList.DataBaseToDoLists1
                        select new
                        {
                            Nr = d.Id,

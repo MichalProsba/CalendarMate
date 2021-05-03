@@ -1,6 +1,4 @@
-﻿//using Event.Domain.Models;
-//using Event.EntityFramework;
-using DataBaseEvent.Domain.Models;
+﻿using DataBaseEvent.Domain.Models;
 using DataBaseEvent.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -34,6 +32,12 @@ namespace CalendarMate
         ///  Contain ShowAnEventWindow object
         /// </summary>
         private ShowAnEventWindow oneList;
+
+        //Serializer class
+        /// <summary>
+        /// Serializer class
+        /// </summary>
+        DataBaseEventSerializer DbEvent = new DataBaseEventSerializer();
 
         /// <summary>
         ///  Contain ShowAnEventWindow object
@@ -74,8 +78,7 @@ namespace CalendarMate
                 {
                     TimeSpan ts = new TimeSpan(RemindCombobox.SelectedIndex, 0, 0);
                     DateTime from_date = new DateTime(EventDate.Year, EventDate.Month, EventDate.Day) + time1;
-                    DataBaseEventDbContext db1 = new DataBaseEventDbContext();
-                    DataBaseEvent1 doctroObject = new DataBaseEvent1()
+                    DataBaseEvent1 obj = new DataBaseEvent1()
                     {
                         Name = EventName.Text,
                         Localization = EventLocalization.Text,
@@ -86,8 +89,7 @@ namespace CalendarMate
                         StopTime = EventStop.Text,
                         RemindTime = from_date - ts,
                     };
-                    db1.DataBaseEvents1.Add(doctroObject);
-                    db1.SaveChanges();
+                    DbEvent.SaveEvent(obj);
                     RestartWindow();
                     if (oneList != null)
                     {
