@@ -19,11 +19,11 @@ namespace DataBaseEvent.Domain.Models
 
         // The Name
         /// <value>Gets and sets the Name value.</value>
-        [Required] [MaxLength(100)] public string Name { get; set; }
+        [Required] [MinLength(1)] [MaxLength(100)] public string Name { get; set; }
 
         // The Localization
         /// <value>Gets and sets the Localization value.</value>
-        [Required] [MaxLength(50)] public string Localization { get; set; }
+        [Required] [MinLength(1)] [MaxLength(50)] public string Localization { get; set; }
 
         // The Year
         /// <value>Gets and sets the Year value.</value>

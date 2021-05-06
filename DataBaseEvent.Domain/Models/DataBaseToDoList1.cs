@@ -19,7 +19,7 @@ namespace DataBaseEvent.Domain.Models
 
         // The Name
         /// <value>Gets and sets the Name value.</value>
-        [Required] [MaxLength(100)] public string Name { get; set; }
+        [Required] [MinLength(1)] [MaxLength(100)] public string Name { get; set; }
 
         // The Done status
         /// <value>Gets and sets the Done status value.</value>

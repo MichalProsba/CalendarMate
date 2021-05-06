@@ -19,6 +19,6 @@ namespace DataBaseEvent.Domain.Models
 
         // The Localization
         /// <value>Gets and sets the Localization value.</value>
-        [Required] [MaxLength(50)] public string Localization { get; set; }
+        [Required] [MinLength(1)] [MaxLength(50)] public string Localization { get; set; }
     }
 }
