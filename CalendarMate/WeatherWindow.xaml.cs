@@ -89,7 +89,17 @@ namespace CalendarMate
         private async void LoadCurrentWeather()
         {
             mainWindow.LoadCurrentWeather();
-            currentWeather = await CurrentWeatherInfoProcessor.LoadCurrentWeather(ReturnCity());
+
+            try
+            {
+                currentWeather = await CurrentWeatherInfoProcessor.LoadCurrentWeather(ReturnCity());
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Exception occurred");
+            }
+
             BitmapImage weatherImage = new BitmapImage();
             weatherImage.BeginInit();
             weatherImage.UriSource = new Uri("images/" + currentWeather.Weather[0].Icon.ToString() + ".png", UriKind.Relative);
@@ -164,8 +174,17 @@ namespace CalendarMate
         {
             sevenDayForecast.IsEnabled = false;
             temperatureForecast.IsEnabled = false;
+            
+            try
+            {
+                dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+            }
+            catch (Exception)
+            {
 
-            dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+                Console.WriteLine("Exception occurred");
+            }
+
             WeatherChart.Series.Clear();
             DisplayedChart.Text = "7 day forecast";
             WeatherChart.Header = "Temperature";
@@ -256,7 +275,15 @@ namespace CalendarMate
         /// </summary>
         private async void LoadDayilyApparentTemperatureChart()
         {
-            dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+            try
+            {
+                dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Exception occurred");
+            }
             WeatherChart.Series.Clear();
             WeatherChart.Header = "Apparent Temperature";
 
@@ -346,7 +373,16 @@ namespace CalendarMate
         /// </summary>
         private async void LoadDayilyHumidityChart()
         {
-            dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+            try
+            {
+                dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Exception occurred");
+            }
+            
             WeatherChart.Series.Clear();
             WeatherChart.Header = "Humidity";
 
@@ -401,7 +437,16 @@ namespace CalendarMate
         /// </summary>
         private async void LoadDayilyPressureChart()
         {
-            dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+            try
+            {
+                dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Exception occurred");
+            }
+            
             WeatherChart.Series.Clear();
             WeatherChart.Header = "Pressure";
 
@@ -456,7 +501,16 @@ namespace CalendarMate
         /// </summary>
         private async void LoadDayilyWindSpeedChart()
         {
-            dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+            try
+            {
+                dailyWeather = await DailyWeatherInfoProcessor.LoadDailyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Exception occurred");
+            }
+            
             WeatherChart.Series.Clear();
             WeatherChart.Header = "Wind Speed";
 
@@ -511,7 +565,16 @@ namespace CalendarMate
         /// </summary>
         private async void LoadHourlyTemperatureChart()
         {
-            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+            try
+            {
+                hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Exception occurred");
+            }
+            
             WeatherChart.Series.Clear();
             DisplayedChart.Text = "48 hour forecast";
             WeatherChart.Header = "Temperature";
@@ -557,7 +620,15 @@ namespace CalendarMate
         /// </summary>
         private async void LoadHourlyApparentTemperatureChart()
         {
-            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+            try
+            {
+                hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Exception occurred");
+            }
             WeatherChart.Series.Clear();
             WeatherChart.Header = "Aparent Temperature";
 
@@ -602,7 +673,15 @@ namespace CalendarMate
         /// </summary>
         private async void LoadHourlyHumidityChart()
         {
-            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+            try
+            {
+                hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Exception occurred");
+            }
             WeatherChart.Series.Clear();
             WeatherChart.Header = "Humidity";
 
@@ -647,7 +726,15 @@ namespace CalendarMate
         /// </summary>
         private async void LoadHourlyPressureChart()
         {
-            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+            try
+            {
+                hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Exception occurred");
+            }
             WeatherChart.Series.Clear();
             WeatherChart.Header = "Presssure";
 
@@ -692,7 +779,15 @@ namespace CalendarMate
         /// </summary>
         private async void LoadHourlyWindSpeedChart()
         {
-            hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+            try
+            {
+                hourlyWeather = await HourlyWeatherInfoProcessor.LoadHourlyWeather(currentWeather.Coord.Lon, currentWeather.Coord.Lat);
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Exception occurred");
+            }
             WeatherChart.Series.Clear();
             WeatherChart.Header = "Wind Speed";
 

@@ -316,7 +316,16 @@ namespace CalendarMate
         /// </summary>
         public async void LoadCurrentWeather()
         {
-            currentWeather = await CurrentWeatherInfoProcessor.LoadCurrentWeather(ReturnCity());
+            try
+            {
+                currentWeather = await CurrentWeatherInfoProcessor.LoadCurrentWeather(ReturnCity());
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Exception occurred");
+            }
+            
             if (isCurrentWeatherGood())
             {
                 BitmapImage weatherImage = new BitmapImage();

@@ -32,8 +32,9 @@ namespace ApiLibrary
                 }
                 else
                 {
-                    CurrentWeatherInfoModel currentWeather = new CurrentWeatherInfoModel();
-                    return currentWeather;
+                    throw new Exception("API doesn't respond.");
+                    //CurrentWeatherInfoModel currentWeather = new CurrentWeatherInfoModel();
+                    //return currentWeather;
                 }
             }
         }

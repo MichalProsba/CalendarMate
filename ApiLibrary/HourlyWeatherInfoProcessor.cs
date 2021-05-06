@@ -32,7 +32,7 @@ namespace ApiLibrary
                 }
                 else
                 {
-                    throw new Exception(response.ReasonPhrase);
+                    throw new Exception("API doesn't respond.");
                 }
             }
         }
